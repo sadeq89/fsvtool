@@ -15,6 +15,7 @@ public class EntityManager {
     private Connection conn;
     
     private UserProvider userProvider;
+    
 
     public EntityManager(Connection conn) {
         this.conn = conn;
@@ -36,5 +37,9 @@ public class EntityManager {
         } catch (SQLException e) {
             System.out.print(e);
         }
+    }
+    
+    public UserProvider getUserProvider() {
+        return this.userProvider;
     }
 }

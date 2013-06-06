@@ -33,4 +33,8 @@ public class UserProvider {
     public String getCreateSQL() {
         return this.createSQL;
     }
+    
+    public UserInterface getUserByName(String name) {
+        return new User();
+    }
 }

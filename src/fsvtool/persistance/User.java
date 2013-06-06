@@ -8,6 +8,6 @@ package fsvtool.persistance;
  *
  * @author ahmet
  */
-class User {
+class User implements UserInterface {
     
 }
