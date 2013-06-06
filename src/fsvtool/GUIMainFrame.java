@@ -63,6 +63,9 @@ public class GUIMainFrame extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
+        jLayeredPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jLayeredPane1.setOpaque(true);
+
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane1.setToolTipText("");
@@ -81,6 +84,7 @@ public class GUIMainFrame extends javax.swing.JFrame {
                 "Spielname", "Anzahl Spieler", "Datum/Uhrzeit", "Ort", "Teilname"
             }
         ));
+        jTable1.setVerifyInputWhenFocusTarget(false);
         jScrollPane1.setViewportView(jTable1);
 
         jScrollPane1.setBounds(100, 60, 859, 480);
