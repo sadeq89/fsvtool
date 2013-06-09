@@ -27,30 +27,30 @@ public class GUIRegistration extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
+        labelLogin = new javax.swing.JLabel();
+        buttonRegister = new javax.swing.JButton();
+        buttonCancel = new javax.swing.JButton();
+        labelFirstName = new javax.swing.JLabel();
+        labelSurname = new javax.swing.JLabel();
+        labelMail = new javax.swing.JLabel();
+        labelPhone = new javax.swing.JLabel();
+        labelPassword = new javax.swing.JLabel();
+        labelRepeatedPassword = new javax.swing.JLabel();
+        labelRepeatedMail = new javax.swing.JLabel();
+        firstNameInput = new javax.swing.JTextField();
+        mailInput = new javax.swing.JTextField();
+        repeatedMailInput = new javax.swing.JTextField();
+        passwordInput = new javax.swing.JPasswordField();
+        repeatedPasswordInput = new javax.swing.JPasswordField();
+        surnameInput = new javax.swing.JTextField();
+        tipPassword = new javax.swing.JLabel();
+        tipRepeatedPassword = new javax.swing.JLabel();
+        labelUsername = new javax.swing.JLabel();
+        usernameInput = new javax.swing.JTextField();
+        tipUsername = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        phoneRest = new javax.swing.JTextField();
+        phoneFirst = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,92 +59,92 @@ public class GUIRegistration extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(991, 593));
         setResizable(false);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Anmeldung");
-        jLabel2.setBounds(70, 30, 110, 30);
-        jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        labelLogin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelLogin.setText("Anmeldung");
+        labelLogin.setBounds(70, 30, 110, 30);
+        jLayeredPane1.add(labelLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton1.setText("Anmelden");
-        jButton1.setBounds(700, 510, 80, 23);
-        jLayeredPane1.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        buttonRegister.setText("Anmelden");
+        buttonRegister.setBounds(700, 510, 80, 23);
+        jLayeredPane1.add(buttonRegister, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton2.setText("Abbrechen");
-        jButton2.setBounds(820, 510, 90, 23);
-        jLayeredPane1.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        buttonCancel.setText("Abbrechen");
+        buttonCancel.setBounds(820, 510, 90, 23);
+        jLayeredPane1.add(buttonCancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel3.setText("Vorname");
-        jLabel3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jLabel3.setBounds(190, 90, 42, 20);
-        jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        labelFirstName.setText("Vorname");
+        labelFirstName.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        labelFirstName.setBounds(190, 90, 130, 20);
+        jLayeredPane1.add(labelFirstName, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel4.setText("Nachname");
-        jLabel4.setBounds(190, 140, 50, 14);
-        jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        labelSurname.setText("Nachname");
+        labelSurname.setBounds(190, 140, 120, 14);
+        jLayeredPane1.add(labelSurname, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel5.setText("E-Mail");
-        jLabel5.setBounds(190, 190, 30, 14);
-        jLayeredPane1.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        labelMail.setText("E-Mail");
+        labelMail.setBounds(190, 190, 130, 14);
+        jLayeredPane1.add(labelMail, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel6.setText("Tel.");
-        jLabel6.setBounds(190, 290, 20, 14);
-        jLayeredPane1.add(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        labelPhone.setText("Tel.");
+        labelPhone.setBounds(190, 290, 130, 14);
+        jLayeredPane1.add(labelPhone, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel7.setText("Kenntwort");
-        jLabel7.setToolTipText("Erklärung auf rechts !!!");
-        jLabel7.setBounds(190, 390, 50, 14);
-        jLayeredPane1.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        labelPassword.setText("Kennwort");
+        labelPassword.setToolTipText("Erklärung auf rechts !!!");
+        labelPassword.setBounds(190, 390, 130, 14);
+        jLayeredPane1.add(labelPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel8.setText("Kenntwort wiederholen");
-        jLabel8.setToolTipText("Erklärung auf rechts !!!");
-        jLabel8.setBounds(190, 440, 111, 14);
-        jLayeredPane1.add(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        labelRepeatedPassword.setText("Kennwort wiederholen");
+        labelRepeatedPassword.setToolTipText("Erklärung auf rechts !!!");
+        labelRepeatedPassword.setBounds(190, 440, 130, 14);
+        jLayeredPane1.add(labelRepeatedPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel9.setText("E-Mail wiederholen");
-        jLabel9.setBounds(190, 240, 90, 14);
-        jLayeredPane1.add(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField2.setBounds(370, 90, 280, 20);
-        jLayeredPane1.add(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField3.setBounds(370, 190, 280, 20);
-        jLayeredPane1.add(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField4.setBounds(370, 240, 280, 20);
-        jLayeredPane1.add(jTextField4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jPasswordField1.setBounds(370, 390, 110, 20);
-        jLayeredPane1.add(jPasswordField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jPasswordField2.setBounds(370, 440, 110, 20);
-        jLayeredPane1.add(jPasswordField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField1.setBounds(370, 140, 280, 20);
-        jLayeredPane1.add(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        labelRepeatedMail.setText("E-Mail wiederholen");
+        labelRepeatedMail.setBounds(190, 240, 130, 14);
+        jLayeredPane1.add(labelRepeatedMail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        firstNameInput.setBounds(370, 90, 280, 20);
+        jLayeredPane1.add(firstNameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mailInput.setBounds(370, 190, 280, 20);
+        jLayeredPane1.add(mailInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        repeatedMailInput.setBounds(370, 240, 280, 20);
+        jLayeredPane1.add(repeatedMailInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        passwordInput.setBounds(370, 390, 110, 20);
+        jLayeredPane1.add(passwordInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        repeatedPasswordInput.setBounds(370, 440, 110, 20);
+        jLayeredPane1.add(repeatedPasswordInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        surnameInput.setBounds(370, 140, 280, 20);
+        jLayeredPane1.add(surnameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel10.setText("(Geben Sie bitte ein 4 bis 8-stelliges Kenntwort ein)");
-        jLabel10.setBounds(540, 390, 250, 14);
-        jLayeredPane1.add(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        tipPassword.setForeground(new java.awt.Color(153, 153, 153));
+        tipPassword.setText("(Geben Sie bitte ein 4 bis 8-stelliges Kennwort ein)");
+        tipPassword.setBounds(540, 390, 250, 14);
+        jLayeredPane1.add(tipPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel11.setText("(Wiederholen Sie bitte Ihr eingegebenes Kenntwort)");
-        jLabel11.setBounds(540, 440, 250, 14);
-        jLayeredPane1.add(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        tipRepeatedPassword.setForeground(new java.awt.Color(153, 153, 153));
+        tipRepeatedPassword.setText("(Wiederholen Sie bitte Ihr eingegebenes Kennwort)");
+        tipRepeatedPassword.setBounds(540, 440, 250, 14);
+        jLayeredPane1.add(tipRepeatedPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel12.setText("Benutzername");
-        jLabel12.setToolTipText("Erklärung auf rechts !!!");
-        jLabel12.setBounds(190, 340, 70, 14);
-        jLayeredPane1.add(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField6.setBounds(370, 340, 110, 20);
-        jLayeredPane1.add(jTextField6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        labelUsername.setText("Benutzername");
+        labelUsername.setToolTipText("Erklärung auf rechts !!!");
+        labelUsername.setBounds(190, 340, 130, 14);
+        jLayeredPane1.add(labelUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        usernameInput.setBounds(370, 340, 110, 20);
+        jLayeredPane1.add(usernameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel13.setText("(Geben Sie bitte eine 3 bis 8-stellige Benutzername ein)");
-        jLabel13.setBounds(540, 340, 264, 14);
-        jLayeredPane1.add(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        tipUsername.setForeground(new java.awt.Color(153, 153, 153));
+        tipUsername.setText("(Geben Sie bitte eine 3 bis 8-stellige Benutzername ein)");
+        tipUsername.setBounds(540, 340, 264, 14);
+        jLayeredPane1.add(tipUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("-");
         jLabel14.setBounds(400, 290, 20, 14);
         jLayeredPane1.add(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField5.setBounds(420, 290, 80, 20);
-        jLayeredPane1.add(jTextField5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField7.setBounds(370, 290, 30, 20);
-        jLayeredPane1.add(jTextField7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        phoneRest.setBounds(420, 290, 80, 20);
+        jLayeredPane1.add(phoneRest, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        phoneFirst.setBounds(370, 290, 30, 20);
+        jLayeredPane1.add(phoneFirst, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
         jLabel1.setToolTipText("");
@@ -204,31 +204,31 @@ public class GUIRegistration extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton buttonCancel;
+    private javax.swing.JButton buttonRegister;
+    private javax.swing.JTextField firstNameInput;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel labelFirstName;
+    private javax.swing.JLabel labelLogin;
+    private javax.swing.JLabel labelMail;
+    private javax.swing.JLabel labelPassword;
+    private javax.swing.JLabel labelPhone;
+    private javax.swing.JLabel labelRepeatedMail;
+    private javax.swing.JLabel labelRepeatedPassword;
+    private javax.swing.JLabel labelSurname;
+    private javax.swing.JLabel labelUsername;
+    private javax.swing.JTextField mailInput;
+    private javax.swing.JPasswordField passwordInput;
+    private javax.swing.JTextField phoneFirst;
+    private javax.swing.JTextField phoneRest;
+    private javax.swing.JTextField repeatedMailInput;
+    private javax.swing.JPasswordField repeatedPasswordInput;
+    private javax.swing.JTextField surnameInput;
+    private javax.swing.JLabel tipPassword;
+    private javax.swing.JLabel tipRepeatedPassword;
+    private javax.swing.JLabel tipUsername;
+    private javax.swing.JTextField usernameInput;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,10 +27,10 @@ public class GUILogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jLabel2 = new javax.swing.JLabel();
+        labelLogin = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         usernameInput = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        labelKennwort = new javax.swing.JLabel();
         passwordInput = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
@@ -46,10 +46,10 @@ public class GUILogin extends javax.swing.JFrame {
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(400, 300));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(400, 300));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Login");
-        jLabel2.setBounds(170, 20, 60, 30);
-        jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        labelLogin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelLogin.setText("Login");
+        labelLogin.setBounds(170, 20, 60, 30);
+        jLayeredPane1.add(labelLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setText("Benutzername");
         jLabel3.setBounds(100, 100, 70, 14);
@@ -57,9 +57,9 @@ public class GUILogin extends javax.swing.JFrame {
         usernameInput.setBounds(200, 100, 110, 20);
         jLayeredPane1.add(usernameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel4.setText("Kenntwort");
-        jLabel4.setBounds(100, 130, 50, 14);
-        jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        labelKennwort.setText("Kennwort");
+        labelKennwort.setBounds(100, 130, 50, 14);
+        jLayeredPane1.add(labelKennwort, javax.swing.JLayeredPane.DEFAULT_LAYER);
         passwordInput.setBounds(200, 130, 110, 20);
         jLayeredPane1.add(passwordInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -160,10 +160,10 @@ public class GUILogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLabel labelKennwort;
+    private javax.swing.JLabel labelLogin;
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordInput;
     private javax.swing.JButton registerButton;
