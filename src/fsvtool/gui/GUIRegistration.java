@@ -65,11 +65,11 @@ public class GUIRegistration extends javax.swing.JFrame {
         jLayeredPane1.add(labelLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         buttonRegister.setText("Anmelden");
-        buttonRegister.setBounds(700, 510, 80, 23);
+        buttonRegister.setBounds(700, 510, 80, 25);
         jLayeredPane1.add(buttonRegister, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         buttonCancel.setText("Abbrechen");
-        buttonCancel.setBounds(820, 510, 90, 23);
+        buttonCancel.setBounds(820, 510, 90, 25);
         jLayeredPane1.add(buttonCancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         labelFirstName.setText("Vorname");
@@ -78,72 +78,72 @@ public class GUIRegistration extends javax.swing.JFrame {
         jLayeredPane1.add(labelFirstName, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         labelSurname.setText("Nachname");
-        labelSurname.setBounds(190, 140, 120, 14);
+        labelSurname.setBounds(190, 140, 120, 16);
         jLayeredPane1.add(labelSurname, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         labelMail.setText("E-Mail");
-        labelMail.setBounds(190, 190, 130, 14);
+        labelMail.setBounds(190, 190, 130, 16);
         jLayeredPane1.add(labelMail, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         labelPhone.setText("Tel.");
-        labelPhone.setBounds(190, 290, 130, 14);
+        labelPhone.setBounds(190, 290, 130, 16);
         jLayeredPane1.add(labelPhone, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         labelPassword.setText("Kennwort");
         labelPassword.setToolTipText("Erklärung auf rechts !!!");
-        labelPassword.setBounds(190, 390, 130, 14);
+        labelPassword.setBounds(190, 390, 130, 16);
         jLayeredPane1.add(labelPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         labelRepeatedPassword.setText("Kennwort wiederholen");
         labelRepeatedPassword.setToolTipText("Erklärung auf rechts !!!");
-        labelRepeatedPassword.setBounds(190, 440, 130, 14);
+        labelRepeatedPassword.setBounds(190, 440, 130, 16);
         jLayeredPane1.add(labelRepeatedPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         labelRepeatedMail.setText("E-Mail wiederholen");
-        labelRepeatedMail.setBounds(190, 240, 130, 14);
+        labelRepeatedMail.setBounds(190, 240, 130, 16);
         jLayeredPane1.add(labelRepeatedMail, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        firstNameInput.setBounds(370, 90, 280, 20);
+        firstNameInput.setBounds(370, 90, 280, 22);
         jLayeredPane1.add(firstNameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        mailInput.setBounds(370, 190, 280, 20);
+        mailInput.setBounds(370, 190, 280, 22);
         jLayeredPane1.add(mailInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        repeatedMailInput.setBounds(370, 240, 280, 20);
+        repeatedMailInput.setBounds(370, 240, 280, 22);
         jLayeredPane1.add(repeatedMailInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        passwordInput.setBounds(370, 390, 110, 20);
+        passwordInput.setBounds(370, 390, 110, 22);
         jLayeredPane1.add(passwordInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        repeatedPasswordInput.setBounds(370, 440, 110, 20);
+        repeatedPasswordInput.setBounds(370, 440, 110, 22);
         jLayeredPane1.add(repeatedPasswordInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        surnameInput.setBounds(370, 140, 280, 20);
+        surnameInput.setBounds(370, 140, 280, 22);
         jLayeredPane1.add(surnameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         tipPassword.setForeground(new java.awt.Color(153, 153, 153));
         tipPassword.setText("(Geben Sie bitte ein 4 bis 8-stelliges Kennwort ein)");
-        tipPassword.setBounds(540, 390, 250, 14);
+        tipPassword.setBounds(540, 390, 250, 16);
         jLayeredPane1.add(tipPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         tipRepeatedPassword.setForeground(new java.awt.Color(153, 153, 153));
         tipRepeatedPassword.setText("(Wiederholen Sie bitte Ihr eingegebenes Kennwort)");
-        tipRepeatedPassword.setBounds(540, 440, 250, 14);
+        tipRepeatedPassword.setBounds(540, 440, 250, 16);
         jLayeredPane1.add(tipRepeatedPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         labelUsername.setText("Benutzername");
         labelUsername.setToolTipText("Erklärung auf rechts !!!");
-        labelUsername.setBounds(190, 340, 130, 14);
+        labelUsername.setBounds(190, 340, 130, 16);
         jLayeredPane1.add(labelUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        usernameInput.setBounds(370, 340, 110, 20);
+        usernameInput.setBounds(370, 340, 110, 22);
         jLayeredPane1.add(usernameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         tipUsername.setForeground(new java.awt.Color(153, 153, 153));
         tipUsername.setText("(Geben Sie bitte eine 3 bis 8-stellige Benutzername ein)");
-        tipUsername.setBounds(540, 340, 264, 14);
+        tipUsername.setBounds(540, 340, 319, 16);
         jLayeredPane1.add(tipUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("-");
-        jLabel14.setBounds(400, 290, 20, 14);
+        jLabel14.setBounds(400, 290, 20, 16);
         jLayeredPane1.add(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        phoneRest.setBounds(420, 290, 80, 20);
+        phoneRest.setBounds(420, 290, 80, 22);
         jLayeredPane1.add(phoneRest, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        phoneFirst.setBounds(370, 290, 30, 20);
+        phoneFirst.setBounds(370, 290, 30, 22);
         jLayeredPane1.add(phoneFirst, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
