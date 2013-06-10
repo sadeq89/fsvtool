@@ -4,17 +4,24 @@
  */
 package fsvtool.gui;
 
+import fsvtool.controller.CreateGameController;
+
 /**
  *
  * @author Sadeq
  */
 public class GUICreateGame extends javax.swing.JFrame {
+    private CreateGameController controller;
 
     /**
      * Creates new form Estellen
      */
     public GUICreateGame() {
         initComponents();
+    }
+    
+    public void setController(CreateGameController c) {
+        this.controller = c;
     }
 
     /**
@@ -35,8 +42,8 @@ public class GUICreateGame extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bSave = new javax.swing.JButton();
+        bCancel = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -65,41 +72,41 @@ public class GUICreateGame extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jComboBox1.setBounds(310, 110, 92, 22);
+        jComboBox1.setBounds(310, 110, 92, 20);
         jLayeredPane1.add(jComboBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField2.setBounds(310, 210, 90, 22);
+        jTextField2.setBounds(310, 210, 90, 20);
         jLayeredPane1.add(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel5.setText("Spieleranzahl");
-        jLabel5.setBounds(180, 260, 77, 16);
+        jLabel5.setBounds(180, 260, 63, 14);
         jLayeredPane1.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jSpinner1.setBounds(310, 260, 39, 22);
+        jSpinner1.setBounds(310, 260, 39, 20);
         jLayeredPane1.add(jSpinner1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton1.setText("Speichern");
-        jButton1.setBounds(180, 340, 110, 40);
-        jLayeredPane1.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bSave.setText("Speichern");
+        bSave.setBounds(180, 340, 110, 40);
+        jLayeredPane1.add(bSave, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton2.setText("Abbrechen");
-        jButton2.setBounds(340, 340, 110, 40);
-        jLayeredPane1.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bCancel.setText("Abbrechen");
+        bCancel.setBounds(340, 340, 110, 40);
+        jLayeredPane1.add(bCancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel4.setText("Uhrzeit");
-        jLabel4.setBounds(180, 210, 40, 16);
+        jLabel4.setBounds(180, 210, 34, 14);
         jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setText("Sportart");
-        jLabel2.setBounds(180, 110, 47, 16);
+        jLabel2.setBounds(180, 110, 40, 14);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setText("Datum");
-        jLabel3.setBounds(180, 160, 37, 16);
+        jLabel3.setBounds(180, 160, 31, 14);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField3.setBounds(310, 160, 30, 22);
+        jTextField3.setBounds(310, 160, 30, 20);
         jLayeredPane1.add(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField4.setBounds(350, 160, 30, 22);
+        jTextField4.setBounds(350, 160, 30, 20);
         jLayeredPane1.add(jTextField4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField5.setBounds(390, 160, 50, 22);
+        jTextField5.setBounds(390, 160, 50, 20);
         jLayeredPane1.add(jTextField5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
@@ -159,8 +166,8 @@ public class GUICreateGame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton bCancel;
+    private javax.swing.JButton bSave;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

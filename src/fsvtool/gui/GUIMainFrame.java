@@ -4,6 +4,7 @@
  */
 package fsvtool.gui;
 
+import fsvtool.controller.MainController;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
@@ -16,6 +17,8 @@ import javax.swing.JMenuItem;
  * @author Marcel
  */
 public class GUIMainFrame extends javax.swing.JFrame {
+    private MainController controller;
+    public static final String NEUES_SPIEL = "Neues Spiel";
 
     /**
      * Creates new form GUIMainFrame
@@ -26,6 +29,10 @@ public class GUIMainFrame extends javax.swing.JFrame {
         
         
        
+    }
+    
+    public void setController(MainController c) {
+        this.controller = c;
     }
 
     private void initPopupMenu(){
@@ -51,9 +58,9 @@ public class GUIMainFrame extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bTeilnehmen = new javax.swing.JButton();
+        bStornieren = new javax.swing.JButton();
+        bNewGame = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -102,32 +109,32 @@ public class GUIMainFrame extends javax.swing.JFrame {
         jScrollPane1.setBounds(100, 60, 859, 480);
         jLayeredPane1.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton1.setText("Teilnehmen");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bTeilnehmen.setText("Teilnehmen");
+        bTeilnehmen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bTeilnehmenActionPerformed(evt);
             }
         });
-        jButton1.setBounds(100, 550, 169, 34);
-        jLayeredPane1.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bTeilnehmen.setBounds(100, 550, 169, 34);
+        jLayeredPane1.add(bTeilnehmen, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton4.setText("Stonieren");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bStornieren.setText("Stonieren");
+        bStornieren.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bStornierenActionPerformed(evt);
             }
         });
-        jButton4.setBounds(270, 550, 169, 34);
-        jLayeredPane1.add(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bStornieren.setBounds(270, 550, 169, 34);
+        jLayeredPane1.add(bStornieren, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton2.setText("Neues Spiel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bNewGame.setText(GUIMainFrame.NEUES_SPIEL);
+        bNewGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bNewGameActionPerformed(evt);
             }
         });
-        jButton2.setBounds(790, 550, 169, 34);
-        jLayeredPane1.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bNewGame.setBounds(790, 550, 169, 34);
+        jLayeredPane1.add(bNewGame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jButton3.setText("Mein Account");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -164,20 +171,20 @@ public class GUIMainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bTeilnehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTeilnehmenActionPerformed
+        this.controller.action(evt);
+    }//GEN-LAST:event_bTeilnehmenActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void bNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNewGameActionPerformed
+        this.controller.action(evt);
+    }//GEN-LAST:event_bNewGameActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void bStornierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStornierenActionPerformed
+        this.controller.action(evt);
+    }//GEN-LAST:event_bStornierenActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        this.controller.action(evt);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
@@ -227,10 +234,10 @@ public class GUIMainFrame extends javax.swing.JFrame {
     private JPopupMenu popup;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton bNewGame;
+    private javax.swing.JButton bStornieren;
+    private javax.swing.JButton bTeilnehmen;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -10,10 +10,10 @@ import fsvtool.persistance.EntityManager;
  *
  * @author ahmet
  */
-public abstract class Controller {
-    private EntityManager em;
+public abstract class AbstractController {
+    protected EntityManager em;
 
-    public Controller(EntityManager em) {
+    public AbstractController(EntityManager em) {
         this.em = em;
     }
 }

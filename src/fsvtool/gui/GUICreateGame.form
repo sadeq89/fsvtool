@@ -110,7 +110,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="bSave">
           <Properties>
             <Property name="text" type="java.lang.String" value="Speichern"/>
           </Properties>
@@ -120,7 +120,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="bCancel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Abbrechen"/>
           </Properties>

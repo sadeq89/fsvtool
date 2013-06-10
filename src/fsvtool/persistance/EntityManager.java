@@ -47,4 +47,8 @@ public class EntityManager {
     public UserProvider getUserProvider() {
         return this.userProvider;
     }
+    
+    public IUser getLoggedinUser() {
+        return null;
+    }
 }

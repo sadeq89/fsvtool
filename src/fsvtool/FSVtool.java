@@ -4,6 +4,7 @@
  */
 package fsvtool;
 
+import fsvtool.controller.MainController;
 import fsvtool.persistance.EntityManager;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,7 +28,7 @@ public class FSVtool {
     public static void main(String[] args) {
         try {
             Connection conn = FSVtool.connectDB();
-            EntityManager em = new EntityManager(conn);
+            EntityManager em = new EntityManager(conn);s
         } catch (ClassNotFoundException | SQLException e) {
             System.err.print("Kann keine Datenbankverbindung aufbauen\n"
                     +"Exception message: "+e.getMessage()+"\n"
