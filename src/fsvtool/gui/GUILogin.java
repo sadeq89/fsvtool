@@ -43,24 +43,25 @@ public class GUILogin extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(400, 300));
         setResizable(false);
 
-        jLayeredPane1.setMaximumSize(new java.awt.Dimension(400, 300));
-        jLayeredPane1.setMinimumSize(new java.awt.Dimension(400, 300));
+        jLayeredPane1.setMaximumSize(new java.awt.Dimension(500, 300));
+        jLayeredPane1.setMinimumSize(new java.awt.Dimension(500, 300));
+        jLayeredPane1.setPreferredSize(new java.awt.Dimension(500, 300));
 
         labelLogin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelLogin.setText("Login");
-        labelLogin.setBounds(170, 20, 60, 30);
+        labelLogin.setBounds(230, 10, 60, 30);
         jLayeredPane1.add(labelLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setText("Benutzername");
-        jLabel3.setBounds(100, 100, 70, 14);
+        jLabel3.setBounds(140, 90, 90, 14);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        usernameInput.setBounds(200, 100, 110, 20);
+        usernameInput.setBounds(240, 80, 190, 30);
         jLayeredPane1.add(usernameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         labelKennwort.setText("Kennwort");
-        labelKennwort.setBounds(100, 130, 50, 14);
+        labelKennwort.setBounds(140, 120, 90, 14);
         jLayeredPane1.add(labelKennwort, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        passwordInput.setBounds(200, 130, 110, 20);
+        passwordInput.setBounds(240, 110, 190, 30);
         jLayeredPane1.add(passwordInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         loginButton.setText("Einloggen");
@@ -70,17 +71,16 @@ public class GUILogin extends javax.swing.JFrame {
                 loginButtonActionPerformed(evt);
             }
         });
-        loginButton.setBounds(160, 170, 80, 23);
+        loginButton.setBounds(140, 160, 120, 40);
         jLayeredPane1.add(loginButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         registerButton.setText("Anmeldung");
-        registerButton.setToolTipText("");
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
             }
         });
-        registerButton.setBounds(50, 220, 85, 23);
+        registerButton.setBounds(380, 270, 110, 20);
         jLayeredPane1.add(registerButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         exitButton.setText("Beenden");
@@ -90,22 +90,22 @@ public class GUILogin extends javax.swing.JFrame {
                 exitButtonActionPerformed(evt);
             }
         });
-        exitButton.setBounds(270, 220, 80, 23);
+        exitButton.setBounds(310, 160, 120, 40);
         jLayeredPane1.add(exitButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
-        jLabel1.setBounds(0, 0, 400, 300);
+        jLabel1.setBounds(0, 0, 500, 300);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
