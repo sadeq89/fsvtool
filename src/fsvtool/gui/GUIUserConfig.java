@@ -97,19 +97,19 @@ public class GUIUserConfig extends javax.swing.JFrame {
         jLayeredPane2.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel5.setText("Vorname");
-        jLabel5.setBounds(180, 60, 90, 16);
+        jLabel5.setBounds(180, 60, 90, 14);
         jLayeredPane2.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel6.setText("Name");
-        jLabel6.setBounds(180, 100, 80, 16);
+        jLabel6.setBounds(180, 100, 80, 14);
         jLayeredPane2.add(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel7.setText("Geschlecht");
-        jLabel7.setBounds(180, 140, 90, 16);
+        jLabel7.setBounds(180, 140, 90, 14);
         jLayeredPane2.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel8.setText("Tel");
-        jLabel8.setBounds(180, 180, 60, 16);
+        jLabel8.setBounds(180, 180, 60, 14);
         jLayeredPane2.add(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -161,9 +161,11 @@ public class GUIUserConfig extends javax.swing.JFrame {
         jLabel12.setBounds(180, 430, 70, 16);
         jLayeredPane2.add(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jRadioButton1.setBackground(new java.awt.Color(255, 0, 0));
         jRadioButton1.setText("Sehr Gut");
         jRadioButton1.setMaximumSize(new java.awt.Dimension(50, 25));
         jRadioButton1.setMinimumSize(new java.awt.Dimension(50, 25));
+        jRadioButton1.setOpaque(false);
         jRadioButton1.setPreferredSize(new java.awt.Dimension(50, 25));
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,35 +176,48 @@ public class GUIUserConfig extends javax.swing.JFrame {
         jLayeredPane2.add(jRadioButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jRadioButton2.setText("Nicht so Gut");
-        jRadioButton2.setBounds(520, 290, 97, 25);
+        jRadioButton2.setOpaque(false);
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+        jRadioButton2.setBounds(520, 290, 83, 23);
         jLayeredPane2.add(jRadioButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jRadioButton3.setText("Mittel");
-        jRadioButton3.setBounds(420, 290, 59, 25);
+        jRadioButton3.setOpaque(false);
+        jRadioButton3.setBounds(420, 290, 51, 23);
         jLayeredPane2.add(jRadioButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jRadioButton4.setText("Nicht so Gut");
-        jRadioButton4.setBounds(520, 360, 97, 25);
+        jRadioButton4.setOpaque(false);
+        jRadioButton4.setBounds(520, 360, 83, 23);
         jLayeredPane2.add(jRadioButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jRadioButton5.setText("Mittel");
-        jRadioButton5.setBounds(420, 360, 59, 25);
+        jRadioButton5.setOpaque(false);
+        jRadioButton5.setBounds(420, 360, 51, 23);
         jLayeredPane2.add(jRadioButton5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jRadioButton7.setText("Sehr Gut");
-        jRadioButton7.setBounds(300, 360, 79, 25);
+        jRadioButton7.setOpaque(false);
+        jRadioButton7.setBounds(300, 360, 67, 23);
         jLayeredPane2.add(jRadioButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jRadioButton8.setText("Sehr Gut");
-        jRadioButton8.setBounds(300, 430, 79, 25);
+        jRadioButton8.setOpaque(false);
+        jRadioButton8.setBounds(300, 430, 67, 23);
         jLayeredPane2.add(jRadioButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jRadioButton6.setText("Mittel");
-        jRadioButton6.setBounds(420, 430, 59, 25);
+        jRadioButton6.setOpaque(false);
+        jRadioButton6.setBounds(420, 430, 51, 23);
         jLayeredPane2.add(jRadioButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jRadioButton9.setText("Nicht so Gut");
-        jRadioButton9.setBounds(520, 430, 97, 25);
+        jRadioButton9.setOpaque(false);
+        jRadioButton9.setBounds(520, 430, 83, 23);
         jLayeredPane2.add(jRadioButton9, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
@@ -247,12 +262,16 @@ public class GUIUserConfig extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+        System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
      * @param args the command line arguments
