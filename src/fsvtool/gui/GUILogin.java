@@ -45,21 +45,22 @@ public class GUILogin extends javax.swing.JFrame {
 
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(500, 300));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(500, 300));
-        jLayeredPane1.setPreferredSize(new java.awt.Dimension(500, 300));
 
         labelLogin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelLogin.setText("Login");
         labelLogin.setBounds(230, 10, 60, 30);
         jLayeredPane1.add(labelLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Benutzername");
-        jLabel3.setBounds(140, 90, 90, 14);
+        jLabel3.setBounds(140, 90, 90, 15);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         usernameInput.setBounds(240, 80, 190, 30);
         jLayeredPane1.add(usernameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        labelKennwort.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labelKennwort.setText("Kennwort");
-        labelKennwort.setBounds(140, 120, 90, 14);
+        labelKennwort.setBounds(140, 120, 90, 15);
         jLayeredPane1.add(labelKennwort, javax.swing.JLayeredPane.DEFAULT_LAYER);
         passwordInput.setBounds(240, 110, 190, 30);
         jLayeredPane1.add(passwordInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -101,11 +102,11 @@ public class GUILogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
