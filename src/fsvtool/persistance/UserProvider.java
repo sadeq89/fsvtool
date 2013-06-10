@@ -8,9 +8,9 @@ package fsvtool.persistance;
  *
  * @author ahmet
  */
-public class UserProvider extends AbstractProvider{
+public class UserProvider extends AbstractProvider {
     
-    private String createSQL = "CREATE TABLE IF NOT EXISTS fsv_user ("+
+    protected String createSQL = "CREATE TABLE IF NOT EXISTS FSV_USER ("+
             " id INT AUTO_INCREMENT PRIMARY KEY,"+
             " name VARCHAR(64) NOT NULL,"+
             " firstname VARCHAR(64) NOT NULL,"+
@@ -25,7 +25,7 @@ public class UserProvider extends AbstractProvider{
             " user_id INT, "+
             " type INT,"+
             " FOREIGN KEY(user_id) REFERENCES fsv_user(id) "+
-            " )";
+            " );";
 
     public UserProvider(EntityManager em) {
         super(em);
@@ -33,5 +33,10 @@ public class UserProvider extends AbstractProvider{
     
     public IUser getUserByUserName(String name) {
         return null;
+    }
+
+    @Override
+    public String getCreateSQL() {
+        return this.createSQL;
     }
 }
