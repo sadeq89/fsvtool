@@ -17,7 +17,7 @@ public class FSVtool {
     private static Connection connectDB() throws ClassNotFoundException, SQLException{
         Class.forName("org.h2.Driver");
         String dbUrl = "jdbc:h2:"+System.getProperty("user.home")+"/fsvtool";
-        System.out.print(dbUrl);
+        System.out.print(dbUrl+"\n");
         return DriverManager.getConnection(dbUrl);
     }
     
