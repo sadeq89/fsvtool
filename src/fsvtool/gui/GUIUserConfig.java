@@ -71,6 +71,7 @@ public class GUIUserConfig extends javax.swing.JFrame {
 
         jLayeredPane2.setMaximumSize(getMaximumSize());
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton1.setText("Speichern");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +81,7 @@ public class GUIUserConfig extends javax.swing.JFrame {
         jButton1.setBounds(360, 510, 120, 40);
         jLayeredPane2.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton2.setText("Abbrechen");
         jButton2.setMaximumSize(new java.awt.Dimension(89, 25));
         jButton2.setMinimumSize(new java.awt.Dimension(89, 25));
@@ -91,25 +93,29 @@ public class GUIUserConfig extends javax.swing.JFrame {
         jButton2.setBounds(510, 510, 120, 40);
         jLayeredPane2.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Meine Einstellungen");
-        jLabel4.setBounds(260, 10, 140, 20);
+        jLabel4.setBounds(260, 10, 190, 20);
         jLayeredPane2.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Vorname");
-        jLabel5.setBounds(180, 60, 90, 14);
+        jLabel5.setBounds(180, 70, 90, 15);
         jLayeredPane2.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Name");
-        jLabel6.setBounds(180, 100, 80, 14);
+        jLabel6.setBounds(180, 110, 80, 15);
         jLayeredPane2.add(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Geschlecht");
-        jLabel7.setBounds(180, 140, 90, 14);
+        jLabel7.setBounds(180, 150, 90, 15);
         jLayeredPane2.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Tel");
-        jLabel8.setBounds(180, 180, 60, 14);
+        jLabel8.setBounds(180, 190, 60, 15);
         jLayeredPane2.add(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -117,18 +123,19 @@ public class GUIUserConfig extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jTextField1.setBounds(370, 60, 120, 20);
+        jTextField1.setBounds(370, 60, 160, 30);
         jLayeredPane2.add(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField2.setBounds(370, 100, 120, 20);
+        jTextField2.setBounds(370, 100, 160, 30);
         jLayeredPane2.add(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "männlich", "weiblich" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jComboBox1.setBounds(370, 140, 80, 20);
+        jComboBox1.setBounds(370, 140, 80, 30);
         jLayeredPane2.add(jComboBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -136,14 +143,14 @@ public class GUIUserConfig extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
-        jTextField3.setBounds(370, 180, 120, 20);
+        jTextField3.setBounds(370, 180, 160, 30);
         jLayeredPane2.add(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jSeparator1.setBounds(170, 220, 460, 10);
         jLayeredPane2.add(jSeparator1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("Mein Niveau");
-        jLabel9.setBounds(310, 240, 90, 17);
+        jLabel9.setBounds(310, 240, 120, 22);
         jLayeredPane2.add(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -162,6 +169,7 @@ public class GUIUserConfig extends javax.swing.JFrame {
         jLayeredPane2.add(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jRadioButton1.setBackground(new java.awt.Color(255, 0, 0));
+        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton1.setText("Sehr Gut");
         jRadioButton1.setMaximumSize(new java.awt.Dimension(50, 25));
         jRadioButton1.setMinimumSize(new java.awt.Dimension(50, 25));
@@ -172,9 +180,10 @@ public class GUIUserConfig extends javax.swing.JFrame {
                 jRadioButton1ActionPerformed(evt);
             }
         });
-        jRadioButton1.setBounds(300, 290, 80, 25);
+        jRadioButton1.setBounds(300, 290, 90, 25);
         jLayeredPane2.add(jRadioButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton2.setText("Nicht so Gut");
         jRadioButton2.setOpaque(false);
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -182,44 +191,57 @@ public class GUIUserConfig extends javax.swing.JFrame {
                 jRadioButton2ActionPerformed(evt);
             }
         });
-        jRadioButton2.setBounds(520, 290, 83, 23);
+        jRadioButton2.setBounds(520, 290, 100, 23);
         jLayeredPane2.add(jRadioButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton3.setText("Mittel");
         jRadioButton3.setOpaque(false);
-        jRadioButton3.setBounds(420, 290, 51, 23);
+        jRadioButton3.setBounds(420, 290, 70, 23);
         jLayeredPane2.add(jRadioButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton4.setText("Nicht so Gut");
         jRadioButton4.setOpaque(false);
-        jRadioButton4.setBounds(520, 360, 83, 23);
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
+        jRadioButton4.setBounds(520, 360, 100, 23);
         jLayeredPane2.add(jRadioButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jRadioButton5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton5.setText("Mittel");
         jRadioButton5.setOpaque(false);
-        jRadioButton5.setBounds(420, 360, 51, 23);
+        jRadioButton5.setBounds(420, 360, 70, 23);
         jLayeredPane2.add(jRadioButton5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jRadioButton7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton7.setText("Sehr Gut");
         jRadioButton7.setOpaque(false);
-        jRadioButton7.setBounds(300, 360, 67, 23);
+        jRadioButton7.setBounds(300, 360, 80, 23);
         jLayeredPane2.add(jRadioButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jRadioButton8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton8.setText("Sehr Gut");
         jRadioButton8.setOpaque(false);
-        jRadioButton8.setBounds(300, 430, 67, 23);
+        jRadioButton8.setBounds(300, 430, 80, 23);
         jLayeredPane2.add(jRadioButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jRadioButton6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton6.setText("Mittel");
         jRadioButton6.setOpaque(false);
-        jRadioButton6.setBounds(420, 430, 51, 23);
+        jRadioButton6.setBounds(420, 430, 70, 23);
         jLayeredPane2.add(jRadioButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jRadioButton9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton9.setText("Nicht so Gut");
         jRadioButton9.setOpaque(false);
-        jRadioButton9.setBounds(520, 430, 83, 23);
+        jRadioButton9.setBounds(520, 430, 100, 23);
         jLayeredPane2.add(jRadioButton9, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
         jLabel2.setBounds(0, 0, 640, 570);
         jLayeredPane2.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -272,6 +294,10 @@ public class GUIUserConfig extends javax.swing.JFrame {
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     /**
      * @param args the command line arguments
