@@ -54,52 +54,66 @@ public class GUICreateGame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Neues Spiel");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Neues Spiel erstellen");
-        jLabel1.setBounds(220, 20, 150, 30);
+        jLabel1.setBounds(190, 20, 200, 20);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fußball", "Hanball", "Volleyball" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jComboBox1.setBounds(310, 110, 92, 22);
+        jComboBox1.setBounds(310, 110, 90, 30);
         jLayeredPane1.add(jComboBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField2.setBounds(310, 210, 90, 22);
+        jTextField2.setBounds(310, 210, 130, 30);
         jLayeredPane1.add(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Spieleranzahl");
-        jLabel5.setBounds(180, 260, 77, 16);
+        jLabel5.setBounds(180, 270, 80, 15);
         jLayeredPane1.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jSpinner1.setBounds(310, 260, 39, 22);
+
+        jSpinner1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jSpinner1.setBounds(310, 260, 50, 30);
         jLayeredPane1.add(jSpinner1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton1.setText("Speichern");
-        jButton1.setBounds(180, 340, 110, 40);
+        jButton1.setBounds(170, 340, 120, 40);
         jLayeredPane1.add(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton2.setText("Abbrechen");
-        jButton2.setBounds(340, 340, 110, 40);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.setBounds(330, 340, 120, 40);
         jLayeredPane1.add(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Uhrzeit");
-        jLabel4.setBounds(180, 210, 40, 16);
+        jLabel4.setBounds(180, 220, 50, 15);
         jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Sportart");
-        jLabel2.setBounds(180, 110, 47, 16);
+        jLabel2.setBounds(180, 120, 50, 15);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Datum");
-        jLabel3.setBounds(180, 160, 37, 16);
+        jLabel3.setBounds(180, 170, 50, 15);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField3.setBounds(310, 160, 30, 22);
+        jTextField3.setBounds(310, 160, 40, 30);
         jLayeredPane1.add(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField4.setBounds(350, 160, 30, 22);
+        jTextField4.setBounds(350, 160, 40, 30);
         jLayeredPane1.add(jTextField4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField5.setBounds(390, 160, 50, 22);
+        jTextField5.setBounds(390, 160, 60, 30);
         jLayeredPane1.add(jTextField5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
@@ -123,6 +137,11 @@ public class GUICreateGame extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
