@@ -6,6 +6,7 @@ package fsvtool.persistance;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -25,6 +26,10 @@ public class EntityManager {
 
     public Connection getConn() {
         return conn;
+    }
+    
+    public Statement createStatement() throws SQLException {
+        return conn.createStatement();
     }
     
     private void initProvider() {
