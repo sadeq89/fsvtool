@@ -14,6 +14,7 @@ import fsvtool.persistance.EntityManager;
 public class MainController extends AbstractController {
     private final GUIMainFrame gui;
     private CreateGameController createGameController;
+    private UserConfigController userConfigController;
 
     public MainController(EntityManager em) {
         super(em);
@@ -26,6 +27,17 @@ public class MainController extends AbstractController {
         switch(evt.getActionCommand()) {
             case GUIMainFrame.NEUES_SPIEL:
                 this.createGameController = new CreateGameController(this.em);
+                break;
+            case GUIMainFrame.TEILNEHMEN:
+                //TO DO
+                break;
+            case GUIMainFrame.STORNIEREN:
+                //TO DO
+                break;
+            case GUIMainFrame.LOGOUT:
+                System.exit(0);
+             case GUIMainFrame.EINSTELLUNGEN:
+                this.userConfigController = new UserConfigController(this.em);
                 break;
                 
         }

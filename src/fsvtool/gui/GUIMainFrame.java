@@ -19,6 +19,13 @@ import javax.swing.JMenuItem;
 public class GUIMainFrame extends javax.swing.JFrame {
     private MainController controller;
     public static final String NEUES_SPIEL = "Neues Spiel";
+    public static final String TEILNEHMEN = "Teilnehmen";
+    public static final String STORNIEREN = "Stornieren";
+    public static final String EINSTELLUNGEN = "Einstellungen";
+    public static final String LOGOUT = "Logout";
+    public static final String MEIN_ACCOUNT = "Mein Account";
+    
+    
 
     /**
      * Creates new form GUIMainFrame
@@ -34,15 +41,18 @@ public class GUIMainFrame extends javax.swing.JFrame {
     public void setController(MainController c) {
         this.controller = c;
     }
+    
 
     private void initPopupMenu(){
-        popup = new JPopupMenu();
-        popup.add(new JMenuItem(new AbstractAction("Einstellungen") {
+        pAccountPopup = new JPopupMenu();
+        pAccountPopup.add(new JMenuItem(new AbstractAction("Einstellungen") {
             public void actionPerformed(ActionEvent e) {
+                controller.action(e);
             }
         }));
-        popup.add(new JMenuItem(new AbstractAction("Logout") {
+        pAccountPopup.add(new JMenuItem(new AbstractAction("Logout") {
             public void actionPerformed(ActionEvent e) {
+                controller.action(e);
             }
         })); 
     }
@@ -61,7 +71,7 @@ public class GUIMainFrame extends javax.swing.JFrame {
         bTeilnehmen = new javax.swing.JButton();
         bStornieren = new javax.swing.JButton();
         bNewGame = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bMeinAccount = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -109,7 +119,7 @@ public class GUIMainFrame extends javax.swing.JFrame {
         jScrollPane1.setBounds(100, 60, 859, 480);
         jLayeredPane1.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        bTeilnehmen.setText("Teilnehmen");
+        bTeilnehmen.setText(this.TEILNEHMEN);
         bTeilnehmen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bTeilnehmenActionPerformed(evt);
@@ -118,7 +128,7 @@ public class GUIMainFrame extends javax.swing.JFrame {
         bTeilnehmen.setBounds(100, 550, 169, 34);
         jLayeredPane1.add(bTeilnehmen, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        bStornieren.setText("Stonieren");
+        bStornieren.setText(this.STORNIEREN);
         bStornieren.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bStornierenActionPerformed(evt);
@@ -136,19 +146,19 @@ public class GUIMainFrame extends javax.swing.JFrame {
         bNewGame.setBounds(790, 550, 169, 34);
         jLayeredPane1.add(bNewGame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton3.setText("Mein Account");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        bMeinAccount.setText(this.MEIN_ACCOUNT);
+        bMeinAccount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton3MousePressed(evt);
+                bMeinAccountMousePressed(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bMeinAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bMeinAccountActionPerformed(evt);
             }
         });
-        jButton3.setBounds(840, 10, 120, 40);
-        jLayeredPane1.add(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bMeinAccount.setBounds(840, 10, 120, 40);
+        jLayeredPane1.add(bMeinAccount, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -183,13 +193,13 @@ public class GUIMainFrame extends javax.swing.JFrame {
         this.controller.action(evt);
     }//GEN-LAST:event_bStornierenActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bMeinAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMeinAccountActionPerformed
         this.controller.action(evt);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bMeinAccountActionPerformed
 
-    private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
-        popup.show(evt.getComponent(),evt.getX(), evt.getY());
-    }//GEN-LAST:event_jButton3MousePressed
+    private void bMeinAccountMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMeinAccountMousePressed
+        pAccountPopup.show(evt.getComponent(),evt.getX(), evt.getY());
+    }//GEN-LAST:event_bMeinAccountMousePressed
 
     /**
      * @param args the command line arguments
@@ -231,13 +241,13 @@ public class GUIMainFrame extends javax.swing.JFrame {
             }
         });
     }
-    private JPopupMenu popup;
+    private JPopupMenu pAccountPopup;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bMeinAccount;
     private javax.swing.JButton bNewGame;
     private javax.swing.JButton bStornieren;
     private javax.swing.JButton bTeilnehmen;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
