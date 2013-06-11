@@ -16,7 +16,29 @@ public class GUIUserConfig extends javax.swing.JFrame {
     public GUIUserConfig() {
         initComponents();
     }
-
+    
+    public String getVorname(){
+        
+        return this.tfVorname.getText();
+    }
+    
+    public String getName(){
+        
+        return this.tfName.getText();
+    }
+    
+    
+    public Object getSex(){
+        
+        return this.cbSex.getSelectedItem();
+    }
+    
+    public double getTel(){
+    
+        double i = Double.parseDouble(this.tfTel.getText());
+        return i;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,10 +60,10 @@ public class GUIUserConfig extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
-        jTextField3 = new javax.swing.JTextField();
+        tfVorname = new javax.swing.JTextField();
+        tfName = new javax.swing.JTextField();
+        cbSex = new javax.swing.JComboBox();
+        tfTel = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -118,33 +140,33 @@ public class GUIUserConfig extends javax.swing.JFrame {
         jLabel8.setBounds(180, 190, 60, 15);
         jLayeredPane2.add(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tfVorname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tfVornameActionPerformed(evt);
             }
         });
-        jTextField1.setBounds(370, 60, 160, 30);
-        jLayeredPane2.add(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField2.setBounds(370, 100, 160, 30);
-        jLayeredPane2.add(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        tfVorname.setBounds(370, 60, 160, 30);
+        jLayeredPane2.add(tfVorname, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        tfName.setBounds(370, 100, 160, 30);
+        jLayeredPane2.add(tfName, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "männlich", "weiblich" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbSex.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbSex.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "männlich", "weiblich" }));
+        cbSex.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbSexActionPerformed(evt);
             }
         });
-        jComboBox1.setBounds(370, 140, 80, 30);
-        jLayeredPane2.add(jComboBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        cbSex.setBounds(370, 140, 80, 30);
+        jLayeredPane2.add(cbSex, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        tfTel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                tfTelActionPerformed(evt);
             }
         });
-        jTextField3.setBounds(370, 180, 160, 30);
-        jLayeredPane2.add(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        tfTel.setBounds(370, 180, 160, 30);
+        jLayeredPane2.add(tfTel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jSeparator1.setBounds(170, 220, 460, 10);
         jLayeredPane2.add(jSeparator1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -270,13 +292,13 @@ public class GUIUserConfig extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbSexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSexActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbSexActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void tfTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_tfTelActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
@@ -287,12 +309,13 @@ public class GUIUserConfig extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tfVornameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfVornameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_tfVornameActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
@@ -336,9 +359,9 @@ public class GUIUserConfig extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox cbSex;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -362,8 +385,8 @@ public class GUIUserConfig extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton8;
     private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField tfName;
+    private javax.swing.JTextField tfTel;
+    private javax.swing.JTextField tfVorname;
     // End of variables declaration//GEN-END:variables
 }
