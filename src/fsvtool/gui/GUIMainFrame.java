@@ -33,6 +33,7 @@ public class GUIMainFrame extends javax.swing.JFrame {
     public GUIMainFrame() {
         initComponents();
         initPopupMenu();
+        initTableLayout();
         
         
        
@@ -55,6 +56,10 @@ public class GUIMainFrame extends javax.swing.JFrame {
                 controller.action(e);
             }
         })); 
+    }
+    
+    private void initTableLayout() {
+                
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -253,4 +258,6 @@ public class GUIMainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+
 }
