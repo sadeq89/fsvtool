@@ -12,6 +12,15 @@ import javax.swing.table.AbstractTableModel;
  */
 public class GamesTableModell extends AbstractTableModel {
     private GameProvider gp;
+    Object[][] obj = new Object[][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+    };
     
     private String[] columnNames = new String [] {
         "Auswählen", "Spielname", "Anzahl Spieler", "Datum/Uhrzeit", "Ort", "Teilname"
@@ -21,7 +30,7 @@ public class GamesTableModell extends AbstractTableModel {
         Boolean.class, String.class, String.class, String.class, String.class, String.class
     };
 
-
+    
     @Override
     public String getColumnName(int columnIndex)
     {
@@ -40,8 +49,9 @@ public class GamesTableModell extends AbstractTableModel {
     
     @Override
     public int getRowCount() {
-        return gp.getCount();
+        return 6;
     }
+
 
     @Override
     public int getColumnCount() {
@@ -50,7 +60,7 @@ public class GamesTableModell extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return obj[rowIndex][columnIndex];
     }
     
 }

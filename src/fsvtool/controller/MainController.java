@@ -6,6 +6,7 @@ package fsvtool.controller;
 
 import fsvtool.gui.GUIMainFrame;
 import fsvtool.persistance.EntityManager;
+import fsvtool.persistance.GamesTableModell;
 
 /**
  *
@@ -18,8 +19,7 @@ public class MainController extends AbstractController {
 
     public MainController(EntityManager em) {
         super(em);
-        this.gui = new GUIMainFrame();
-        this.gui.setController(this);
+        this.gui = new GUIMainFrame(this);
         this.gui.setVisible(true);
     }
     
@@ -41,5 +41,9 @@ public class MainController extends AbstractController {
                 break;
                 
         }
+    }
+    
+    public GamesTableModell getTable() {
+        return this.em.getGameProvider().getTableModell();
     }
 }

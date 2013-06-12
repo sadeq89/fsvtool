@@ -50,6 +50,10 @@ public class EntityManager {
     public UserProvider getUserProvider() {
         return this.userProvider;
     }
+
+    public GameProvider getGameProvider() {
+        return gameProvider;
+    }
     
     public IUser getLoggedinUser() {
         return null;

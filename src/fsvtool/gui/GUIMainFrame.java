@@ -5,12 +5,16 @@
 package fsvtool.gui;
 
 import fsvtool.controller.MainController;
+import fsvtool.persistance.EntityManager;
+import fsvtool.persistance.GameProvider;
+import fsvtool.persistance.GamesTableModell;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JPopupMenu;
 import javax.swing.JMenuItem;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,19 +28,18 @@ public class GUIMainFrame extends javax.swing.JFrame {
     public static final String EINSTELLUNGEN = "Einstellungen";
     public static final String LOGOUT = "Logout";
     public static final String MEIN_ACCOUNT = "Mein Account";
+    private EntityManager em;
+    private GamesTableModell tm;
     
     
 
     /**
      * Creates new form GUIMainFrame
      */
-    public GUIMainFrame() {
+    public GUIMainFrame(MainController c) {
+        setController(c);
         initComponents();
         initPopupMenu();
-        initTableLayout();
-        
-        
-       
     }
     
     public void setController(MainController c) {
@@ -57,10 +60,6 @@ public class GUIMainFrame extends javax.swing.JFrame {
             }
         })); 
     }
-    
-    private void initTableLayout() {
-                
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,12 +71,12 @@ public class GUIMainFrame extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tTable = new javax.swing.JTable();
         bTeilnehmen = new javax.swing.JButton();
         bStornieren = new javax.swing.JButton();
         bNewGame = new javax.swing.JButton();
         bMeinAccount = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        iBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FSV tool");
@@ -93,33 +92,13 @@ public class GUIMainFrame extends javax.swing.JFrame {
         jScrollPane1.setToolTipText("");
         jScrollPane1.setOpaque(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Auswählen", "Spielname", "Anzahl Spieler", "Datum/Uhrzeit", "Ort", "Teilname"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setVerifyInputWhenFocusTarget(false);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getColumn(0).setMaxWidth(70);
-        jTable1.getColumnModel().getColumn(2).setMinWidth(100);
-        jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
+        tTable.setModel(this.controller.getTable());
+        tTable.setOpaque(false);
+        tTable.setVerifyInputWhenFocusTarget(false);
+        jScrollPane1.setViewportView(tTable);
+        tTable.getColumnModel().getColumn(0).setMaxWidth(70);
+        tTable.getColumnModel().getColumn(2).setMinWidth(100);
+        tTable.getColumnModel().getColumn(2).setMaxWidth(100);
 
         jScrollPane1.setBounds(100, 60, 859, 480);
         jLayeredPane1.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -165,10 +144,10 @@ public class GUIMainFrame extends javax.swing.JFrame {
         bMeinAccount.setBounds(840, 10, 120, 40);
         jLayeredPane1.add(bMeinAccount, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setBounds(0, 0, 990, 590);
-        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        iBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
+        iBackground.setText("jLabel1");
+        iBackground.setBounds(0, 0, 990, 590);
+        jLayeredPane1.add(iBackground, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,46 +185,6 @@ public class GUIMainFrame extends javax.swing.JFrame {
         pAccountPopup.show(evt.getComponent(),evt.getX(), evt.getY());
     }//GEN-LAST:event_bMeinAccountMousePressed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-                
-                GUIMainFrame mF = new GUIMainFrame();
-                mF.setIconImage(new ImageIcon("Logo.png").getImage());
-                mF.setVisible(true);
-                
-            }
-        });
-    }
     private JPopupMenu pAccountPopup;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -253,10 +192,10 @@ public class GUIMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton bNewGame;
     private javax.swing.JButton bStornieren;
     private javax.swing.JButton bTeilnehmen;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel iBackground;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tTable;
     // End of variables declaration//GEN-END:variables
 
 
