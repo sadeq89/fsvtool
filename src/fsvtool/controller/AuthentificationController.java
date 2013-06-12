@@ -16,6 +16,8 @@ public class AuthentificationController extends AbstractController{
         super(em);
         if (em.getLoggedinUser() == null) {
             // Login öffnen
+            //vorübergehend direktes öffnen von Main
+            MainController maincontroller = new MainController(em);
         }
     }
     
