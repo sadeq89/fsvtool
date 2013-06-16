@@ -15,6 +15,7 @@ public class GUIRegistration extends javax.swing.JFrame {
      */
     public GUIRegistration() {
         initComponents();
+        this.errorEmail.setVisible(false);
     }
 
     /**
@@ -49,13 +50,14 @@ public class GUIRegistration extends javax.swing.JFrame {
         usernameInput = new javax.swing.JTextField();
         tipUsername = new javax.swing.JLabel();
         phoneRest = new javax.swing.JTextField();
+        errorEmail = new javax.swing.JLabel();
+        errorPassword = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FSVTool - Anmeldung");
         setMaximumSize(new java.awt.Dimension(850, 593));
         setMinimumSize(new java.awt.Dimension(850, 593));
-        setPreferredSize(new java.awt.Dimension(850, 593));
         setResizable(false);
 
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(850, 593));
@@ -120,6 +122,12 @@ public class GUIRegistration extends javax.swing.JFrame {
         jLayeredPane1.add(firstNameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
         mailInput.setBounds(370, 190, 280, 30);
         jLayeredPane1.add(mailInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        repeatedMailInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                repeatedMailInputFocusLost(evt);
+            }
+        });
         repeatedMailInput.setBounds(370, 240, 280, 30);
         jLayeredPane1.add(repeatedMailInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
         passwordInput.setBounds(370, 390, 110, 30);
@@ -154,6 +162,22 @@ public class GUIRegistration extends javax.swing.JFrame {
         phoneRest.setBounds(370, 290, 150, 30);
         jLayeredPane1.add(phoneRest, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        errorEmail.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        errorEmail.setForeground(new java.awt.Color(255, 0, 51));
+        errorEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorEmail.setText("!");
+        errorEmail.setToolTipText("Wiederholung stimmt nicht überein!!!");
+        errorEmail.setBounds(650, 190, 20, 30);
+        jLayeredPane1.add(errorEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        errorPassword.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        errorPassword.setForeground(new java.awt.Color(255, 0, 51));
+        errorPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorPassword.setText("!");
+        errorPassword.setToolTipText("Wiederholung stimmt nicht überein!!!");
+        errorPassword.setBounds(480, 390, 20, 30);
+        jLayeredPane1.add(errorPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
         jLabel1.setToolTipText("");
         jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -177,10 +201,10 @@ public class GUIRegistration extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonRegisterActionPerformed
-
+    public String getMailInput(){
+        return mailInput.getText();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -195,7 +219,7 @@ public class GUIRegistration extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+        }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(GUIRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -206,8 +230,6 @@ public class GUIRegistration extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GUIRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -215,9 +237,32 @@ public class GUIRegistration extends javax.swing.JFrame {
             }
         });
     }
+    
+    public String getRepeatedMailInput(){
+        return repeatedMailInput.getText();
+    }
+    
+    private boolean checkRepeatedMail(){
+        if(getMailInput().equals(getRepeatedMailInput()))
+            return true;
+        else
+            return false;
+    }
+        //</editor-fold>
+    
+    private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRegisterActionPerformed
+
+    private void repeatedMailInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_repeatedMailInputFocusLost
+        this.errorEmail.setVisible(!checkRepeatedMail());
+    }//GEN-LAST:event_repeatedMailInputFocusLost
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancel;
     private javax.swing.JButton buttonRegister;
+    private javax.swing.JLabel errorEmail;
+    private javax.swing.JLabel errorPassword;
     private javax.swing.JTextField firstNameInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;

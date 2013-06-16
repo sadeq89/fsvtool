@@ -16,7 +16,14 @@ public class GUILogin extends javax.swing.JFrame {
     public GUILogin() {
         initComponents();
     }
+    
+    public String getUsername(){
+        return usernameInput.getText();
+    } 
 
+    public String getPassword() {
+        return passwordInput.getPassword().toString();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
