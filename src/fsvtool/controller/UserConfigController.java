@@ -16,7 +16,13 @@ public class UserConfigController extends AbstractController{
 
     public UserConfigController(EntityManager em) {
         super(em);
-        this.gui = new GUIUserConfig();
+        this.gui = new GUIUserConfig(this);
         this.gui.setVisible(true);
+    }
+    
+    
+    public void save(){
+        this.gui.getVorname();
+        //usw..
     }
 }
