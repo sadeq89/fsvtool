@@ -4,6 +4,12 @@
  */
 package fsvtool.persistance;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ahmet
@@ -32,7 +38,90 @@ public class UserProvider extends AbstractProvider {
     }
     
     public IUser getUserByUserName(String name) {
-        return null;
+        PreparedStatement stm;
+        try {
+            stm = em.getConn().prepareStatement("SELECT id, name, fistname, email, username, password, phone_nr, plz"
+                    + " FROM FSV_USER WHERE username = ?");
+            stm.setString(1, name);
+            ResultSet rs = stm.executeQuery();
+            rs.first();
+            User user = new User(rs.getInt("id"));
+            user.setName(rs.getString("name"));
+            user.setFirstname(rs.getString("firstname"));
+            user.setEMail(rs.getString("email"));
+            user.setPassword(rs.getString("password"));
+            user.setPhoneNr(rs.getString("phone_nr"));
+            user.setPLZ(rs.getString("plz"));
+            return user;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public IUser getUserByEMail(String eMail) {
+        PreparedStatement stm;
+        try {
+            stm = em.getConn().prepareStatement("SELECT id, name, firstname, email, username, password, phone_nr, plz"
+                    + " FROM FSV_USER WHERE email = ?");
+            stm.setString(1, eMail);
+            ResultSet rs = stm.executeQuery();
+            rs.first();
+            User user = new User(rs.getInt("id"));
+            user.setName(rs.getString("name"));
+            user.setFirstname(rs.getString("firstname"));
+            user.setEMail(rs.getString("email"));
+            user.setPassword(rs.getString("password"));
+            user.setPhoneNr(rs.getString("phone_nr"));
+            user.setPLZ(rs.getString("plz"));
+            return user;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public void saveUser(IUser user) {
+        Integer id = user.getId();
+        
+        if (id != null) {
+            // Update
+            String sql = "UPDATE FSV_USER "
+                    + "SET (name, firstname, email, username, password, phone_nr, plz) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?) "
+                    + "WHERE id = ?";
+            try {
+                PreparedStatement stm = em.getConn().prepareStatement(sql);
+                stm.setString(1, user.getName());
+                stm.setString(2, user.getFirstname());
+                stm.setString(3, user.getEMail());
+                stm.setString(4, user.getUsername());
+                stm.setString(5, user.getPassword());
+                stm.setString(6, user.getPhoneNr());
+                stm.setString(7, user.getPLZ());
+                stm.setInt(8, user.getId());
+            } catch (SQLException ex) {
+                Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else {
+            // Insert
+            String sql = "INSERT INTO FSV_USER "
+                    + "(name, firstname, email, username, password, phone_nr, plz) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?) ";
+            try {
+                PreparedStatement stm = em.getConn().prepareStatement(sql);
+                stm.setString(1, user.getName());
+                stm.setString(2, user.getFirstname());
+                stm.setString(3, user.getEMail());
+                stm.setString(4, user.getUsername());
+                stm.setString(5, user.getPassword());
+                stm.setString(6, user.getPhoneNr());
+                stm.setString(7, user.getPLZ());
+            } catch (SQLException ex) {
+                Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     @Override

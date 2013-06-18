@@ -10,25 +10,25 @@ package fsvtool.persistance;
  */
 class User implements IUser {
     
-    private int id;
-    private String name;
-    private String firstname;
-    private String eMail;
-    private String username;
-    private String password;
-    private String phoneNr;
-    private String plz;
+    private Integer id = null;
+    private String name = null;
+    private String firstname = null;
+    private String eMail = null;
+    private String username = null;
+    private String password = null;
+    private String phoneNr = null;
+    private String plz = null;
     private int[] skills = new int[3];
 
     public User() {
     }
 
     public User(int id) {
-        this.id = id;
+        this.id = (Integer) id;
     }
     
     @Override
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
 
