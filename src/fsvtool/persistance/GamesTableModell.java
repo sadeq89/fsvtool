@@ -4,6 +4,7 @@
  */
 package fsvtool.persistance;
 
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -12,23 +13,15 @@ import javax.swing.table.AbstractTableModel;
  */
 public class GamesTableModell extends AbstractTableModel {
     private GameProvider gp;
-    Object[][] obj = new Object[][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-    };
     
     private String[] columnNames = new String [] {
-        "Auswählen", "Spielname", "Anzahl Spieler", "Datum/Uhrzeit", "Ort", "Teilname"
+        "Auswählen", "Anzahl Spieler", "Datum/Uhrzeit", "Ort", "Teilname"
     };
     
     protected Class<?>[] dataTypes = new Class[]{
         Boolean.class, String.class, String.class, String.class, String.class, String.class
     };
+    private List<IGame> list;
 
     
     @Override
@@ -49,18 +42,40 @@ public class GamesTableModell extends AbstractTableModel {
     
     @Override
     public int getRowCount() {
-        return 6;
+        return this.gp.getCount();
     }
 
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 5;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return obj[rowIndex][columnIndex];
+        if (this.list == null) {
+            this.setValues();
+        }
+        switch (columnIndex) {
+            case 0:
+                // Checkbox
+                return false;
+            case 1:
+                // Anzahl Spieler
+                return this.list.get(rowIndex).getPlayerCount();
+            case 2:
+                // Datum
+                return this.list.get(rowIndex).getDate();
+            case 3:
+                // Ort
+                return this.list.get(rowIndex).getLocation();
+            case 4:
+                return this.list.get(rowIndex).isInGame();
+        }
+        return null;
     }
     
+    private void setValues() {
+        list = gp.getAllGames();
+    }
 }

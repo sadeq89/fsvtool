@@ -19,7 +19,11 @@ public interface IGame {
     
     public Date getDate();
     
-    public Integer getCount();
+    public Integer getPlayerCount();
+    
+    public String getLocation();
+    
+    public boolean isInGame();
     
     public void addUser(IUser u);
 }

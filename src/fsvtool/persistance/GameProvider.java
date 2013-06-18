@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +23,8 @@ public class GameProvider extends AbstractProvider {
         "(\n" +
         "   ID integer PRIMARY KEY NOT NULL,\n" +
         "   GAME_TYPE integer NOT NULL,\n" +
-        "   DATE DATETIME NOT NULL,\n" +
+        "   DATE DATETIME NOT NULL,\n" + 
+        "   LOCATION VARCHAR(255) NOT NULL,\n" +
         "   PLAYER_COUNT integer NOT NULL\n" +
         ");\n" +
         "CREATE UNIQUE INDEX IF NOT EXISTS PRIMARY_KEY_FSV_GAME ON FSV_GAME(ID);" + 
@@ -63,11 +66,10 @@ public class GameProvider extends AbstractProvider {
     }
     
     public IGame getGameById(Integer id) {
-        
         PreparedStatement stm;
         try {
             stm = em.getConn().prepareStatement("SELECT id, date, player_count "
-                    + " FROM FSV_USER WHERE id = ?");
+                    + " FROM FSV_GAME WHERE id = ?");
             stm.setInt(1, id);
             ResultSet rs = stm.executeQuery();
             rs.first();
@@ -75,6 +77,40 @@ public class GameProvider extends AbstractProvider {
             game.setDate(rs.getDate("date"));
             game.setCount(rs.getInt("player_count"));
             return game;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public List<IGame> getAllGames() {
+        ArrayList<IGame> list = new ArrayList<>();
+        PreparedStatement stm;
+        try {
+            stm = em.getConn().prepareStatement("SELECT g.id as id, g.date as date, g.player_count as player_count, "
+                    + " g.location as location, gu.user_id as user_id "
+                    + " FROM FSV_GAME g"
+                    + " LEFT JOIN FSV_GAME_USER gu ON g.id = gu.game_id"
+                    + " WHERE (gu.user_id IS NULL OR gu.user_id = ?");
+            Integer loggedinUserId = em.getLoggedinUser().getId();
+            stm.setInt(1, loggedinUserId);
+            ResultSet rs = stm.executeQuery();
+            
+            // Liste mit Game objecten füllen
+            while (rs.next()) {
+                Game game = new Game(rs.getInt("id"));
+                game.setDate(rs.getDate("date"));
+                game.setCount(rs.getInt("player_count"));
+                game.setLocation(rs.getString("location"));
+                Integer userId = rs.getInt("user_id");
+                if (userId.equals(loggedinUserId)) {
+                    game.setIsInGame(true);
+                } else {
+                    game.setIsInGame(false);
+                }
+                list.add(game);
+            }
+            return list;
         } catch (SQLException ex) {
             Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
             return null;

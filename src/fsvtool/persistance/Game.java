@@ -12,10 +12,12 @@ import java.util.Date;
  */
 public class Game implements IGame{
     
-    Integer id = null;
-    
-    Date date = null;
+    private Integer id = null;
+    private Date date = null;
     private Integer count;
+    private String location;
+    private boolean isLoggedinUserInGame = false;
+    
 
     public Game() {
     }
@@ -39,7 +41,7 @@ public class Game implements IGame{
     }
 
     @Override
-    public Integer getCount() {
+    public Integer getPlayerCount() {
         return this.count;
     }
     
@@ -50,5 +52,23 @@ public class Game implements IGame{
     @Override
     public void addUser(IUser u) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getLocation() {
+        return this.location;
+    }
+    
+    public void setLocation(String l) {
+        this.location = l;
+    }
+
+    @Override
+    public boolean isInGame() {
+        return this.isLoggedinUserInGame;
+    }
+    
+    public void setIsInGame(boolean b) {
+        this.isLoggedinUserInGame = b;
     }
 }
