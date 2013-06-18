@@ -9,9 +9,7 @@ package fsvtool.persistance;
  * @author S.Ahmet
  */
 public abstract class AbstractProvider {
-    private EntityManager em;
-    
-    private String createSQL;
+    protected EntityManager em;
 
     public AbstractProvider(EntityManager em) {
         this.em = em;
@@ -21,7 +19,10 @@ public abstract class AbstractProvider {
         return em;
     }
     
-    public String getCreateSQL() {
-        return this.createSQL;
-    }
+    /**
+     * Returns the SQL code to generate needed tables
+     * 
+     * @return String
+     */
+    public abstract String getCreateSQL();
 }

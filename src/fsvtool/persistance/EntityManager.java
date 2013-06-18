@@ -16,6 +16,7 @@ public class EntityManager {
     private Connection conn;
     
     private UserProvider userProvider;
+    private GameProvider gameProvider;
     
 
     public EntityManager(Connection conn) {
@@ -34,18 +35,24 @@ public class EntityManager {
     
     private void initProvider() {
         this.userProvider = new UserProvider(this);
+        this.gameProvider = new GameProvider(this);
     }
     
     private void initDb() {
         try {
             conn.createStatement().execute(this.userProvider.getCreateSQL());
+            conn.createStatement().execute(this.gameProvider.getCreateSQL());
         } catch (SQLException e) {
-            System.out.print(e);
+            e.printStackTrace(System.err);
         }
     }
     
     public UserProvider getUserProvider() {
         return this.userProvider;
+    }
+
+    public GameProvider getGameProvider() {
+        return gameProvider;
     }
     
     public IUser getLoggedinUser() {
