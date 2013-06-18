@@ -33,7 +33,7 @@ public interface IUser {
             " FOREIGN KEY(user_id) REFERENCES fsv_user(id) "+
             " )";
     
-    public int getId();
+    public Integer getId();
     
     public String getName();
     
