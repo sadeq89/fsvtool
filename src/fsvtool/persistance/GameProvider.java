@@ -4,6 +4,7 @@
  */
 package fsvtool.persistance;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,8 +21,7 @@ public class GameProvider extends AbstractProvider {
         "(\n" +
         "   ID integer PRIMARY KEY NOT NULL,\n" +
         "   GAME_TYPE integer NOT NULL,\n" +
-        "   DATE date NOT NULL,\n" +
-        "   TIME time NOT NULL,\n" +
+        "   DATE DATETIME NOT NULL,\n" +
         "   PLAYER_COUNT integer NOT NULL\n" +
         ");\n" +
         "CREATE UNIQUE INDEX IF NOT EXISTS PRIMARY_KEY_FSV_GAME ON FSV_GAME(ID);" + 
@@ -59,6 +59,25 @@ public class GameProvider extends AbstractProvider {
         } catch (SQLException ex) {
             Logger.getLogger(GameProvider.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
+        }
+    }
+    
+    public IGame getGameById(Integer id) {
+        
+        PreparedStatement stm;
+        try {
+            stm = em.getConn().prepareStatement("SELECT id, date, player_count "
+                    + " FROM FSV_USER WHERE id = ?");
+            stm.setInt(1, id);
+            ResultSet rs = stm.executeQuery();
+            rs.first();
+            Game game = new Game(rs.getInt("id"));
+            game.setDate(rs.getDate("date"));
+            game.setCount(rs.getInt("player_count"));
+            return game;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
     }
 }
