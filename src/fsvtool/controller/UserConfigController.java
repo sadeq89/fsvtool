@@ -16,9 +16,16 @@ public class UserConfigController extends AbstractController{
 
     public UserConfigController(EntityManager em) {
         super(em);
-        IUser user = em.getLoggedinUser();
+        
         
         this.gui = new GUIUserConfig(this);
+        this.gui.setVisible(true);
+    }
+    
+    
+    // Speichermethode für die Übertragung zur Datenbank:
+    public void save(){
+        IUser user = em.getLoggedinUser();  // Momentan eigeloggter User wird gespeichert
         
         this.gui.setBenutzername(user.getUsername());
         this.gui.setVorname(user.getFirstname());
@@ -26,13 +33,7 @@ public class UserConfigController extends AbstractController{
         this.gui.setTel(user.getPhoneNr());
         this.gui.setEMail(user.getEMail());
         
+        this.em.getUserProvider().saveUser(user);
         
-        this.gui.setVisible(true);
-    }
-    
-    
-    public void save(){
-        this.gui.getVorname();
-        //usw..
     }
 }
