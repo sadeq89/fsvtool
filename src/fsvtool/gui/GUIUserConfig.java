@@ -21,27 +21,59 @@ public class GUIUserConfig extends javax.swing.JFrame {
         initComponents();
     }
 
+    // Get methods for reading textfield,combobox and radiobutton values:
+    
+    public String getBenutzername(){
+        return this.tfBenutzername.getText();
+    }
+    
+    public void setBenutzername(String username){
+       this.tfBenutzername.setText(username);
+    }    
+    
     public String getVorname(){
         return this.tfVorname.getText();
+    }
+    
+    public void setVorname(String firstname){ 
+        this.tfVorname.setText(firstname);
     }
     
     public String getName(){
         return this.tfName.getText();
     }
     
-    
-    public String getSex(){
-        return this.cbSex.getSelectedItem().toString();
+     public void setName(String name){ 
+        this.tfName.setText(name);
     }
-    
+     
     public String getTel(){
         
         return this.tfTel.getText();
     }
     
+    public void setTel(String tel){
+        this.tfTel.setText(tel);
+    }
+    
+    public String getEMail(){
+        return this.tfEMail.getText();
+    }
+    
+    public void setEMail(String email){
+        this.tfEMail.setText(email);
+    }
+    
     public Object getFussballStrength(){
         return this.bgFussball.getSelection();
     }
+    
+   /* public void setFussballStrength( fussballstrength){
+        switch(fussballstrength){
+            case 0:
+        this.bgFussball.setSelected(this.rbFbNichtSoGut, rootPaneCheckingEnabled);
+        }
+    }*/
     
     public Object getHandballStrength(){
         return this.bgHandball.getSelection();
@@ -50,6 +82,8 @@ public class GUIUserConfig extends javax.swing.JFrame {
     public Object getVolleyballStrength(){
         return this.bgVolleyball.getSelection();
     }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,26 +104,28 @@ public class GUIUserConfig extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         tfVorname = new javax.swing.JTextField();
         tfName = new javax.swing.JTextField();
-        cbSex = new javax.swing.JComboBox();
         tfTel = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton9 = new javax.swing.JRadioButton();
+        rbFbSehrGut = new javax.swing.JRadioButton();
+        rbFbNichtSoGut = new javax.swing.JRadioButton();
+        rbFbMittel = new javax.swing.JRadioButton();
+        rbHbNichtSoGut = new javax.swing.JRadioButton();
+        rbHbMittel = new javax.swing.JRadioButton();
+        rbHbSehrGut = new javax.swing.JRadioButton();
+        rbVbSehrGut = new javax.swing.JRadioButton();
+        rbVbMittel = new javax.swing.JRadioButton();
+        rbVbNichtSoGut = new javax.swing.JRadioButton();
+        jLabel13 = new javax.swing.JLabel();
+        tfEMail = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        tfBenutzername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
@@ -134,18 +170,13 @@ public class GUIUserConfig extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Vorname");
-        jLabel5.setBounds(180, 70, 90, 15);
+        jLabel5.setBounds(180, 110, 90, 15);
         jLayeredPane2.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Name");
-        jLabel6.setBounds(180, 110, 80, 15);
+        jLabel6.setBounds(180, 150, 80, 15);
         jLayeredPane2.add(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel7.setText("Geschlecht");
-        jLabel7.setBounds(180, 150, 90, 15);
-        jLayeredPane2.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Tel");
@@ -157,20 +188,10 @@ public class GUIUserConfig extends javax.swing.JFrame {
                 tfVornameActionPerformed(evt);
             }
         });
-        tfVorname.setBounds(370, 60, 160, 30);
+        tfVorname.setBounds(370, 100, 160, 30);
         jLayeredPane2.add(tfVorname, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        tfName.setBounds(370, 100, 160, 30);
+        tfName.setBounds(370, 140, 160, 30);
         jLayeredPane2.add(tfName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        cbSex.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cbSex.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "männlich", "weiblich" }));
-        cbSex.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbSexActionPerformed(evt);
-            }
-        });
-        cbSex.setBounds(370, 140, 80, 30);
-        jLayeredPane2.add(cbSex, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         tfTel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,110 +200,134 @@ public class GUIUserConfig extends javax.swing.JFrame {
         });
         tfTel.setBounds(370, 180, 160, 30);
         jLayeredPane2.add(tfTel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jSeparator1.setBounds(170, 220, 460, 10);
+        jSeparator1.setBounds(160, 260, 460, 10);
         jLayeredPane2.add(jSeparator1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("Mein Niveau");
-        jLabel9.setBounds(310, 240, 120, 22);
+        jLabel9.setBounds(310, 270, 120, 22);
         jLayeredPane2.add(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel10.setText("Fußball:");
-        jLabel10.setBounds(180, 290, 60, 16);
+        jLabel10.setBounds(180, 320, 60, 16);
         jLayeredPane2.add(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel11.setText("Handball:");
-        jLabel11.setBounds(180, 360, 60, 16);
+        jLabel11.setBounds(180, 390, 60, 16);
         jLayeredPane2.add(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel12.setText("Volleyball:");
-        jLabel12.setBounds(180, 430, 70, 16);
+        jLabel12.setBounds(180, 460, 70, 16);
         jLayeredPane2.add(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 0, 0));
-        bgFussball.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton1.setText("Sehr Gut");
-        jRadioButton1.setMaximumSize(new java.awt.Dimension(50, 25));
-        jRadioButton1.setMinimumSize(new java.awt.Dimension(50, 25));
-        jRadioButton1.setOpaque(false);
-        jRadioButton1.setPreferredSize(new java.awt.Dimension(50, 25));
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        rbFbSehrGut.setBackground(new java.awt.Color(255, 0, 0));
+        bgFussball.add(rbFbSehrGut);
+        rbFbSehrGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbFbSehrGut.setText("Sehr Gut");
+        rbFbSehrGut.setMaximumSize(new java.awt.Dimension(50, 25));
+        rbFbSehrGut.setMinimumSize(new java.awt.Dimension(50, 25));
+        rbFbSehrGut.setOpaque(false);
+        rbFbSehrGut.setPreferredSize(new java.awt.Dimension(50, 25));
+        rbFbSehrGut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rbFbSehrGutActionPerformed(evt);
             }
         });
-        jRadioButton1.setBounds(300, 290, 90, 25);
-        jLayeredPane2.add(jRadioButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        rbFbSehrGut.setBounds(300, 320, 90, 25);
+        jLayeredPane2.add(rbFbSehrGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        bgFussball.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton2.setText("Nicht so Gut");
-        jRadioButton2.setOpaque(false);
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        bgFussball.add(rbFbNichtSoGut);
+        rbFbNichtSoGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbFbNichtSoGut.setText("Nicht so Gut");
+        rbFbNichtSoGut.setOpaque(false);
+        rbFbNichtSoGut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                rbFbNichtSoGutActionPerformed(evt);
             }
         });
-        jRadioButton2.setBounds(520, 290, 100, 23);
-        jLayeredPane2.add(jRadioButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        rbFbNichtSoGut.setBounds(520, 320, 100, 25);
+        jLayeredPane2.add(rbFbNichtSoGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        bgFussball.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton3.setText("Mittel");
-        jRadioButton3.setOpaque(false);
-        jRadioButton3.setBounds(420, 290, 70, 23);
-        jLayeredPane2.add(jRadioButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bgFussball.add(rbFbMittel);
+        rbFbMittel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbFbMittel.setText("Mittel");
+        rbFbMittel.setOpaque(false);
+        rbFbMittel.setBounds(420, 320, 70, 25);
+        jLayeredPane2.add(rbFbMittel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        bgHandball.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton4.setText("Nicht so Gut");
-        jRadioButton4.setOpaque(false);
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+        bgHandball.add(rbHbNichtSoGut);
+        rbHbNichtSoGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbHbNichtSoGut.setText("Nicht so Gut");
+        rbHbNichtSoGut.setOpaque(false);
+        rbHbNichtSoGut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
+                rbHbNichtSoGutActionPerformed(evt);
             }
         });
-        jRadioButton4.setBounds(520, 360, 100, 23);
-        jLayeredPane2.add(jRadioButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        rbHbNichtSoGut.setBounds(520, 390, 100, 25);
+        jLayeredPane2.add(rbHbNichtSoGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        bgHandball.add(jRadioButton5);
-        jRadioButton5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton5.setText("Mittel");
-        jRadioButton5.setOpaque(false);
-        jRadioButton5.setBounds(420, 360, 70, 23);
-        jLayeredPane2.add(jRadioButton5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bgHandball.add(rbHbMittel);
+        rbHbMittel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbHbMittel.setText("Mittel");
+        rbHbMittel.setOpaque(false);
+        rbHbMittel.setBounds(420, 390, 70, 25);
+        jLayeredPane2.add(rbHbMittel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        bgHandball.add(jRadioButton7);
-        jRadioButton7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton7.setText("Sehr Gut");
-        jRadioButton7.setOpaque(false);
-        jRadioButton7.setBounds(300, 360, 80, 23);
-        jLayeredPane2.add(jRadioButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bgHandball.add(rbHbSehrGut);
+        rbHbSehrGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbHbSehrGut.setText("Sehr Gut");
+        rbHbSehrGut.setOpaque(false);
+        rbHbSehrGut.setBounds(300, 390, 80, 25);
+        jLayeredPane2.add(rbHbSehrGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        bgVolleyball.add(jRadioButton8);
-        jRadioButton8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton8.setText("Sehr Gut");
-        jRadioButton8.setOpaque(false);
-        jRadioButton8.setBounds(300, 430, 80, 23);
-        jLayeredPane2.add(jRadioButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bgVolleyball.add(rbVbSehrGut);
+        rbVbSehrGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbVbSehrGut.setText("Sehr Gut");
+        rbVbSehrGut.setOpaque(false);
+        rbVbSehrGut.setBounds(300, 460, 80, 25);
+        jLayeredPane2.add(rbVbSehrGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        bgVolleyball.add(jRadioButton6);
-        jRadioButton6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton6.setText("Mittel");
-        jRadioButton6.setOpaque(false);
-        jRadioButton6.setBounds(420, 430, 70, 23);
-        jLayeredPane2.add(jRadioButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bgVolleyball.add(rbVbMittel);
+        rbVbMittel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbVbMittel.setText("Mittel");
+        rbVbMittel.setOpaque(false);
+        rbVbMittel.setBounds(420, 460, 70, 25);
+        jLayeredPane2.add(rbVbMittel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        bgVolleyball.add(jRadioButton9);
-        jRadioButton9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton9.setText("Nicht so Gut");
-        jRadioButton9.setOpaque(false);
-        jRadioButton9.setBounds(520, 430, 100, 23);
-        jLayeredPane2.add(jRadioButton9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        bgVolleyball.add(rbVbNichtSoGut);
+        rbVbNichtSoGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbVbNichtSoGut.setText("Nicht so Gut");
+        rbVbNichtSoGut.setOpaque(false);
+        rbVbNichtSoGut.setBounds(520, 460, 100, 25);
+        jLayeredPane2.add(rbVbNichtSoGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel13.setText("Email");
+        jLabel13.setBounds(180, 230, 31, 16);
+        jLayeredPane2.add(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        tfEMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfEMailActionPerformed(evt);
+            }
+        });
+        tfEMail.setBounds(370, 220, 160, 30);
+        jLayeredPane2.add(tfEMail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel7.setText("Benutzername");
+        jLabel7.setBounds(180, 70, 100, 16);
+        jLayeredPane2.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        tfBenutzername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfBenutzernameActionPerformed(evt);
+            }
+        });
+        tfBenutzername.setBounds(370, 60, 160, 30);
+        jLayeredPane2.add(tfBenutzername, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
@@ -313,17 +358,13 @@ public class GUIUserConfig extends javax.swing.JFrame {
         this.controller.save();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void cbSexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSexActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbSexActionPerformed
-
     private void tfTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfTelActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rbFbSehrGutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFbSehrGutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rbFbSehrGutActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -334,13 +375,21 @@ public class GUIUserConfig extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfVornameActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void rbFbNichtSoGutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFbNichtSoGutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_rbFbNichtSoGutActionPerformed
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+    private void rbHbNichtSoGutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbHbNichtSoGutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
+    }//GEN-LAST:event_rbHbNichtSoGutActionPerformed
+
+    private void tfEMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEMailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfEMailActionPerformed
+
+    private void tfBenutzernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfBenutzernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfBenutzernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,13 +429,13 @@ public class GUIUserConfig extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bgFussball;
     private javax.swing.ButtonGroup bgHandball;
     private javax.swing.ButtonGroup bgVolleyball;
-    private javax.swing.JComboBox cbSex;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -396,16 +445,18 @@ public class GUIUserConfig extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JRadioButton rbFbMittel;
+    private javax.swing.JRadioButton rbFbNichtSoGut;
+    private javax.swing.JRadioButton rbFbSehrGut;
+    private javax.swing.JRadioButton rbHbMittel;
+    private javax.swing.JRadioButton rbHbNichtSoGut;
+    private javax.swing.JRadioButton rbHbSehrGut;
+    private javax.swing.JRadioButton rbVbMittel;
+    private javax.swing.JRadioButton rbVbNichtSoGut;
+    private javax.swing.JRadioButton rbVbSehrGut;
+    private javax.swing.JTextField tfBenutzername;
+    private javax.swing.JTextField tfEMail;
     private javax.swing.JTextField tfName;
     private javax.swing.JTextField tfTel;
     private javax.swing.JTextField tfVorname;
