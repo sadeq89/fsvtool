@@ -4,12 +4,15 @@
  */
 package fsvtool.gui;
 
+import fsvtool.controller.AuthentificationController;
+
 /**
  *
  * @author WellY
  */
 public class GUIRegistration extends javax.swing.JFrame {
-
+    private AuthentificationController controller;
+    
     /**
      * Creates new form GUIRegistration
      */
@@ -83,6 +86,11 @@ public class GUIRegistration extends javax.swing.JFrame {
         jLayeredPane1.add(buttonRegister, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         buttonCancel.setText("Abbrechen");
+        buttonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelActionPerformed(evt);
+            }
+        });
         buttonCancel.setBounds(640, 510, 120, 40);
         jLayeredPane1.add(buttonCancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -275,6 +283,9 @@ public class GUIRegistration extends javax.swing.JFrame {
         });
     }
     
+    public void setController(AuthentificationController ac){
+        this.controller = ac;
+    }
     public String getFirstNameInput(){
         return firstNameInput.getText();
     }
@@ -315,7 +326,7 @@ public class GUIRegistration extends javax.swing.JFrame {
     }
     
     private boolean checkMail(){
-        if(getMailInput().contains("@"))
+        if(getMailInput().contains("@") && getMailInput().contains("."))
             return true;
         else
             return false;
@@ -337,7 +348,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         //</editor-fold>
     
     private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
-        // TODO add your handling code here:
+        controller.action(evt);
     }//GEN-LAST:event_buttonRegisterActionPerformed
 
     private void repeatedMailInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_repeatedMailInputFocusLost
@@ -355,6 +366,10 @@ public class GUIRegistration extends javax.swing.JFrame {
     private void mailInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_mailInputFocusLost
         this.errorEmail.setVisible(!checkMail());
     }//GEN-LAST:event_mailInputFocusLost
+
+    private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
+        controller.action(evt);
+    }//GEN-LAST:event_buttonCancelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancel;

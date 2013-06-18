@@ -17,6 +17,7 @@ public class EntityManager {
     
     private UserProvider userProvider;
     private GameProvider gameProvider;
+    private IUser user;
     
 
     public EntityManager(Connection conn) {
@@ -56,6 +57,10 @@ public class EntityManager {
     }
     
     public IUser getLoggedinUser() {
-        return null;
+        return this.user;
+    }
+    
+    public void setLoggedinUser(IUser u){
+        this.user = u;
     }
 }
