@@ -16,13 +16,12 @@ public class GUICreateGame extends javax.swing.JFrame {
     /**
      * Creates new form Estellen
      */
-    public GUICreateGame() {
+    public GUICreateGame(CreateGameController c) {
+        this.controller = c;
         initComponents();
     }
     
-    public void setController(CreateGameController c) {
-        this.controller = c;
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,18 +37,20 @@ public class GUICreateGame extends javax.swing.JFrame {
         menu2 = new java.awt.Menu();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jTextField2 = new javax.swing.JTextField();
+        cbSportart = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        spSpieleranzahl = new javax.swing.JSpinner();
         bSave = new javax.swing.JButton();
         bCancel = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        tfDay = new javax.swing.JTextField();
+        tfMonth = new javax.swing.JTextField();
+        tfYear = new javax.swing.JTextField();
+        tfHour = new javax.swing.JTextField();
+        tfMinute = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         menu1.setLabel("File");
@@ -66,53 +67,80 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLabel1.setBounds(190, 20, 200, 20);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fußball", "Hanball", "Volleyball" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbSportart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbSportart.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fußball", "Hanball", "Volleyball" }));
+        cbSportart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbSportartActionPerformed(evt);
             }
         });
-        jComboBox1.setBounds(310, 110, 92, 20);
-        jLayeredPane1.add(jComboBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField2.setBounds(310, 210, 90, 20);
-        jLayeredPane1.add(jTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        cbSportart.setBounds(310, 110, 90, 30);
+        jLayeredPane1.add(cbSportart, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Spieleranzahl");
-        jLabel5.setBounds(180, 260, 63, 14);
+        jLabel5.setBounds(180, 270, 80, 15);
         jLayeredPane1.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jSpinner1.setBounds(310, 260, 39, 20);
-        jLayeredPane1.add(jSpinner1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        spSpieleranzahl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        spSpieleranzahl.setBounds(310, 260, 50, 30);
+        jLayeredPane1.add(spSpieleranzahl, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        bSave.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         bSave.setText("Speichern");
-        bSave.setBounds(180, 340, 110, 40);
+        bSave.setBounds(170, 340, 120, 40);
         jLayeredPane1.add(bSave, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        bCancel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         bCancel.setText("Abbrechen");
-        bCancel.setBounds(340, 340, 110, 40);
+        bCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        bCancel.setBounds(330, 340, 120, 40);
         jLayeredPane1.add(bCancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Uhrzeit");
-        jLabel4.setBounds(180, 210, 34, 14);
+        jLabel4.setBounds(180, 220, 50, 15);
         jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Sportart");
-        jLabel2.setBounds(180, 110, 40, 14);
+        jLabel2.setBounds(180, 120, 50, 15);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Datum");
-        jLabel3.setBounds(180, 160, 31, 14);
+        jLabel3.setBounds(180, 170, 50, 15);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField3.setBounds(310, 160, 30, 20);
-        jLayeredPane1.add(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField4.setBounds(350, 160, 30, 20);
-        jLayeredPane1.add(jTextField4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jTextField5.setBounds(390, 160, 50, 20);
-        jLayeredPane1.add(jTextField5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        tfDay.setBounds(310, 160, 40, 30);
+        jLayeredPane1.add(tfDay, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        tfMonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfMonthActionPerformed(evt);
+            }
+        });
+        tfMonth.setBounds(350, 160, 40, 30);
+        jLayeredPane1.add(tfMonth, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        tfYear.setBounds(390, 160, 60, 30);
+        jLayeredPane1.add(tfYear, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        tfHour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfHourActionPerformed(evt);
+            }
+        });
+        tfHour.setBounds(310, 210, 40, 30);
+        jLayeredPane1.add(tfHour, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        tfMinute.setBounds(350, 210, 40, 30);
+        jLayeredPane1.add(tfMinute, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel7.setText("H / M");
+        jLabel7.setBounds(400, 220, 30, 14);
+        jLayeredPane1.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
         jLabel6.setBounds(0, 0, 470, 410);
@@ -132,14 +160,22 @@ public class GUICreateGame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbSportartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSportartActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbSportartActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tfMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMonthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfMonthActionPerformed
+
+    private void tfHourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHourActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfHourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,28 +207,30 @@ public class GUICreateGame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUICreateGame().setVisible(true);
+                new GUICreateGame(null).setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancel;
     private javax.swing.JButton bSave;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox cbSportart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
+    private javax.swing.JSpinner spSpieleranzahl;
+    private javax.swing.JTextField tfDay;
+    private javax.swing.JTextField tfHour;
+    private javax.swing.JTextField tfMinute;
+    private javax.swing.JTextField tfMonth;
+    private javax.swing.JTextField tfYear;
     // End of variables declaration//GEN-END:variables
 }

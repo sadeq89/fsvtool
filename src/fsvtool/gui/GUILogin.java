@@ -4,11 +4,14 @@
  */
 package fsvtool.gui;
 
+import fsvtool.controller.AuthentificationController;
+
 /**
  *
  * @author Veli
  */
 public class GUILogin extends javax.swing.JFrame {
+    private AuthentificationController controller;
 
     /**
      * Creates new form GUILogin
@@ -16,9 +19,12 @@ public class GUILogin extends javax.swing.JFrame {
     public GUILogin() {
         initComponents();
         this.errorLogin.setVisible(false);
-        
     }
     
+    public void setController(AuthentificationController ac){
+       this.controller = ac;
+    }
+        
     public String getUsername(){
         return usernameInput.getText();
     } 
@@ -74,12 +80,6 @@ public class GUILogin extends javax.swing.JFrame {
         labelKennwort.setText("Kennwort");
         labelKennwort.setBounds(140, 120, 90, 15);
         jLayeredPane1.add(labelKennwort, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        passwordInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                passwordInputFocusLost(evt);
-            }
-        });
         passwordInput.setBounds(240, 110, 190, 30);
         jLayeredPane1.add(passwordInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -140,17 +140,12 @@ public class GUILogin extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
+        controller.action(evt);
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+        controller.action(evt);
     }//GEN-LAST:event_loginButtonActionPerformed
-
-    private void passwordInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordInputFocusLost
-        
-        
-    }//GEN-LAST:event_passwordInputFocusLost
 
     /**
      * @param args the command line arguments
