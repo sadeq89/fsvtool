@@ -15,8 +15,19 @@ public class GUILogin extends javax.swing.JFrame {
      */
     public GUILogin() {
         initComponents();
+        this.errorLogin.setVisible(false);
+        
     }
+    
+    public String getUsername(){
+        return usernameInput.getText();
+    } 
 
+    public String getPassword() {
+        return passwordInput.getPassword().toString();
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,6 +46,7 @@ public class GUILogin extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
+        errorLogin = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,6 +74,12 @@ public class GUILogin extends javax.swing.JFrame {
         labelKennwort.setText("Kennwort");
         labelKennwort.setBounds(140, 120, 90, 15);
         jLayeredPane1.add(labelKennwort, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        passwordInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordInputFocusLost(evt);
+            }
+        });
         passwordInput.setBounds(240, 110, 190, 30);
         jLayeredPane1.add(passwordInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -94,6 +112,11 @@ public class GUILogin extends javax.swing.JFrame {
         exitButton.setBounds(310, 160, 120, 40);
         jLayeredPane1.add(exitButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        errorLogin.setForeground(new java.awt.Color(255, 0, 51));
+        errorLogin.setText("Benutzername oder Kennwort falsch !!!");
+        errorLogin.setBounds(240, 60, 230, 20);
+        jLayeredPane1.add(errorLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
         jLabel1.setBounds(0, 0, 500, 300);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -123,6 +146,11 @@ public class GUILogin extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void passwordInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordInputFocusLost
+        
+        
+    }//GEN-LAST:event_passwordInputFocusLost
 
     /**
      * @param args the command line arguments
@@ -159,6 +187,7 @@ public class GUILogin extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel errorLogin;
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
