@@ -33,7 +33,7 @@ public class AuthentificationController extends AbstractController{
     
     public void action(java.awt.event.ActionEvent evt){
         switch(evt.getActionCommand()){
-            case GUILogin.REGISTER:
+            case GUILogin.REGISTRATION:
                 reg = new GUIRegistration();
                 reg.setVisible(true);
                 reg.setController(this);
@@ -50,15 +50,17 @@ public class AuthentificationController extends AbstractController{
                     em.setLoggedinUser(user);
                     mainController = new MainController(em);
                     login.setVisible(false);
+                    break;
                 }
                 else{
                     login.setErrorShowResult(true);
+                    break;
                 }
             case GUILogin.EXIT:
                 System.exit(0);
-            case GUIRegistration.FREGISTER:
-//                mainFrame = new GUIMainFrame(mainController);
+            case GUIRegistration.REGISTER:
                 
+                break;
         }
     }
 }
