@@ -108,7 +108,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="loginButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Einloggen"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="GUILogin.LOGIN" type="code"/>
+            </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
@@ -122,7 +124,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="registerButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Anmeldung"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="GUILogin.REGISTER" type="code"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerButtonActionPerformed"/>
@@ -135,7 +139,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="exitButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Beenden"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="GUILogin.EXIT" type="code"/>
+            </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>

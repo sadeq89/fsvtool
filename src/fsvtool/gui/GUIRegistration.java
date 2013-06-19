@@ -12,7 +12,8 @@ import fsvtool.controller.AuthentificationController;
  */
 public class GUIRegistration extends javax.swing.JFrame {
     private AuthentificationController controller;
-    
+    public static final String CANCEL = "Abbrechen";
+    public static final String FREGISTER = "Anmelden";
     /**
      * Creates new form GUIRegistration
      */
@@ -76,7 +77,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         labelLogin.setBounds(370, 20, 110, 30);
         jLayeredPane1.add(labelLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        buttonRegister.setText("Anmelden");
+        buttonRegister.setText(GUIRegistration.FREGISTER);
         buttonRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonRegisterActionPerformed(evt);
@@ -85,7 +86,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         buttonRegister.setBounds(470, 510, 120, 40);
         jLayeredPane1.add(buttonRegister, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        buttonCancel.setText("Abbrechen");
+        buttonCancel.setText(GUIRegistration.CANCEL);
         buttonCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCancelActionPerformed(evt);

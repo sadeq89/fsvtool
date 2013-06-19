@@ -12,13 +12,17 @@ import fsvtool.controller.AuthentificationController;
  */
 public class GUILogin extends javax.swing.JFrame {
     private AuthentificationController controller;
-
+    public static final String LOGIN = "Einloggen";
+    public static final String EXIT = "Beenden";
+    public static final String REGISTER = "Anmeldung";
+    private boolean ErrorShowResult;
+    
     /**
      * Creates new form GUILogin
      */
     public GUILogin() {
         initComponents();
-        this.errorLogin.setVisible(false);
+        this.errorLogin.setVisible(ErrorShowResult);
     }
     
     public void setController(AuthentificationController ac){
@@ -33,6 +37,9 @@ public class GUILogin extends javax.swing.JFrame {
         return passwordInput.getPassword().toString();
     }
     
+    public boolean setErrorShowResult(boolean result){
+        return ErrorShowResult = result;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +90,7 @@ public class GUILogin extends javax.swing.JFrame {
         passwordInput.setBounds(240, 110, 190, 30);
         jLayeredPane1.add(passwordInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        loginButton.setText("Einloggen");
+        loginButton.setText(GUILogin.LOGIN);
         loginButton.setToolTipText("");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +100,7 @@ public class GUILogin extends javax.swing.JFrame {
         loginButton.setBounds(140, 160, 120, 40);
         jLayeredPane1.add(loginButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        registerButton.setText("Anmeldung");
+        registerButton.setText(GUILogin.REGISTER);
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
@@ -102,7 +109,7 @@ public class GUILogin extends javax.swing.JFrame {
         registerButton.setBounds(380, 270, 110, 20);
         jLayeredPane1.add(registerButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        exitButton.setText("Beenden");
+        exitButton.setText(GUILogin.EXIT);
         exitButton.setToolTipText("");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,10 +142,6 @@ public class GUILogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitButtonActionPerformed
-
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         controller.action(evt);
     }//GEN-LAST:event_registerButtonActionPerformed
@@ -146,6 +149,10 @@ public class GUILogin extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         controller.action(evt);
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        controller.action(evt);
+    }//GEN-LAST:event_exitButtonActionPerformed
 
     /**
      * @param args the command line arguments

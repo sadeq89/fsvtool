@@ -68,7 +68,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="buttonRegister">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Anmelden"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="GUIRegistration.FREGISTER" type="code"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRegisterActionPerformed"/>
@@ -81,7 +83,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="buttonCancel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Abbrechen"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="GUIRegistration.CANCEL" type="code"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCancelActionPerformed"/>
