@@ -35,7 +35,7 @@ public class GUILogin extends javax.swing.JFrame {
     } 
 
     public String getPassword() {
-        return passwordInput.getPassword().toString();
+        return new String(passwordInput.getPassword());
     }
     
     public boolean setErrorShowResult(boolean result){
