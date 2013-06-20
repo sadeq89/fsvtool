@@ -4,14 +4,15 @@
  */
 package fsvtool.persistance;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 
 /**
  *
  * @author ahmet
  */
-public class Game implements IGame{
-    
+public class Game implements IGame {
+
     private Integer id = null;
     private Date date = null;
     private Integer count;
@@ -19,7 +20,7 @@ public class Game implements IGame{
     private boolean isLoggedinUserInGame = false;
     private int gameType;
     private Integer playerInGameCount;
-    
+    private Time time;
 
     public Game() {
     }
@@ -37,25 +38,26 @@ public class Game implements IGame{
     public Date getDate() {
         return this.date;
     }
-    
+
+    @Override
     public void setDate(Date d) {
         this.date = d;
     }
 
     @Override
-    public Integer getMayPlayerCount() {
+    public Integer getMaxPlayerCount() {
         return this.count;
     }
-    
+
     public void setMaxPlayerCount(Integer c) {
         this.count = c;
     }
-    
+
     @Override
     public Integer getPlayerInGameCount() {
         return this.playerInGameCount;
     }
-    
+
     public void setPlayerInGameCount(Integer c) {
         this.playerInGameCount = c;
     }
@@ -69,7 +71,7 @@ public class Game implements IGame{
     public String getLocation() {
         return this.location;
     }
-    
+
     public void setLocation(String l) {
         this.location = l;
     }
@@ -78,13 +80,28 @@ public class Game implements IGame{
     public boolean isInGame() {
         return this.isLoggedinUserInGame;
     }
-    
+
     public void setIsInGame(boolean b) {
         this.isLoggedinUserInGame = b;
     }
-    
+
     @Override
     public int getGameType() {
         return this.gameType;
+    }
+
+    @Override
+    public Time getTime() {
+        return this.time;
+    }
+
+    @Override
+    public void setTime(Time t) {
+        this.time = t;
+    }
+
+    @Override
+    public void setGameType(int type) {
+        this.gameType = type;
     }
 }

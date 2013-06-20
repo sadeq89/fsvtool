@@ -4,7 +4,8 @@
  */
 package fsvtool.persistance;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 
 /**
  *
@@ -19,7 +20,13 @@ public interface IGame {
     
     public Date getDate();
     
-    public Integer getMayPlayerCount();
+    public void setDate(Date d);
+    
+    public Time getTime();
+    
+    public void setTime(Time t);
+    
+    public Integer getMaxPlayerCount();
     
     public String getLocation();
     
@@ -28,6 +35,8 @@ public interface IGame {
     public void addUser(IUser u);
     
     public int getGameType();
+    
+    public void setGameType(int type);
 
     public Integer getPlayerInGameCount();
 }
