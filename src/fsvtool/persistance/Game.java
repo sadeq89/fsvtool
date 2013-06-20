@@ -6,6 +6,7 @@ package fsvtool.persistance;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 /**
  *
@@ -103,5 +104,15 @@ public class Game implements IGame {
     @Override
     public void setGameType(int type) {
         this.gameType = type;
+    }
+
+    @Override
+    public List<IUser> getPlayer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setTeams(int team) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
