@@ -26,7 +26,7 @@ public class GameProvider extends AbstractProvider {
         "   GAME_DATE DATE NOT NULL,\n" + 
         "   GAME_TIME TIME NOT NULL,\n" + 
         "   LOCATION VARCHAR(255) NOT NULL,\n" +
-        "   MAX_PLAYER_COUNT integer NOT NULL\n" +
+        "   MAX_PLAYER_COUNT integer NOT NULL,\n" +
         "   PLAYER_IN_GAME integer NOT NULL\n" + 
         ");\n" +
         "CREATE UNIQUE INDEX IF NOT EXISTS PRIMARY_KEY_FSV_GAME ON FSV_GAME(ID);" + 
