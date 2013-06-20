@@ -44,7 +44,7 @@ public class AuthentificationController extends AbstractController{
                 
                 //*********meanwhile*********
                 em.setLoggedinUser(user);
-                mainController = new MainController(em);
+                new MainController(em);
                 //**************************
                 
                 if (user != null && user.getPassword().equals(login.getPassword())) {
