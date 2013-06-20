@@ -62,8 +62,11 @@ public class AuthentificationController extends AbstractController{
                 newUser.setEMail(reg.getMailInput());
                 newUser.setPhoneNr(reg.getPhoneInput());
                 
+                em.getUserProvider().saveUser(newUser);
+                
                 new MainController(em);
-                login.setVisible(false);
+                
+                reg.setVisible(false);
                 break;
         }
     }
