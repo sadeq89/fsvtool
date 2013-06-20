@@ -29,7 +29,11 @@ public interface IGame {
     
     public Integer getMaxPlayerCount();
     
-    public String getLocation();
+    public void setMaxPlayerCount(Integer c);
+    
+    public String getGameLocation();
+    
+    public void setGameLocation(String location);
     
     public boolean isInGame();
     

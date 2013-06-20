@@ -42,10 +42,6 @@ public interface IUser {
     
     public void setPhoneNr(String phoneNr);
     
-    public String getPLZ();
-    
-    public void setPLZ(String plz);
-    
     public int getSkill(int type);
     
     public void setSkill(int type, int value);

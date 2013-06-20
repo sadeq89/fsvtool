@@ -69,11 +69,12 @@ public class Game implements IGame {
     }
 
     @Override
-    public String getLocation() {
+    public String getGameLocation() {
         return this.location;
     }
 
-    public void setLocation(String l) {
+    @Override
+    public void setGameLocation(String l) {
         this.location = l;
     }
 

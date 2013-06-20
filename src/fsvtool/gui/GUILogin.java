@@ -22,7 +22,8 @@ public class GUILogin extends javax.swing.JFrame {
      */
     public GUILogin() {
         initComponents();
-        this.errorLogin.setVisible(ErrorShowResult);
+        setLocationRelativeTo(null);
+        this.errorLogin.setVisible(false);
     }
     
     public void setController(AuthentificationController ac){
@@ -34,7 +35,7 @@ public class GUILogin extends javax.swing.JFrame {
     } 
 
     public String getPassword() {
-        return passwordInput.getPassword().toString();
+        return new String(passwordInput.getPassword());
     }
     
     public boolean setErrorShowResult(boolean result){
@@ -148,6 +149,7 @@ public class GUILogin extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         controller.action(evt);
+        this.errorLogin.setVisible(ErrorShowResult);
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed

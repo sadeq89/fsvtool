@@ -124,8 +124,8 @@ public class GUIUserConfig extends javax.swing.JFrame {
         rbVbNichtSoGut = new javax.swing.JRadioButton();
         jLabel13 = new javax.swing.JLabel();
         tfEMail = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         tfBenutzername = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
@@ -169,8 +169,8 @@ public class GUIUserConfig extends javax.swing.JFrame {
         jLayeredPane2.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Vorname");
-        jLabel5.setBounds(180, 110, 90, 15);
+        jLabel5.setText("Benutzername");
+        jLabel5.setBounds(180, 70, 90, 15);
         jLayeredPane2.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -248,14 +248,14 @@ public class GUIUserConfig extends javax.swing.JFrame {
                 rbFbNichtSoGutActionPerformed(evt);
             }
         });
-        rbFbNichtSoGut.setBounds(520, 320, 100, 25);
+        rbFbNichtSoGut.setBounds(520, 320, 100, 23);
         jLayeredPane2.add(rbFbNichtSoGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgFussball.add(rbFbMittel);
         rbFbMittel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbFbMittel.setText("Mittel");
         rbFbMittel.setOpaque(false);
-        rbFbMittel.setBounds(420, 320, 70, 25);
+        rbFbMittel.setBounds(420, 320, 70, 23);
         jLayeredPane2.add(rbFbMittel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgHandball.add(rbHbNichtSoGut);
@@ -267,46 +267,46 @@ public class GUIUserConfig extends javax.swing.JFrame {
                 rbHbNichtSoGutActionPerformed(evt);
             }
         });
-        rbHbNichtSoGut.setBounds(520, 390, 100, 25);
+        rbHbNichtSoGut.setBounds(520, 390, 100, 23);
         jLayeredPane2.add(rbHbNichtSoGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgHandball.add(rbHbMittel);
         rbHbMittel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbHbMittel.setText("Mittel");
         rbHbMittel.setOpaque(false);
-        rbHbMittel.setBounds(420, 390, 70, 25);
+        rbHbMittel.setBounds(420, 390, 70, 23);
         jLayeredPane2.add(rbHbMittel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgHandball.add(rbHbSehrGut);
         rbHbSehrGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbHbSehrGut.setText("Sehr Gut");
         rbHbSehrGut.setOpaque(false);
-        rbHbSehrGut.setBounds(300, 390, 80, 25);
+        rbHbSehrGut.setBounds(300, 390, 80, 23);
         jLayeredPane2.add(rbHbSehrGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgVolleyball.add(rbVbSehrGut);
         rbVbSehrGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbVbSehrGut.setText("Sehr Gut");
         rbVbSehrGut.setOpaque(false);
-        rbVbSehrGut.setBounds(300, 460, 80, 25);
+        rbVbSehrGut.setBounds(300, 460, 80, 23);
         jLayeredPane2.add(rbVbSehrGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgVolleyball.add(rbVbMittel);
         rbVbMittel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbVbMittel.setText("Mittel");
         rbVbMittel.setOpaque(false);
-        rbVbMittel.setBounds(420, 460, 70, 25);
+        rbVbMittel.setBounds(420, 460, 70, 23);
         jLayeredPane2.add(rbVbMittel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgVolleyball.add(rbVbNichtSoGut);
         rbVbNichtSoGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbVbNichtSoGut.setText("Nicht so Gut");
         rbVbNichtSoGut.setOpaque(false);
-        rbVbNichtSoGut.setBounds(520, 460, 100, 25);
+        rbVbNichtSoGut.setBounds(520, 460, 100, 23);
         jLayeredPane2.add(rbVbNichtSoGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel13.setText("Email");
-        jLabel13.setBounds(180, 230, 31, 16);
+        jLabel13.setBounds(180, 230, 70, 14);
         jLayeredPane2.add(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         tfEMail.addActionListener(new java.awt.event.ActionListener() {
@@ -317,10 +317,6 @@ public class GUIUserConfig extends javax.swing.JFrame {
         tfEMail.setBounds(370, 220, 160, 30);
         jLayeredPane2.add(tfEMail, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel7.setText("Benutzername");
-        jLabel7.setBounds(180, 70, 100, 16);
-        jLayeredPane2.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         tfBenutzername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfBenutzernameActionPerformed(evt);
@@ -328,6 +324,11 @@ public class GUIUserConfig extends javax.swing.JFrame {
         });
         tfBenutzername.setBounds(370, 60, 160, 30);
         jLayeredPane2.add(tfBenutzername, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setText("Vorname");
+        jLabel14.setBounds(180, 110, 90, 15);
+        jLayeredPane2.add(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
@@ -436,12 +437,12 @@ public class GUIUserConfig extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane2;

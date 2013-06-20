@@ -26,7 +26,7 @@ public class GameProvider extends AbstractProvider {
         "   GAME_DATE DATE NOT NULL,\n" + 
         "   GAME_TIME TIME NOT NULL,\n" + 
         "   LOCATION VARCHAR(255) NOT NULL,\n" +
-        "   MAX_PLAYER_COUNT integer NOT NULL\n" +
+        "   MAX_PLAYER_COUNT integer NOT NULL,\n" +
         "   PLAYER_IN_GAME integer NOT NULL\n" + 
         ");\n" +
         "CREATE UNIQUE INDEX IF NOT EXISTS PRIMARY_KEY_FSV_GAME ON FSV_GAME(ID);" + 
@@ -81,7 +81,7 @@ public class GameProvider extends AbstractProvider {
                 game.setGameType(rs.getInt("game_type"));
                 game.setDate(rs.getDate("game_date"));
                 game.setTime(rs.getTime("game_time"));
-                game.setLocation(rs.getString("location"));
+                game.setGameLocation(rs.getString("location"));
                 game.setMaxPlayerCount(rs.getInt("player_count"));
                 game.setPlayerInGameCount(rs.getInt("player_in_game"));
                 
@@ -118,7 +118,7 @@ public class GameProvider extends AbstractProvider {
                 game.setTime(rs.getTime("time"));
                 game.setMaxPlayerCount(rs.getInt("player_count"));
                 game.setPlayerInGameCount(rs.getInt("player_in_game"));
-                game.setLocation(rs.getString("location"));
+                game.setGameLocation(rs.getString("location"));
                 Integer userId = rs.getInt("user_id");
                 if (userId.equals(loggedinUserId)) {
                     game.setIsInGame(true);
@@ -154,13 +154,17 @@ public class GameProvider extends AbstractProvider {
             stm.setInt(1, game.getGameType());
             stm.setDate(2, game.getDate());
             stm.setTime(3, game.getTime());
-            stm.setString(4, game.getLocation());
+            stm.setString(4, game.getGameLocation());
             stm.setInt(5, game.getMaxPlayerCount());
             stm.setInt(6, 0);
+            stm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
+    }
+    
+    public IGame createGame(){
+        
+        return new Game();
     }
 }

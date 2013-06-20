@@ -19,6 +19,7 @@ public class GUIRegistration extends javax.swing.JFrame {
      */
     public GUIRegistration() {
         initComponents();
+        setLocationRelativeTo(null);
         this.errorEmail.setVisible(false);
         this.errorEmail2.setVisible(false);
         this.errorPassword.setVisible(false);

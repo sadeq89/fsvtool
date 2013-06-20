@@ -5,6 +5,9 @@
 package fsvtool.gui;
 
 import fsvtool.controller.CreateGameController;
+import fsvtool.persistance.IUser;
+import java.sql.Date;
+import java.sql.Time;
 
 /**
  *
@@ -21,8 +24,47 @@ public class GUICreateGame extends javax.swing.JFrame {
         initComponents();
     }
     
+    //getting game type and return it for the constant SKILL_TYPE_"SPORTTYPE" in USER Interface
+    public int getGameType(){
    
+        if(this.cbSportart.getSelectedItem().equals("Fussball")){
+           return IUser.SKILL_TYPE_FOOTBALL;
+        }
+        else if(this.cbSportart.getSelectedItem().equals("Handball")){
+            return IUser.SKILL_TYPE_HANDBALL;
+        }
+        else if(this.cbSportart.getSelectedItem().equals("Volleyball")){
+            return IUser.SKILL_TYPE_VOLLEYBALL;
+        }
+       return 0;
+    }       
 
+    // getting Date
+    public Date getDate(){
+         Date date = new Date(Integer.valueOf(this.tfYear.getText()), 
+                Integer.valueOf(this.tfMonth.getText()), Integer.valueOf(this.tfDay.getText()));
+        return  date;
+    }
+   
+    //getting Time
+    
+    public Time getTime(){
+        
+        Time time = new Time(Integer.valueOf(this.tfHour.getText()), 
+                Integer.valueOf(this.tfMinute.getText()),0);
+        
+        return time;
+    }
+
+    public String getGameLocation(){
+        
+        return this.tfOrt.getText();
+    }
+    
+    public int getPlayerCount(){
+        
+        return this.spSpieleranzahl.getComponentCount();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,6 +93,8 @@ public class GUICreateGame extends javax.swing.JFrame {
         tfHour = new javax.swing.JTextField();
         tfMinute = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        tfOrt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
         menu1.setLabel("File");
@@ -74,20 +118,25 @@ public class GUICreateGame extends javax.swing.JFrame {
                 cbSportartActionPerformed(evt);
             }
         });
-        cbSportart.setBounds(310, 110, 90, 30);
+        cbSportart.setBounds(310, 70, 90, 30);
         jLayeredPane1.add(cbSportart, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Spieleranzahl");
-        jLabel5.setBounds(180, 270, 80, 15);
+        jLabel5.setBounds(180, 280, 80, 15);
         jLayeredPane1.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         spSpieleranzahl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        spSpieleranzahl.setBounds(310, 260, 50, 30);
+        spSpieleranzahl.setBounds(310, 270, 50, 30);
         jLayeredPane1.add(spSpieleranzahl, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bSave.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         bSave.setText("Speichern");
+        bSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSaveActionPerformed(evt);
+            }
+        });
         bSave.setBounds(170, 340, 120, 40);
         jLayeredPane1.add(bSave, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -103,19 +152,19 @@ public class GUICreateGame extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Uhrzeit");
-        jLabel4.setBounds(180, 220, 50, 15);
+        jLabel4.setBounds(180, 230, 50, 15);
         jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Sportart");
-        jLabel2.setBounds(180, 120, 50, 15);
+        jLabel2.setText("Ort");
+        jLabel2.setBounds(180, 130, 50, 15);
         jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Datum");
-        jLabel3.setBounds(180, 170, 50, 15);
+        jLabel3.setBounds(180, 180, 50, 15);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        tfDay.setBounds(310, 160, 40, 30);
+        tfDay.setBounds(310, 170, 40, 30);
         jLayeredPane1.add(tfDay, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         tfMonth.addActionListener(new java.awt.event.ActionListener() {
@@ -123,9 +172,9 @@ public class GUICreateGame extends javax.swing.JFrame {
                 tfMonthActionPerformed(evt);
             }
         });
-        tfMonth.setBounds(350, 160, 40, 30);
+        tfMonth.setBounds(350, 170, 40, 30);
         jLayeredPane1.add(tfMonth, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        tfYear.setBounds(390, 160, 60, 30);
+        tfYear.setBounds(390, 170, 60, 30);
         jLayeredPane1.add(tfYear, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         tfHour.addActionListener(new java.awt.event.ActionListener() {
@@ -133,14 +182,21 @@ public class GUICreateGame extends javax.swing.JFrame {
                 tfHourActionPerformed(evt);
             }
         });
-        tfHour.setBounds(310, 210, 40, 30);
+        tfHour.setBounds(310, 220, 40, 30);
         jLayeredPane1.add(tfHour, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        tfMinute.setBounds(350, 210, 40, 30);
+        tfMinute.setBounds(350, 220, 40, 30);
         jLayeredPane1.add(tfMinute, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel7.setText("H / M");
         jLabel7.setBounds(400, 220, 30, 14);
         jLayeredPane1.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel8.setText("Sportart");
+        jLabel8.setBounds(180, 80, 50, 15);
+        jLayeredPane1.add(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        tfOrt.setBounds(310, 120, 100, 30);
+        jLayeredPane1.add(tfOrt, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
         jLabel6.setBounds(0, 0, 470, 410);
@@ -176,6 +232,11 @@ public class GUICreateGame extends javax.swing.JFrame {
     private void tfHourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHourActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfHourActionPerformed
+
+    private void bSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSaveActionPerformed
+
+        this.controller.saveGame();
+    }//GEN-LAST:event_bSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,6 +283,7 @@ public class GUICreateGame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLayeredPane jLayeredPane1;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
@@ -231,6 +293,7 @@ public class GUICreateGame extends javax.swing.JFrame {
     private javax.swing.JTextField tfHour;
     private javax.swing.JTextField tfMinute;
     private javax.swing.JTextField tfMonth;
+    private javax.swing.JTextField tfOrt;
     private javax.swing.JTextField tfYear;
     // End of variables declaration//GEN-END:variables
 }
