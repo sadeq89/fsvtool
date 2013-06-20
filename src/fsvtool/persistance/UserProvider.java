@@ -125,6 +125,10 @@ public class UserProvider extends AbstractProvider {
         return this.createSQL;
     }
     
+    public IUser createUser() {
+        return new User();
+    }
+    
     private User buildUserObject(ResultSet rs) throws SQLException {
         User user = new User(rs.getInt("id"));
         user.setName(rs.getString("name"));
