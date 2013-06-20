@@ -62,7 +62,7 @@ public class GamesTableModell extends AbstractTableModel {
                 return false;
             case 1:
                 // Anzahl Spieler
-                return this.list.get(rowIndex).getPlayerCount();
+                return this.list.get(rowIndex).getMayPlayerCount();
             case 2:
                 // Datum
                 return this.list.get(rowIndex).getDate();

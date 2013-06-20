@@ -40,19 +40,17 @@ public class UserProvider extends AbstractProvider {
     public IUser getUserByUserName(String name) {
         PreparedStatement stm;
         try {
-            stm = em.getConn().prepareStatement("SELECT id, name, fistname, email, username, password, phone_nr, plz"
+            stm = em.getConn().prepareStatement(
+                    "SELECT id, name, firstname, email, username, password, phone_nr, plz"
                     + " FROM FSV_USER WHERE username = ?");
             stm.setString(1, name);
             ResultSet rs = stm.executeQuery();
-            rs.first();
-            User user = new User(rs.getInt("id"));
-            user.setName(rs.getString("name"));
-            user.setFirstname(rs.getString("firstname"));
-            user.setEMail(rs.getString("email"));
-            user.setPassword(rs.getString("password"));
-            user.setPhoneNr(rs.getString("phone_nr"));
-            user.setPLZ(rs.getString("plz"));
-            return user;
+            if (rs.first()) {
+                return buildUserObject(rs);
+            }
+            else {
+                return null;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -62,19 +60,17 @@ public class UserProvider extends AbstractProvider {
     public IUser getUserByEMail(String eMail) {
         PreparedStatement stm;
         try {
-            stm = em.getConn().prepareStatement("SELECT id, name, firstname, email, username, password, phone_nr, plz"
+            stm = em.getConn().prepareStatement(
+                    "SELECT id, name, firstname, email, username, password, phone_nr, plz"
                     + " FROM FSV_USER WHERE email = ?");
             stm.setString(1, eMail);
             ResultSet rs = stm.executeQuery();
-            rs.first();
-            User user = new User(rs.getInt("id"));
-            user.setName(rs.getString("name"));
-            user.setFirstname(rs.getString("firstname"));
-            user.setEMail(rs.getString("email"));
-            user.setPassword(rs.getString("password"));
-            user.setPhoneNr(rs.getString("phone_nr"));
-            user.setPLZ(rs.getString("plz"));
-            return user;
+            if (rs.first()) {
+                return buildUserObject(rs);
+            }
+            else {
+                return null;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -127,5 +123,16 @@ public class UserProvider extends AbstractProvider {
     @Override
     public String getCreateSQL() {
         return this.createSQL;
+    }
+    
+    private User buildUserObject(ResultSet rs) throws SQLException {
+        User user = new User(rs.getInt("id"));
+        user.setName(rs.getString("name"));
+        user.setFirstname(rs.getString("firstname"));
+        user.setEMail(rs.getString("email"));
+        user.setPassword(rs.getString("password"));
+        user.setPhoneNr(rs.getString("phone_nr"));
+        user.setPLZ(rs.getString("plz"));
+        return user;
     }
 }

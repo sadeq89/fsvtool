@@ -30,7 +30,6 @@ public class FSVtool {
             Connection conn = FSVtool.connectDB();
             EntityManager em = new EntityManager(conn);
             AuthentificationController authController = new AuthentificationController(em);
-            conn.close();
         } catch (ClassNotFoundException | SQLException e) {
             System.err.print("Kann keine Datenbankverbindung aufbauen\n"
                     +"Exception message: "+e.getMessage()+"\n"

@@ -17,6 +17,8 @@ public class Game implements IGame{
     private Integer count;
     private String location;
     private boolean isLoggedinUserInGame = false;
+    private int gameType;
+    private Integer playerInGameCount;
     
 
     public Game() {
@@ -41,12 +43,21 @@ public class Game implements IGame{
     }
 
     @Override
-    public Integer getPlayerCount() {
+    public Integer getMayPlayerCount() {
         return this.count;
     }
     
-    public void setCount(Integer c) {
+    public void setMaxPlayerCount(Integer c) {
         this.count = c;
+    }
+    
+    @Override
+    public Integer getPlayerInGameCount() {
+        return this.playerInGameCount;
+    }
+    
+    public void setPlayerInGameCount(Integer c) {
+        this.playerInGameCount = c;
     }
 
     @Override
@@ -70,5 +81,10 @@ public class Game implements IGame{
     
     public void setIsInGame(boolean b) {
         this.isLoggedinUserInGame = b;
+    }
+    
+    @Override
+    public int getGameType() {
+        return this.gameType;
     }
 }

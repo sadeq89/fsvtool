@@ -25,7 +25,8 @@ public class GameProvider extends AbstractProvider {
         "   GAME_TYPE integer NOT NULL,\n" +
         "   DATE DATETIME NOT NULL,\n" + 
         "   LOCATION VARCHAR(255) NOT NULL,\n" +
-        "   PLAYER_COUNT integer NOT NULL\n" +
+        "   MAX_PLAYER_COUNT integer NOT NULL\n" +
+        "   PLAYER_IN_GAME integer NOT NULL\n" + 
         ");\n" +
         "CREATE UNIQUE INDEX IF NOT EXISTS PRIMARY_KEY_FSV_GAME ON FSV_GAME(ID);" + 
         "CREATE TABLE IF NOT EXISTS FSV_GAME_USER\n" +
@@ -68,15 +69,19 @@ public class GameProvider extends AbstractProvider {
     public IGame getGameById(Integer id) {
         PreparedStatement stm;
         try {
-            stm = em.getConn().prepareStatement("SELECT id, date, player_count "
+            stm = em.getConn().prepareStatement("SELECT id, date, max_player_count, player_in_game "
                     + " FROM FSV_GAME WHERE id = ?");
             stm.setInt(1, id);
             ResultSet rs = stm.executeQuery();
-            rs.first();
-            Game game = new Game(rs.getInt("id"));
-            game.setDate(rs.getDate("date"));
-            game.setCount(rs.getInt("player_count"));
-            return game;
+            if (rs.first()) {
+                Game game = new Game(rs.getInt("id"));
+                game.setDate(rs.getDate("date"));
+                game.setMaxPlayerCount(rs.getInt("player_count"));
+                return game;
+            }
+            else {
+                return null;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -87,7 +92,8 @@ public class GameProvider extends AbstractProvider {
         ArrayList<IGame> list = new ArrayList<>();
         PreparedStatement stm;
         try {
-            stm = em.getConn().prepareStatement("SELECT g.id as id, g.date as date, g.player_count as player_count, "
+            stm = em.getConn().prepareStatement("SELECT g.id as id, g.date as date, "
+                    + " g.max_player_count as player_count, g.player_in_game as player_in_game "
                     + " g.location as location, gu.user_id as user_id "
                     + " FROM FSV_GAME g"
                     + " LEFT JOIN FSV_GAME_USER gu ON g.id = gu.game_id"
@@ -100,7 +106,8 @@ public class GameProvider extends AbstractProvider {
             while (rs.next()) {
                 Game game = new Game(rs.getInt("id"));
                 game.setDate(rs.getDate("date"));
-                game.setCount(rs.getInt("player_count"));
+                game.setMaxPlayerCount(rs.getInt("player_count"));
+                game.setPlayerInGameCount(rs.getInt("player_in_game"));
                 game.setLocation(rs.getString("location"));
                 Integer userId = rs.getInt("user_id");
                 if (userId.equals(loggedinUserId)) {
