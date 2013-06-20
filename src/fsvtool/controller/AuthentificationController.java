@@ -35,6 +35,7 @@ public class AuthentificationController extends AbstractController{
         switch(evt.getActionCommand()){
             case GUILogin.REGISTRATION:
                 reg = new GUIRegistration();
+                
                 reg.setVisible(true);
                 reg.setController(this);
                 login.setVisible(false);
@@ -59,7 +60,16 @@ public class AuthentificationController extends AbstractController{
             case GUILogin.EXIT:
                 System.exit(0);
             case GUIRegistration.REGISTER:
+                IUser newUser = em.getUserProvider().createUser();
+                newUser.setUsername(reg.getUsernameInput());
+                newUser.setPassword(reg.getPasswordInput());
+                newUser.setFirstname(reg.getFirstNameInput());
+                newUser.setName(reg.getSurnameInput());
+                newUser.setEMail(reg.getMailInput());
+                newUser.setPhoneNr(reg.getPhoneInput());
                 
+                new MainController(em);
+                login.setVisible(false);
                 break;
         }
     }
