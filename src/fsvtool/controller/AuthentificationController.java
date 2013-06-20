@@ -18,24 +18,18 @@ import fsvtool.persistance.UserProvider;
 public class AuthentificationController extends AbstractController{
     private GUILogin login;
     private GUIRegistration reg;
-    private MainController mainController;
-    private GUIMainFrame mainFrame;
     
     public AuthentificationController(EntityManager em) {
         super(em);
         login = new GUILogin();
         login.setController(this);
         login.setVisible(true);
-       
-        
-        
     }
     
     public void action(java.awt.event.ActionEvent evt){
         switch(evt.getActionCommand()){
             case GUILogin.REGISTRATION:
                 reg = new GUIRegistration();
-                
                 reg.setVisible(true);
                 reg.setController(this);
                 login.setVisible(false);
@@ -49,7 +43,7 @@ public class AuthentificationController extends AbstractController{
                 IUser user = up.getUserByUserName(login.getUsername());
                 if (user != null && user.getPassword().equals(login.getPassword())) {
                     em.setLoggedinUser(user);
-                    mainController = new MainController(em);
+                    new MainController(em);
                     login.setVisible(false);
                     break;
                 }

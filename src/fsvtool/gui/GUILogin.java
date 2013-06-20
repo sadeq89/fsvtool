@@ -22,6 +22,7 @@ public class GUILogin extends javax.swing.JFrame {
      */
     public GUILogin() {
         initComponents();
+        setLocationRelativeTo(null);
         this.errorLogin.setVisible(ErrorShowResult);
     }
     
