@@ -157,11 +157,10 @@ public class GameProvider extends AbstractProvider {
             stm.setString(4, game.getGameLocation());
             stm.setInt(5, game.getMaxPlayerCount());
             stm.setInt(6, 0);
+            stm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }
     
     public IGame createGame(){

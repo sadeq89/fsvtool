@@ -23,8 +23,7 @@ public class UserProvider extends AbstractProvider {
             " email VARCHAR(128) NOT NULL UNIQUE,"+
             " username VARCHAR(64) NOT NULL UNIQUE,"+
             " password VARCHAR(256) NOT NULL,"+
-            " phone_nr VARCHAR(20) NOT NULL,"+
-            " plz VARCHAR(5) NOT NULL "+
+            " phone_nr VARCHAR(20) NOT NULL" +
             " ); \n"+
             "CREATE TABLE IF NOT EXISTS fsv_user_skill ("+
             " id INT AUTO_INCREMENT PRIMARY KEY,"+
@@ -41,7 +40,7 @@ public class UserProvider extends AbstractProvider {
         PreparedStatement stm;
         try {
             stm = em.getConn().prepareStatement(
-                    "SELECT id, name, firstname, email, username, password, phone_nr, plz"
+                    "SELECT id, name, firstname, email, username, password, phone_nr"
                     + " FROM FSV_USER WHERE username = ?");
             stm.setString(1, name);
             ResultSet rs = stm.executeQuery();
@@ -61,7 +60,7 @@ public class UserProvider extends AbstractProvider {
         PreparedStatement stm;
         try {
             stm = em.getConn().prepareStatement(
-                    "SELECT id, name, firstname, email, username, password, phone_nr, plz"
+                    "SELECT id, name, firstname, email, username, password, phone_nr"
                     + " FROM FSV_USER WHERE email = ?");
             stm.setString(1, eMail);
             ResultSet rs = stm.executeQuery();
@@ -83,8 +82,8 @@ public class UserProvider extends AbstractProvider {
         if (id != null) {
             // Update
             String sql = "UPDATE FSV_USER "
-                    + "SET (name, firstname, email, username, password, phone_nr, plz) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?) "
+                    + "SET (name, firstname, email, username, password, phone_nr) "
+                    + "VALUES (?, ?, ?, ?, ?, ?) "
                     + "WHERE id = ?";
             try {
                 PreparedStatement stm = em.getConn().prepareStatement(sql);
@@ -94,17 +93,17 @@ public class UserProvider extends AbstractProvider {
                 stm.setString(4, user.getUsername());
                 stm.setString(5, user.getPassword());
                 stm.setString(6, user.getPhoneNr());
-                stm.setString(7, user.getPLZ());
                 stm.setInt(8, user.getId());
+                stm.execute();
             } catch (SQLException ex) {
-                Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
         else {
             // Insert
             String sql = "INSERT INTO FSV_USER "
-                    + "(name, firstname, email, username, password, phone_nr, plz) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?) ";
+                    + "(name, firstname, email, username, password, phone_nr) "
+                    + "VALUES (?, ?, ?, ?, ?, ?) ";
             try {
                 PreparedStatement stm = em.getConn().prepareStatement(sql);
                 stm.setString(1, user.getName());
@@ -113,9 +112,9 @@ public class UserProvider extends AbstractProvider {
                 stm.setString(4, user.getUsername());
                 stm.setString(5, user.getPassword());
                 stm.setString(6, user.getPhoneNr());
-                stm.setString(7, user.getPLZ());
+                stm.execute();
             } catch (SQLException ex) {
-                Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
     }
@@ -133,10 +132,10 @@ public class UserProvider extends AbstractProvider {
         User user = new User(rs.getInt("id"));
         user.setName(rs.getString("name"));
         user.setFirstname(rs.getString("firstname"));
+        user.setUsername(rs.getString("username"));
         user.setEMail(rs.getString("email"));
         user.setPassword(rs.getString("password"));
         user.setPhoneNr(rs.getString("phone_nr"));
-        user.setPLZ(rs.getString("plz"));
         return user;
     }
 }

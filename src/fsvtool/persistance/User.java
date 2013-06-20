@@ -93,16 +93,6 @@ class User implements IUser {
     }
 
     @Override
-    public String getPLZ() {
-        return this.plz;
-    }
-
-    @Override
-    public void setPLZ(String plz) {
-        this.plz = plz;
-    }
-
-    @Override
     public int getSkill(int type) {
         return this.skills[type];
     }
