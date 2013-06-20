@@ -6,6 +6,8 @@ package fsvtool.controller;
 
 import fsvtool.gui.GUICreateGame;
 import fsvtool.persistance.EntityManager;
+import fsvtool.persistance.GameProvider;
+import fsvtool.persistance.IGame;
 import java.util.Date;
 /**
  *
@@ -21,10 +23,15 @@ public class CreateGameController extends AbstractController{
     }
     
     public void saveGame(){
+        IGame game = em.getGameProvider().createGame();
         
-    Date date = new Date();
-    
-    
+        game.setDate(this.gui.getDate());
+        game.setGameType(this.gui.getGameType());
+        game.setTime(this.gui.getTime());
+        game.setGameLocation(this.gui.getGameLocation());
+        game.setMaxPlayerCount(this.gui.getPlayerCount());
+        
+        this.em.getGameProvider().saveGame(game);
     }
     
 }

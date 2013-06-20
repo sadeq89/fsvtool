@@ -68,7 +68,7 @@ public class GamesTableModell extends AbstractTableModel {
                 return this.list.get(rowIndex).getDate();
             case 3:
                 // Ort
-                return this.list.get(rowIndex).getLocation();
+                return this.list.get(rowIndex).getGameLocation();
             case 4:
                 return this.list.get(rowIndex).isInGame();
         }
