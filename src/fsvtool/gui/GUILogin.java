@@ -5,6 +5,7 @@
 package fsvtool.gui;
 
 import fsvtool.controller.AuthentificationController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,6 +62,7 @@ public class GUILogin extends javax.swing.JFrame {
         registerButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
         errorLogin = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,7 +100,7 @@ public class GUILogin extends javax.swing.JFrame {
                 loginButtonActionPerformed(evt);
             }
         });
-        loginButton.setBounds(140, 160, 120, 40);
+        loginButton.setBounds(140, 170, 120, 40);
         jLayeredPane1.add(loginButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         registerButton.setText(GUILogin.REGISTRATION);
@@ -117,13 +119,24 @@ public class GUILogin extends javax.swing.JFrame {
                 exitButtonActionPerformed(evt);
             }
         });
-        exitButton.setBounds(310, 160, 120, 40);
+        exitButton.setBounds(310, 170, 120, 40);
         jLayeredPane1.add(exitButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         errorLogin.setForeground(new java.awt.Color(255, 0, 51));
         errorLogin.setText("Benutzername oder Kennwort falsch !!!");
         errorLogin.setBounds(240, 60, 230, 20);
         jLayeredPane1.add(errorLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel2.setText("Kennwort vergessen?");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jLabel2.setBounds(240, 140, 100, 20);
+        jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
         jLabel1.setBounds(0, 0, 500, 300);
@@ -156,6 +169,10 @@ public class GUILogin extends javax.swing.JFrame {
         controller.action(evt);
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+          JOptionPane.showMessageDialog(null, "Bitte wenden Sie sich an \"admin@fsvtool.de\"","Kennwort vergessen?",1);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -164,6 +181,7 @@ public class GUILogin extends javax.swing.JFrame {
     private javax.swing.JLabel errorLogin;
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel labelKennwort;
