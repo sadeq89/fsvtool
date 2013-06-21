@@ -71,23 +71,32 @@ public class MainController extends AbstractController {
         while (it.hasNext()) {
             IUser tmpUser = (IUser) it.next();
 
-            if (!it.hasNext()) {
+            if (!it.hasNext()) {    //Wenn keiner mehr kommt muss der letzte der kleineren, bzw. der schlechtesten Mannschaft zugewießen werden
                 if (team1.size() < team2.size()) {
+                    tmpTeam = 1;
+                } else if (team1.size() > team2.size()) {
+                    tmpTeam = 2;
+                } else if (skillTotalTeam1 < skillTotalTeam2) {
                     tmpTeam = 1;
                 } else {
                     tmpTeam = 2;
                 }
-            } else {
+            } else {    //sonst kann, bei gleicher Größe, der besseren Mannschaft zugewießen werden, weil der Nachfolger ausgleichen kann
                 if (team1.size() == team2.size()) {
-                    if (skillTotalTeam1 <= skillTotalTeam2) {
-                        tmpTeam = 2; //spezieller fall wenn eine höhere Zahl noch ausgleichen könnte
+                    if (skillTotalTeam1 <= skillTotalTeam2)
+                    {
+                        tmpTeam = 2;
                     } else {
                         tmpTeam = 1;
                     }
-                } else {
+                } else { //bei ungleicher Länge wird nach Gesamtstärke des Teams zugewießen, wenn diese gleich, dann entspechend der ungleichen Länge
                     if (skillTotalTeam1 < skillTotalTeam2) {
                         tmpTeam = 1;
                     } else if (skillTotalTeam1 > skillTotalTeam2) {
+                        tmpTeam = 2;
+                    } else if (team1.size() < team2.size()) {
+                        tmpTeam = 1;
+                    } else {
                         tmpTeam = 2;
                     }
                 }
@@ -98,7 +107,6 @@ public class MainController extends AbstractController {
             } else {
                 team2.add(tmpUser);
             }
-
 
         }
     }
