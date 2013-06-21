@@ -50,7 +50,6 @@ public class GUICreateGame extends javax.swing.JFrame {
     //getting Time
     
     public Time getTime(){
-        
         Time time = new Time(Integer.valueOf(this.tfHour.getText()), 
                 Integer.valueOf(this.tfMinute.getText()),0);
         
@@ -58,13 +57,11 @@ public class GUICreateGame extends javax.swing.JFrame {
     }
 
     public String getGameLocation(){
-        
         return this.tfOrt.getText();
     }
     
-    public int getPlayerCount(){
-        
-        return this.spSpieleranzahl.getComponentCount();
+    public Integer getPlayerCount(){
+        return this.spPlayerCount.getComponentCount();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,7 +79,6 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cbSportart = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
-        spSpieleranzahl = new javax.swing.JSpinner();
         bSave = new javax.swing.JButton();
         bCancel = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -96,6 +92,7 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         tfOrt = new javax.swing.JTextField();
+        spPlayerCount = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
 
         menu1.setLabel("File");
@@ -112,7 +109,7 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLabel1.setBounds(190, 20, 200, 20);
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        cbSportart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbSportart.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbSportart.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fußball", "Handball", "Volleyball" }));
         cbSportart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,10 +123,6 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLabel5.setText("Spieleranzahl");
         jLabel5.setBounds(180, 280, 80, 15);
         jLayeredPane1.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        spSpieleranzahl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        spSpieleranzahl.setBounds(310, 270, 50, 30);
-        jLayeredPane1.add(spSpieleranzahl, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bSave.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         bSave.setText("Speichern");
@@ -165,9 +158,12 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLabel3.setText("Datum");
         jLabel3.setBounds(180, 180, 50, 15);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        tfDay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tfDay.setBounds(310, 170, 40, 30);
         jLayeredPane1.add(tfDay, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        tfMonth.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tfMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfMonthActionPerformed(evt);
@@ -175,9 +171,12 @@ public class GUICreateGame extends javax.swing.JFrame {
         });
         tfMonth.setBounds(350, 170, 40, 30);
         jLayeredPane1.add(tfMonth, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        tfYear.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tfYear.setBounds(390, 170, 60, 30);
         jLayeredPane1.add(tfYear, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        tfHour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tfHour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfHourActionPerformed(evt);
@@ -185,6 +184,8 @@ public class GUICreateGame extends javax.swing.JFrame {
         });
         tfHour.setBounds(310, 220, 40, 30);
         jLayeredPane1.add(tfHour, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        tfMinute.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tfMinute.setBounds(350, 220, 40, 30);
         jLayeredPane1.add(tfMinute, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -196,8 +197,15 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLabel8.setText("Sportart");
         jLabel8.setBounds(180, 80, 50, 15);
         jLayeredPane1.add(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        tfOrt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tfOrt.setBounds(310, 120, 100, 30);
         jLayeredPane1.add(tfOrt, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        spPlayerCount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        spPlayerCount.setModel(new javax.swing.SpinnerNumberModel(8, 8, 22, 2));
+        spPlayerCount.setBounds(310, 270, 50, 30);
+        jLayeredPane1.add(spPlayerCount, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
         jLabel6.setBounds(0, 0, 470, 410);
@@ -290,7 +298,7 @@ public class GUICreateGame extends javax.swing.JFrame {
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
-    private javax.swing.JSpinner spSpieleranzahl;
+    private javax.swing.JSpinner spPlayerCount;
     private javax.swing.JTextField tfDay;
     private javax.swing.JTextField tfHour;
     private javax.swing.JTextField tfMinute;
