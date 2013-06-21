@@ -90,15 +90,10 @@ public class GUIMainFrame extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane1.setToolTipText("");
-        jScrollPane1.setOpaque(false);
 
         tTable.setModel(this.controller.getTable());
-        tTable.setOpaque(false);
         tTable.setVerifyInputWhenFocusTarget(false);
         jScrollPane1.setViewportView(tTable);
-        tTable.getColumnModel().getColumn(0).setMaxWidth(70);
-        tTable.getColumnModel().getColumn(2).setMinWidth(100);
-        tTable.getColumnModel().getColumn(2).setMaxWidth(100);
 
         jScrollPane1.setBounds(100, 60, 859, 480);
         jLayeredPane1.add(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);

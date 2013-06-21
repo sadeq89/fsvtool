@@ -42,6 +42,11 @@ public class AuthentificationController extends AbstractController{
                 UserProvider up = em.getUserProvider();
                 IUser user = up.getUserByUserName(login.getUsername());
                 
+                //*********meanwhile*********
+                em.setLoggedinUser(user);
+                new MainController(em);
+                //**************************
+                
                 if (user != null && user.getPassword().equals(login.getPassword())) {
                     em.setLoggedinUser(user);
                     new MainController(em);
@@ -52,6 +57,7 @@ public class AuthentificationController extends AbstractController{
                     login.setErrorShowResult(true);
                     break;
                 }
+                
             case GUILogin.EXIT:
                 System.exit(0);
             case GUIRegistration.REGISTER:

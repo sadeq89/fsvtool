@@ -6,6 +6,7 @@ package fsvtool.persistance;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 /**
  *
@@ -43,4 +44,8 @@ public interface IGame {
     public void setGameType(int type);
 
     public Integer getPlayerInGameCount();
+    
+    //so oder so ähnlich für die teamberechnung nötig...
+    public List<IUser> getPlayer();
+    public void setTeams(int team);
 }
