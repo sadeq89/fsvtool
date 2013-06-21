@@ -5,6 +5,7 @@
 package fsvtool.gui;
 
 import fsvtool.controller.UserConfigController;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -357,6 +358,7 @@ public class GUIUserConfig extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.controller.save();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tfTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelActionPerformed
@@ -368,8 +370,8 @@ public class GUIUserConfig extends javax.swing.JFrame {
     }//GEN-LAST:event_rbFbSehrGutActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
+       
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tfVornameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfVornameActionPerformed

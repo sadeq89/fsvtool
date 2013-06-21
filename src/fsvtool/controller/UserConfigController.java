@@ -7,6 +7,8 @@ package fsvtool.controller;
 import fsvtool.gui.GUIUserConfig;
 import fsvtool.persistance.EntityManager;
 import fsvtool.persistance.IUser;
+import java.awt.event.ActionEvent;
+
 
 
 
@@ -30,6 +32,8 @@ public class UserConfigController extends AbstractController{
         this.gui.setVisible(true);
     }
     
+  
+    
     
     // Speichermethode für die Übertragung zur Datenbank:
     public void save(){
@@ -43,6 +47,8 @@ public class UserConfigController extends AbstractController{
         
         
         this.em.getUserProvider().saveUser(user);
+        
+        
         
     }
 }

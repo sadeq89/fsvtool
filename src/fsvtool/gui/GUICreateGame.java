@@ -6,6 +6,7 @@ package fsvtool.gui;
 
 import fsvtool.controller.CreateGameController;
 import fsvtool.persistance.IUser;
+import java.awt.Window;
 import java.sql.Date;
 import java.sql.Time;
 
@@ -112,7 +113,7 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         cbSportart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cbSportart.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fußball", "Hanball", "Volleyball" }));
+        cbSportart.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fußball", "Handball", "Volleyball" }));
         cbSportart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbSportartActionPerformed(evt);
@@ -188,7 +189,7 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLayeredPane1.add(tfMinute, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel7.setText("H / M");
-        jLabel7.setBounds(400, 220, 30, 14);
+        jLabel7.setBounds(400, 230, 50, 16);
         jLayeredPane1.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -222,7 +223,7 @@ public class GUICreateGame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+     this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tfMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMonthActionPerformed
@@ -236,6 +237,7 @@ public class GUICreateGame extends javax.swing.JFrame {
     private void bSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSaveActionPerformed
 
         this.controller.saveGame();
+        
     }//GEN-LAST:event_bSaveActionPerformed
 
     /**
