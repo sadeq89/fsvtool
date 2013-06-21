@@ -199,7 +199,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         errorEmail.setForeground(new java.awt.Color(255, 0, 51));
         errorEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorEmail.setText("!");
-        errorEmail.setToolTipText("Wiederholung stimmt nicht überein oder keine Mail angegeben!!!");
+        errorEmail.setToolTipText("Wiederholung stimmt nicht überein oder keine Mail-Adresse eingegeben!!!");
         errorEmail.setBounds(650, 190, 20, 30);
         jLayeredPane1.add(errorEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -207,7 +207,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         errorPassword.setForeground(new java.awt.Color(255, 0, 51));
         errorPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorPassword.setText("!");
-        errorPassword.setToolTipText("Kein 4-stellige Eingabe!!!");
+        errorPassword.setToolTipText("Keine 4-stellige Eingabe!!!");
         errorPassword.setBounds(480, 390, 20, 30);
         jLayeredPane1.add(errorPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -223,7 +223,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         errorEmail2.setForeground(new java.awt.Color(255, 0, 51));
         errorEmail2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorEmail2.setText("!");
-        errorEmail2.setToolTipText("Wiederholung stimmt nicht überein oder keine Mail angegeben!!!");
+        errorEmail2.setToolTipText("Wiederholung stimmt nicht überein oder keine Mail eingegeben!!!");
         errorEmail2.setBounds(650, 240, 20, 30);
         jLayeredPane1.add(errorEmail2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

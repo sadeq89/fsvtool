@@ -325,7 +325,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="!"/>
-            <Property name="toolTipText" type="java.lang.String" value="Wiederholung stimmt nicht &#xfc;berein oder keine Mail angegeben!!!"/>
+            <Property name="toolTipText" type="java.lang.String" value="Wiederholung stimmt nicht &#xfc;berein oder keine Mail-Adresse eingegeben!!!"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
@@ -343,7 +343,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="!"/>
-            <Property name="toolTipText" type="java.lang.String" value="Kein 4-stellige Eingabe!!!"/>
+            <Property name="toolTipText" type="java.lang.String" value="Keine 4-stellige Eingabe!!!"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
@@ -379,7 +379,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="!"/>
-            <Property name="toolTipText" type="java.lang.String" value="Wiederholung stimmt nicht &#xfc;berein oder keine Mail angegeben!!!"/>
+            <Property name="toolTipText" type="java.lang.String" value="Wiederholung stimmt nicht &#xfc;berein oder keine Mail eingegeben!!!"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
