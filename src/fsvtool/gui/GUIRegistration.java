@@ -295,13 +295,17 @@ public class GUIRegistration extends javax.swing.JFrame {
     private boolean checkRepeatedPassword(){
         if(getRepeatedPasswordInput().equals(getPasswordInput()))
             return true;
-        else 
+        else
             return false;
     }
     
     private boolean checkMail(){
-        if(getMailInput().contains("@") && getMailInput().contains("."))
-            return true;
+        if(getMailInput().contains("@") && getMailInput().contains(".")){
+          if(getMailInput().indexOf("@")<(getMailInput().indexOf(".")-1))
+              return true;
+          else
+              return false;      
+        }            
         else
             return false;
     }
