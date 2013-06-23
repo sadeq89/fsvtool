@@ -64,39 +64,41 @@ public class AuthentificationController extends AbstractController{
                     IUser newUser = em.getUserProvider().createUser();
                     IUser exUserMail = em.getUserProvider().getUserByEMail(reg.getMailInput());
                     IUser exUserName = em.getUserProvider().getUserByUserName(reg.getUsernameInput());
-                
-                    if(reg.getUsernameInput().equals(exUserName.getUsername()) || reg.getMailInput().equals(exUserMail.getEMail())){
-                        if(reg.getUsernameInput().equals(exUserName.getUsername())){
-                            reg.setExistingUserNameErrorVisible(true);                            
+                    
+                    if ((exUserMail != null) || (exUserName != null)) {
+                        if (reg.getUsernameInput().equals(exUserName.getUsername()) || reg.getMailInput().equals(exUserMail.getEMail())) {
+                            if (reg.getUsernameInput().equals(exUserName.getUsername())) {
+                                reg.setExistingUserNameErrorVisible(true);
+                            }
+                            if (reg.getMailInput().equals(exUserMail.getEMail())) {
+                                reg.setExistingMailErrorVisible(true);
+                            }
+                            JOptionPane.showMessageDialog(null, "Anmeldungsformular ist fehlerhaft.\n      * Sie müssen alle Felder ausfüllen!"
+                                    + "\n      * Sie müssen fehlerhafte Eingaben ändern!", "Anmeldungsfehler", 0);
+                            break;
                         }
-                        if(reg.getMailInput().equals(exUserMail.getEMail())){                            
-                            reg.setExistingMailErrorVisible(true);
-                        }
-                        break;
-                    }
-                    else{
+                    } 
+                    else {
                         newUser.setEMail(reg.getMailInput());
                         newUser.setUsername(reg.getUsernameInput());
                     }
-                        
-                
+
+
                     newUser.setPassword(reg.getPasswordInput());
                     newUser.setFirstname(reg.getFirstNameInput());
                     newUser.setName(reg.getSurnameInput());
-                
+
                     newUser.setPhoneNr(reg.getPhoneInput());
-                
+
                     em.getUserProvider().saveUser(newUser);
                     em.setLoggedinUser(newUser);
                     new MainController(em);
-                
+
                     reg.setVisible(false);
                     break;
-                }
-                else
-                   JOptionPane.showMessageDialog(null, "Anmeldungsformular ist fehlerhaft.\n      * Sie müssen alle Felder ausfüllen!"
-                           + "\n      * Sie müssen fehlerhafte Eingaben ändern!","Anmeldungsfehler",0);
-
+                } else
+                    JOptionPane.showMessageDialog(null, "Anmeldungsformular ist fehlerhaft.\n      * Sie müssen alle Felder ausfüllen!"
+                            + "\n      * Sie müssen fehlerhafte Eingaben ändern!", "Anmeldungsfehler", 0);
         }
     }
 }
