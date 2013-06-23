@@ -284,11 +284,14 @@ public class GUIRegistration extends javax.swing.JFrame {
      */
     
     public boolean regFinalCheck(){
-        if( checkMail()&&checkPasswordLength()&&checkRepeatedMail()&&checkRepeatedPassword())
+        if( checkMail()&&checkPasswordLength()&&checkRepeatedMail()&&checkRepeatedPassword() 
+                && !getFirstNameInput().isEmpty() && !getSurnameInput().isEmpty() 
+                && !getMailInput().isEmpty()&& !getRepeatedMailInput().isEmpty() && 
+                !getPhoneInput().isEmpty() && !getUsernameInput().isEmpty() && 
+                !getPasswordInput().isEmpty() && !getRepeatedPasswordInput().isEmpty())
             return true;
         else
             return false;
-            
     }
     
     public void setExistingMailErrorVisible(boolean check){
