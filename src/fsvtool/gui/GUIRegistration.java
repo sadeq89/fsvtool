@@ -5,6 +5,7 @@
 package fsvtool.gui;
 
 import fsvtool.controller.AuthentificationController;
+import fsvtool.persistance.IUser;
 
 /**
  *
@@ -14,6 +15,11 @@ public class GUIRegistration extends javax.swing.JFrame {
     private AuthentificationController controller;
     public static final String CANCEL = "Abbrechen";
     public static final String REGISTER = "Anmelden";
+    //private boolean existingUserMail;
+    //private boolean existingUserName;
+    //public String existingMail = "Diese Mail-Adresse wurde schon benutzt!";
+    //public String errorNoMail = "Bitte geben Sie eine gültige Mail-Adresse ein!!!";
+    //private String errorMailString;
     /**
      * Creates new form GUIRegistration
      */
@@ -185,6 +191,12 @@ public class GUIRegistration extends javax.swing.JFrame {
         labelUsername.setToolTipText("Erklärung auf rechts !!!");
         labelUsername.setBounds(190, 340, 130, 30);
         jLayeredPane1.add(labelUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        usernameInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usernameInputFocusLost(evt);
+            }
+        });
         usernameInput.setBounds(370, 340, 110, 30);
         jLayeredPane1.add(usernameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -199,7 +211,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         errorEmail.setForeground(new java.awt.Color(255, 0, 51));
         errorEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorEmail.setText("!");
-        errorEmail.setToolTipText("Wiederholung stimmt nicht überein oder keine Mail-Adresse eingegeben!!!");
+        errorEmail.setToolTipText("Wiederholung stimmt nicht überein oder keine Mail eingegeben!!!");
         errorEmail.setBounds(650, 190, 20, 30);
         jLayeredPane1.add(errorEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -228,7 +240,6 @@ public class GUIRegistration extends javax.swing.JFrame {
         jLayeredPane1.add(errorEmail2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
-        jLabel1.setToolTipText("");
         jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jLabel1.setMaximumSize(new java.awt.Dimension(850, 593));
         jLabel1.setMinimumSize(new java.awt.Dimension(850, 593));
@@ -255,7 +266,30 @@ public class GUIRegistration extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
+    
+    public boolean regFinalCheck(){
+        if( checkMail()&&checkPasswordLength()&&checkRepeatedMail()&&checkRepeatedPassword())
+            return true;
+        else
+            return false;
+            
+    }
+    
+    //public void setMailError(String error){
+      //  this.errorMailString = error;
+    //}
+    
+    //public String getMailError(){
+      //  return this.errorMailString;
+    //}
+    
+    //public void setExistingUserMailError(boolean check){
+      //  this.existingUserMail = check;
+    //}
+    
+    //public void setExistingUserNameError(boolean check){
+     //   this.existingUserName = check;
+    //}
     
     public void setController(AuthentificationController ac){
         this.controller = ac;
@@ -303,11 +337,15 @@ public class GUIRegistration extends javax.swing.JFrame {
         if(getMailInput().contains("@") && getMailInput().contains(".")){
           if(getMailInput().indexOf("@")<(getMailInput().indexOf(".")-1))
               return true;
-          else
-              return false;      
+          else{
+              //setMailError(getMailError());
+              return false; 
+              }
         }            
-        else
+        else{
+            //setMailError(getMailError());
             return false;
+        }
     }
     
     private boolean checkPasswordLength(){
@@ -342,12 +380,20 @@ public class GUIRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_repeatedPasswordInputFocusLost
 
     private void mailInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_mailInputFocusLost
-        this.errorEmail.setVisible(!checkMail());
+
+            this.errorEmail.setVisible(!checkMail());
+               
+        
     }//GEN-LAST:event_mailInputFocusLost
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
         controller.action(evt);
     }//GEN-LAST:event_buttonCancelActionPerformed
+
+    private void usernameInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameInputFocusLost
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameInputFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancel;

@@ -9,6 +9,7 @@ import fsvtool.gui.GUIRegistration;
 import fsvtool.persistance.EntityManager;
 import fsvtool.persistance.IUser;
 import fsvtool.persistance.UserProvider;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,21 +57,43 @@ public class AuthentificationController extends AbstractController{
             case GUILogin.EXIT:
                 System.exit(0);
             case GUIRegistration.REGISTER:
-                IUser newUser = em.getUserProvider().createUser();
                 
-                newUser.setUsername(reg.getUsernameInput());
-                newUser.setPassword(reg.getPasswordInput());
-                newUser.setFirstname(reg.getFirstNameInput());
-                newUser.setName(reg.getSurnameInput());
-                newUser.setEMail(reg.getMailInput());
-                newUser.setPhoneNr(reg.getPhoneInput());
+                if(reg.regFinalCheck()){
+                    IUser newUser = em.getUserProvider().createUser();
+                    IUser exUserMail = em.getUserProvider().getUserByEMail(reg.getMailInput());
+                    IUser exUserName = em.getUserProvider().getUserByUserName(reg.getUsernameInput());
                 
-                em.getUserProvider().saveUser(newUser);
-                em.setLoggedinUser(newUser);
-                new MainController(em);
+                   // if(reg.getUsernameInput().equals(exUserName.getUsername())){
+                        //reg.setExistingUserMailError(true);
+                        //break;
+                   // }
+                   // else
+                        newUser.setUsername(reg.getUsernameInput());
                 
-                reg.setVisible(false);
-                break;
+                    newUser.setPassword(reg.getPasswordInput());
+                    newUser.setFirstname(reg.getFirstNameInput());
+                    newUser.setName(reg.getSurnameInput());
+                
+                   // if(reg.getMailInput().equals(exUserMail.getEMail())){
+                    // reg.setExistingUserMailError(true);
+                     //reg.setMailError(reg.existingMail);
+                     //break;
+                   // }
+                   // else
+                        newUser.setEMail(reg.getMailInput());
+                
+                    newUser.setPhoneNr(reg.getPhoneInput());
+                
+                    em.getUserProvider().saveUser(newUser);
+                    em.setLoggedinUser(newUser);
+                    new MainController(em);
+                
+                    reg.setVisible(false);
+                    break;
+                }
+                else
+                   JOptionPane.showMessageDialog(null, "Bitte korrigieren Sie die fehlerhafte Eingaben","Anmeldungsfehler",0);
+
         }
     }
 }
