@@ -15,21 +15,20 @@ public class GUIRegistration extends javax.swing.JFrame {
     private AuthentificationController controller;
     public static final String CANCEL = "Abbrechen";
     public static final String REGISTER = "Anmelden";
-    //private boolean existingUserMail;
-    //private boolean existingUserName;
-    //public String existingMail = "Diese Mail-Adresse wurde schon benutzt!";
-    //public String errorNoMail = "Bitte geben Sie eine gültige Mail-Adresse ein!!!";
-    //private String errorMailString;
+    private boolean existingUserMail;
+    private boolean existingUserName;
     /**
      * Creates new form GUIRegistration
      */
     public GUIRegistration() {
         initComponents();
         setLocationRelativeTo(null);
-        this.errorEmail.setVisible(false);
+        this.errorNoEmail.setVisible(false);
         this.errorEmail2.setVisible(false);
         this.errorPassword.setVisible(false);
         this.errorPassword2.setVisible(false);
+        this.errorUsername.setVisible(false);
+        this.errorExistingMail.setVisible(false);
     }
 
     /**
@@ -64,15 +63,16 @@ public class GUIRegistration extends javax.swing.JFrame {
         usernameInput = new javax.swing.JTextField();
         tipUsername = new javax.swing.JLabel();
         phoneInput = new javax.swing.JTextField();
-        errorEmail = new javax.swing.JLabel();
+        errorNoEmail = new javax.swing.JLabel();
         errorPassword = new javax.swing.JLabel();
         errorPassword2 = new javax.swing.JLabel();
         errorEmail2 = new javax.swing.JLabel();
+        errorUsername = new javax.swing.JLabel();
+        errorExistingMail = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FSVTool - Anmeldung");
-        setMaximumSize(new java.awt.Dimension(850, 593));
         setMinimumSize(new java.awt.Dimension(850, 593));
         setResizable(false);
 
@@ -191,12 +191,6 @@ public class GUIRegistration extends javax.swing.JFrame {
         labelUsername.setToolTipText("Erklärung auf rechts !!!");
         labelUsername.setBounds(190, 340, 130, 30);
         jLayeredPane1.add(labelUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        usernameInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                usernameInputFocusLost(evt);
-            }
-        });
         usernameInput.setBounds(370, 340, 110, 30);
         jLayeredPane1.add(usernameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -207,19 +201,21 @@ public class GUIRegistration extends javax.swing.JFrame {
         phoneInput.setBounds(370, 290, 150, 30);
         jLayeredPane1.add(phoneInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        errorEmail.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        errorEmail.setForeground(new java.awt.Color(255, 0, 51));
-        errorEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorEmail.setText("!");
-        errorEmail.setToolTipText("Wiederholung stimmt nicht überein oder keine Mail eingegeben!!!");
-        errorEmail.setBounds(650, 190, 20, 30);
-        jLayeredPane1.add(errorEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        errorNoEmail.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        errorNoEmail.setForeground(new java.awt.Color(255, 0, 51));
+        errorNoEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorNoEmail.setText("!");
+        errorNoEmail.setToolTipText("Bitte geben Sie eine gültige Mail-Adresse ein!");
+        errorNoEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        errorNoEmail.setBounds(650, 190, 20, 30);
+        jLayeredPane1.add(errorNoEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         errorPassword.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         errorPassword.setForeground(new java.awt.Color(255, 0, 51));
         errorPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorPassword.setText("!");
         errorPassword.setToolTipText("Keine 4-stellige Eingabe!!!");
+        errorPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         errorPassword.setBounds(480, 390, 20, 30);
         jLayeredPane1.add(errorPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -228,6 +224,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         errorPassword2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorPassword2.setText("!");
         errorPassword2.setToolTipText("Wiederholung stimmt nicht überein!!!");
+        errorPassword2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         errorPassword2.setBounds(480, 440, 20, 30);
         jLayeredPane1.add(errorPassword2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -236,8 +233,27 @@ public class GUIRegistration extends javax.swing.JFrame {
         errorEmail2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorEmail2.setText("!");
         errorEmail2.setToolTipText("Wiederholung stimmt nicht überein oder keine Mail eingegeben!!!");
+        errorEmail2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         errorEmail2.setBounds(650, 240, 20, 30);
         jLayeredPane1.add(errorEmail2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        errorUsername.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        errorUsername.setForeground(new java.awt.Color(255, 0, 51));
+        errorUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorUsername.setText("!");
+        errorUsername.setToolTipText("Diese Benutzername wurde schon benutzt. Bitte geben Sie eine Andere aus!");
+        errorUsername.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        errorUsername.setBounds(480, 340, 20, 30);
+        jLayeredPane1.add(errorUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        errorExistingMail.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        errorExistingMail.setForeground(new java.awt.Color(255, 0, 51));
+        errorExistingMail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorExistingMail.setText("!");
+        errorExistingMail.setToolTipText("Diese Mail-Adresse wurde schon benutzt. Bitte geben Sie eine Andere ein!");
+        errorExistingMail.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        errorExistingMail.setBounds(650, 190, 20, 30);
+        jLayeredPane1.add(errorExistingMail, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -275,21 +291,15 @@ public class GUIRegistration extends javax.swing.JFrame {
             
     }
     
-    //public void setMailError(String error){
-      //  this.errorMailString = error;
-    //}
+    public void setExistingMailErrorVisible(boolean check){
+        this.existingUserMail = true;        
+        this.errorExistingMail.setVisible(true);
+    }    
     
-    //public String getMailError(){
-      //  return this.errorMailString;
-    //}
-    
-    //public void setExistingUserMailError(boolean check){
-      //  this.existingUserMail = check;
-    //}
-    
-    //public void setExistingUserNameError(boolean check){
-     //   this.existingUserName = check;
-    //}
+    public void setExistingUserNameErrorVisible(boolean check){
+        this.existingUserName = true;
+        this.errorUsername.setVisible(true);
+    }
     
     public void setController(AuthentificationController ac){
         this.controller = ac;
@@ -335,15 +345,14 @@ public class GUIRegistration extends javax.swing.JFrame {
     
     private boolean checkMail(){
         if(getMailInput().contains("@") && getMailInput().contains(".")){
-          if(getMailInput().indexOf("@")<(getMailInput().indexOf(".")-1))
+          if(getMailInput().indexOf("@")<(getMailInput().indexOf(".")-1)){ 
               return true;
+          }
           else{
-              //setMailError(getMailError());
               return false; 
               }
         }            
         else{
-            //setMailError(getMailError());
             return false;
         }
     }
@@ -380,28 +389,22 @@ public class GUIRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_repeatedPasswordInputFocusLost
 
     private void mailInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_mailInputFocusLost
-
-            this.errorEmail.setVisible(!checkMail());
-               
-        
+        this.errorNoEmail.setVisible(!checkMail());
     }//GEN-LAST:event_mailInputFocusLost
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
         controller.action(evt);
     }//GEN-LAST:event_buttonCancelActionPerformed
 
-    private void usernameInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameInputFocusLost
-        
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameInputFocusLost
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancel;
     private javax.swing.JButton buttonRegister;
-    private javax.swing.JLabel errorEmail;
     private javax.swing.JLabel errorEmail2;
+    private javax.swing.JLabel errorExistingMail;
+    private javax.swing.JLabel errorNoEmail;
     private javax.swing.JLabel errorPassword;
     private javax.swing.JLabel errorPassword2;
+    public javax.swing.JLabel errorUsername;
     private javax.swing.JTextField firstNameInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;

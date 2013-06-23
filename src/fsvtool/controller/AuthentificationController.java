@@ -63,24 +63,24 @@ public class AuthentificationController extends AbstractController{
                     IUser exUserMail = em.getUserProvider().getUserByEMail(reg.getMailInput());
                     IUser exUserName = em.getUserProvider().getUserByUserName(reg.getUsernameInput());
                 
-                   // if(reg.getUsernameInput().equals(exUserName.getUsername())){
-                        //reg.setExistingUserMailError(true);
-                        //break;
-                   // }
-                   // else
+                    if(reg.getUsernameInput().equals(exUserName.getUsername()) || reg.getMailInput().equals(exUserMail.getEMail())){
+                        if(reg.getUsernameInput().equals(exUserName.getUsername())){
+                            reg.setExistingUserNameErrorVisible(true);                            
+                        }
+                        if(reg.getMailInput().equals(exUserMail.getEMail())){                            
+                            reg.setExistingMailErrorVisible(true);
+                        }
+                        break;
+                    }
+                    else{
+                        newUser.setEMail(reg.getMailInput());
                         newUser.setUsername(reg.getUsernameInput());
+                    }
+                        
                 
                     newUser.setPassword(reg.getPasswordInput());
                     newUser.setFirstname(reg.getFirstNameInput());
                     newUser.setName(reg.getSurnameInput());
-                
-                   // if(reg.getMailInput().equals(exUserMail.getEMail())){
-                    // reg.setExistingUserMailError(true);
-                     //reg.setMailError(reg.existingMail);
-                     //break;
-                   // }
-                   // else
-                        newUser.setEMail(reg.getMailInput());
                 
                     newUser.setPhoneNr(reg.getPhoneInput());
                 
