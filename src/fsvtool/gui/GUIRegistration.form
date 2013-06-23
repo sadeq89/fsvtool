@@ -306,6 +306,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="phoneInput">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="phoneInputFocusLost"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
               <JLayeredPaneConstraints x="370" y="290" width="150" height="30" layer="0" position="-1"/>
@@ -385,7 +388,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="!"/>
-            <Property name="toolTipText" type="java.lang.String" value="Wiederholung stimmt nicht &#xfc;berein oder keine Mail eingegeben!!!"/>
+            <Property name="toolTipText" type="java.lang.String" value="Wiederholung stimmt nicht &#xfc;berein!!!"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Handcursor"/>
             </Property>
@@ -406,7 +409,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="!"/>
-            <Property name="toolTipText" type="java.lang.String" value="Diese Benutzername wurde schon benutzt. Bitte geben Sie eine Andere aus!"/>
+            <Property name="toolTipText" type="java.lang.String" value="Diese Benutzername wurde schon benutzt. Bitte geben Sie eine Andere ein!"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Handcursor"/>
             </Property>
@@ -438,6 +441,27 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
               <JLayeredPaneConstraints x="650" y="190" width="20" height="30" layer="0" position="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="errorPhoneNum">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="!"/>
+            <Property name="toolTipText" type="java.lang.String" value="keine g&#xfc;ltige Telefonnummer!!!"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Handcursor"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
+              <JLayeredPaneConstraints x="520" y="290" width="20" height="30" layer="0" position="-1"/>
             </Constraint>
           </Constraints>
         </Component>

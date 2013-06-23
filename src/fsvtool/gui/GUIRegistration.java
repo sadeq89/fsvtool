@@ -5,7 +5,6 @@
 package fsvtool.gui;
 
 import fsvtool.controller.AuthentificationController;
-import fsvtool.persistance.IUser;
 
 /**
  *
@@ -29,6 +28,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         this.errorPassword2.setVisible(false);
         this.errorUsername.setVisible(false);
         this.errorExistingMail.setVisible(false);
+        this.errorPhoneNum.setVisible(false);
     }
 
     /**
@@ -69,6 +69,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         errorEmail2 = new javax.swing.JLabel();
         errorUsername = new javax.swing.JLabel();
         errorExistingMail = new javax.swing.JLabel();
+        errorPhoneNum = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -198,6 +199,12 @@ public class GUIRegistration extends javax.swing.JFrame {
         tipUsername.setText("(Geben Sie bitte eine 3 bis 8-stellige Benutzername ein)");
         tipUsername.setBounds(520, 340, 320, 30);
         jLayeredPane1.add(tipUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        phoneInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                phoneInputFocusLost(evt);
+            }
+        });
         phoneInput.setBounds(370, 290, 150, 30);
         jLayeredPane1.add(phoneInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -232,7 +239,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         errorEmail2.setForeground(new java.awt.Color(255, 0, 51));
         errorEmail2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorEmail2.setText("!");
-        errorEmail2.setToolTipText("Wiederholung stimmt nicht überein oder keine Mail eingegeben!!!");
+        errorEmail2.setToolTipText("Wiederholung stimmt nicht überein!!!");
         errorEmail2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         errorEmail2.setBounds(650, 240, 20, 30);
         jLayeredPane1.add(errorEmail2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -241,7 +248,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         errorUsername.setForeground(new java.awt.Color(255, 0, 51));
         errorUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorUsername.setText("!");
-        errorUsername.setToolTipText("Diese Benutzername wurde schon benutzt. Bitte geben Sie eine Andere aus!");
+        errorUsername.setToolTipText("Diese Benutzername wurde schon benutzt. Bitte geben Sie eine Andere ein!");
         errorUsername.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         errorUsername.setBounds(480, 340, 20, 30);
         jLayeredPane1.add(errorUsername, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -254,6 +261,15 @@ public class GUIRegistration extends javax.swing.JFrame {
         errorExistingMail.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         errorExistingMail.setBounds(650, 190, 20, 30);
         jLayeredPane1.add(errorExistingMail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        errorPhoneNum.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        errorPhoneNum.setForeground(new java.awt.Color(255, 0, 51));
+        errorPhoneNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorPhoneNum.setText("!");
+        errorPhoneNum.setToolTipText("keine gültige Telefonnummer!!!");
+        errorPhoneNum.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        errorPhoneNum.setBounds(520, 290, 20, 30);
+        jLayeredPane1.add(errorPhoneNum, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -288,10 +304,22 @@ public class GUIRegistration extends javax.swing.JFrame {
                 && !getFirstNameInput().isEmpty() && !getSurnameInput().isEmpty() 
                 && !getMailInput().isEmpty()&& !getRepeatedMailInput().isEmpty() && 
                 !getPhoneInput().isEmpty() && !getUsernameInput().isEmpty() && 
-                !getPasswordInput().isEmpty() && !getRepeatedPasswordInput().isEmpty())
+                !getPasswordInput().isEmpty() && !getRepeatedPasswordInput().isEmpty()
+                && checkPhoneInputIsDigit())
             return true;
         else
             return false;
+    }
+    
+    private boolean checkPhoneInputIsDigit(){
+        boolean ret = false;
+        for(char ch : getPhoneInput().toCharArray()){
+            if(!Character.isDigit(ch))
+                ret = false;  
+            else 
+                ret = true;
+        }
+        return ret;
     }
     
     public void setExistingMailErrorVisible(boolean check){
@@ -399,6 +427,10 @@ public class GUIRegistration extends javax.swing.JFrame {
         controller.action(evt);
     }//GEN-LAST:event_buttonCancelActionPerformed
 
+    private void phoneInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneInputFocusLost
+        this.errorPhoneNum.setVisible(!checkPhoneInputIsDigit());
+    }//GEN-LAST:event_phoneInputFocusLost
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancel;
     private javax.swing.JButton buttonRegister;
@@ -407,6 +439,7 @@ public class GUIRegistration extends javax.swing.JFrame {
     private javax.swing.JLabel errorNoEmail;
     private javax.swing.JLabel errorPassword;
     private javax.swing.JLabel errorPassword2;
+    private javax.swing.JLabel errorPhoneNum;
     public javax.swing.JLabel errorUsername;
     private javax.swing.JTextField firstNameInput;
     private javax.swing.JLabel jLabel1;
