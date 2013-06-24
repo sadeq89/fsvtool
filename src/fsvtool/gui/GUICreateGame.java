@@ -29,7 +29,7 @@ public class GUICreateGame extends javax.swing.JFrame {
     public int getGameType(){
    
         if(this.cbSportart.getSelectedItem().equals("Fussball")){
-           return IUser.SKILL_TYPE_FOOTBALL;
+           return IUser.SKILL_TYPE_SOCCER;
         }
         else if(this.cbSportart.getSelectedItem().equals("Handball")){
             return IUser.SKILL_TYPE_HANDBALL;
