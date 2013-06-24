@@ -113,7 +113,8 @@ public class Game implements IGame {
     }
 
     @Override
-    public void setTeams(int team) {
+    public void setTeams(int team, List<IUser> player) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
