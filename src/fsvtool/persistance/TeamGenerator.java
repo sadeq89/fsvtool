@@ -4,9 +4,9 @@
  */
 package fsvtool.persistance;
 
-import fsvtool.comtarator.HandballSkillComparator;
-import fsvtool.comtarator.SoccerSkillComparator;
-import fsvtool.comtarator.VolleyballSkillComparator;
+import fsvtool.comparator.HandballSkillComparator;
+import fsvtool.comparator.SoccerSkillComparator;
+import fsvtool.comparator.VolleyballSkillComparator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
