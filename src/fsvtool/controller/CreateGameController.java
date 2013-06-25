@@ -32,6 +32,7 @@ public class CreateGameController extends AbstractController{
         game.setMaxPlayerCount(this.gui.getPlayerCount());
         
         this.em.getGameProvider().saveGame(game);
+        this.gui.setVisible(false);
     }
     
 }

@@ -25,8 +25,8 @@ public class UserConfigController extends AbstractController{
         IUser user = em.getLoggedinUser();  // Momentan eigeloggter User wird gespeichert
         
         this.gui.setBenutzername(user.getUsername());
-        this.gui.setVorname(user.getFirstname());
-        this.gui.setName(user.getName());
+        this.gui.setFirstname(user.getFirstname());
+        this.gui.setSurname(user.getName());
         this.gui.setTel(user.getPhoneNr());
         this.gui.setEMail(user.getEMail());
         this.gui.setVisible(true);
@@ -39,14 +39,16 @@ public class UserConfigController extends AbstractController{
     public void save(){
         IUser user = em.getLoggedinUser();
         
-        user.setName(this.gui.getName());
+        user.setName(this.gui.getSurname());
         user.setUsername(this.gui.getBenutzername());
-        user.setFirstname(this.gui.getVorname());
+        user.setFirstname(this.gui.getFirstname());
         user.setEMail(this.gui.getEMail());
         user.setPhoneNr(this.gui.getTel());
         
         
         this.em.getUserProvider().saveUser(user);
+        this.gui.setVisible(false);
+        
         
         
         
