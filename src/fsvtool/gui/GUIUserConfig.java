@@ -139,6 +139,7 @@ public class GUIUserConfig extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Benutzereinstellungen");
+        setResizable(false);
 
         jLayeredPane2.setMaximumSize(getMaximumSize());
 

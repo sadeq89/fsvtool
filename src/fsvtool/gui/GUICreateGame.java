@@ -103,6 +103,7 @@ public class GUICreateGame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Neues Spiel");
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Neues Spiel erstellen");
@@ -190,7 +191,7 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLayeredPane1.add(tfMinute, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel7.setText("H / M");
-        jLabel7.setBounds(400, 230, 50, 16);
+        jLabel7.setBounds(400, 230, 50, 14);
         jLayeredPane1.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N

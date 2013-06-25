@@ -34,8 +34,8 @@ public class AuthentificationController extends AbstractController{
                 reg.setVisible(true);
                 reg.setController(this);
                 login.setVisible(false);
-                JOptionPane.showMessageDialog(null, "* Sie können Kennwort später leider nicht ändern."
-                        + "\n* Bitte füllen Sie alle Felder aus, ansonsten wird die Anmeldung nicht weiter geführt!","Hinweis!",1);
+                JOptionPane.showMessageDialog(null, "* Sie können das Kennwort später nicht mehr ändern."
+                        + "\n* Bitte füllen Sie alle Felder aus, ansonsten wird die Anmeldung nicht  gespeichert!","Hinweis!",1);
                 break;
             case GUIRegistration.CANCEL:
                 login.setVisible(true);
@@ -98,7 +98,7 @@ public class AuthentificationController extends AbstractController{
                     break;
                 } else
                     JOptionPane.showMessageDialog(null, "Anmeldungsformular ist fehlerhaft.\n      * Sie müssen alle Felder ausfüllen!"
-                            + "\n      * Sie müssen fehlerhafte Eingaben ändern!", "Anmeldungsfehler", 0);
+                            + "\n      * Sie müssen fehlerhafte Eingaben ausbessern!", "Anmeldungsfehler", 0);
         }
     }
 }
