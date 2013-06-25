@@ -47,5 +47,5 @@ public interface IGame {
     
     //so oder so ähnlich für die teamberechnung nötig...
     public List<IUser> getPlayer();
-    public void setTeams(int team);
+    public void setTeams(int team, List<IUser> player);
 }
