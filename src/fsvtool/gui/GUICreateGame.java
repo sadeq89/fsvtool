@@ -61,7 +61,7 @@ public class GUICreateGame extends javax.swing.JFrame {
     }
     
     public Integer getPlayerCount(){
-        return this.spPlayerCount.getComponentCount();
+        return (Integer) this.spPlayerCount.getValue();
     }
     /**
      * This method is called from within the constructor to initialize the form.
