@@ -70,7 +70,14 @@ public class GamesTableModell extends AbstractTableModel {
                 // Ort
                 return this.list.get(rowIndex).getGameLocation();
             case 4:
-                return this.list.get(rowIndex).isInGame();
+                String inGame;
+                if (this.list.get(rowIndex).isInGame()) {
+                    inGame = "Ja";
+                }
+                else {
+                    inGame = "Nein";
+                }
+                return inGame;
         }
         return null;
     }

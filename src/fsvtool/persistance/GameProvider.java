@@ -21,13 +21,13 @@ public class GameProvider extends AbstractProvider {
     
     protected String createSQL = "CREATE TABLE IF NOT EXISTS FSV_GAME\n" +
         "(\n" +
-        "   ID integer PRIMARY KEY NOT NULL,\n" +
-        "   GAME_TYPE integer NOT NULL,\n" +
+        "   ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\n" +
+        "   GAME_TYPE INT NOT NULL,\n" +
         "   GAME_DATE DATE NOT NULL,\n" + 
         "   GAME_TIME TIME NOT NULL,\n" + 
         "   LOCATION VARCHAR(255) NOT NULL,\n" +
-        "   MAX_PLAYER_COUNT integer NOT NULL,\n" +
-        "   PLAYER_IN_GAME integer NOT NULL\n" + 
+        "   MAX_PLAYER_COUNT INT NOT NULL,\n" +
+        "   PLAYER_IN_GAME INT NOT NULL\n" + 
         ");\n" +
         "CREATE UNIQUE INDEX IF NOT EXISTS PRIMARY_KEY_FSV_GAME ON FSV_GAME(ID);" + 
         "CREATE TABLE IF NOT EXISTS FSV_GAME_USER\n" +
@@ -56,13 +56,14 @@ public class GameProvider extends AbstractProvider {
     }
     
     public int getCount() {
-        String sql = "SELECT count(*) FROM FSV_GAME;";
+        String sql = "SELECT count(*) as count FROM FSV_GAME;";
         try {
             Statement stm = this.em.createStatement();
             ResultSet result = stm.executeQuery(sql);
-            return result.getInt(1);
+            result.first();
+            return result.getInt("count");
         } catch (SQLException ex) {
-            Logger.getLogger(GameProvider.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
             return 0;
         }
     }
@@ -100,13 +101,13 @@ public class GameProvider extends AbstractProvider {
         ArrayList<IGame> list = new ArrayList<>();
         PreparedStatement stm;
         try {
-            stm = em.getConn().prepareStatement("SELECT g.id as id, g.game_date as date, "
+            stm = em.getConn().prepareStatement("SELECT g.ID as id, g.game_date as date, "
                     + " g.game_time as time, "
-                    + " g.max_player_count as player_count, g.player_in_game as player_in_game "
+                    + " g.max_player_count as player_count, g.player_in_game as player_in_game, "
                     + " g.location as location, gu.user_id as user_id "
                     + " FROM FSV_GAME g"
                     + " LEFT JOIN FSV_GAME_USER gu ON g.id = gu.game_id"
-                    + " WHERE (gu.user_id IS NULL OR gu.user_id = ?");
+                    + " WHERE (gu.user_id IS NULL OR gu.user_id = ?) ");
             Integer loggedinUserId = em.getLoggedinUser().getId();
             stm.setInt(1, loggedinUserId);
             ResultSet rs = stm.executeQuery();
@@ -146,8 +147,8 @@ public class GameProvider extends AbstractProvider {
         "   PLAYER_IN_GAME integer NOT NULL\n"
          */
         // Insert
-        String sql = "INSERT INTO FSV_USER "
-                + "(game_type, game_date, game_time, location, MAX_PLAYER_COUNT, PLAYER_IN_GAME) "
+        String sql = "INSERT INTO FSV_GAME "
+                + "(GAME_TYPE, game_date, game_time, location, MAX_PLAYER_COUNT, PLAYER_IN_GAME) "
                 + "VALUES (?, ?, ?, ?, ?, ?) ";
         try {
             PreparedStatement stm = em.getConn().prepareStatement(sql);
@@ -159,7 +160,7 @@ public class GameProvider extends AbstractProvider {
             stm.setInt(6, 0);
             stm.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
     
