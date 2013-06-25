@@ -5,13 +5,14 @@
 package fsvtool.gui;
 
 import fsvtool.controller.UserConfigController;
-import java.awt.event.ActionEvent;
+import fsvtool.persistance.IUser;
 
 /**
  *
  * @author Sadeq
  */
 public class GUIUserConfig extends javax.swing.JFrame {
+
     private UserConfigController controller;
 
     /**
@@ -23,68 +24,80 @@ public class GUIUserConfig extends javax.swing.JFrame {
     }
 
     // Get methods for reading textfield,combobox and radiobutton values:
-    
-    public String getBenutzername(){
+    public String getBenutzername() {
         return this.tfBenutzername.getText();
     }
-    
-    public void setBenutzername(String username){
-       this.tfBenutzername.setText(username);
-    }    
-    
-    public String getVorname(){
+
+    public void setBenutzername(String username) {
+        this.tfBenutzername.setText(username);
+    }
+
+    public String getVorname() {
         return this.tfVorname.getText();
     }
-    
-    public void setVorname(String firstname){ 
+
+    public void setVorname(String firstname) {
         this.tfVorname.setText(firstname);
     }
-    
-    public String getName(){
+
+    public String getName() {
         return this.tfName.getText();
     }
-    
-     public void setName(String name){ 
+
+    public void setName(String name) {
         this.tfName.setText(name);
     }
-     
-    public String getTel(){
-        
+
+    public String getTel() {
+
         return this.tfTel.getText();
     }
-    
-    public void setTel(String tel){
+
+    public void setTel(String tel) {
         this.tfTel.setText(tel);
     }
-    
-    public String getEMail(){
+
+    public String getEMail() {
         return this.tfEMail.getText();
     }
-    
-    public void setEMail(String email){
+
+    public void setEMail(String email) {
         this.tfEMail.setText(email);
     }
-    
-    public Object getFussballStrength(){
-        return this.bgFussball.getSelection();
-    }
-    
-   /* public void setFussballStrength( fussballstrength){
-        switch(fussballstrength){
-            case 0:
-        this.bgFussball.setSelected(this.rbFbNichtSoGut, rootPaneCheckingEnabled);
+
+    public int getFussballStrength() throws VerifyError {
+        if (this.rbFbSehrGut.isSelected()) {
+            return IUser.SKILL_VALUE_GREAT;
+        } else if (this.rbFbMittel.isSelected()) {
+            return IUser.SKILL_VALUE_MIDDLE;
+        } else if (this.rbFbNichtSoGut.isSelected()) {
+            return IUser.SKILL_VALUE_BAD;
         }
-    }*/
-    
-    public Object getHandballStrength(){
+        throw new VerifyError("Nothing was selected.");
+    }
+
+    public void setFussballStrength(int fussballstrength) {
+        switch (fussballstrength) {
+            case IUser.SKILL_VALUE_GREAT:
+                this.rbFbSehrGut.setSelected(true);
+                break;
+            case IUser.SKILL_VALUE_MIDDLE:
+                this.rbFbMittel.setSelected(true);
+                break;
+            case IUser.SKILL_VALUE_BAD:
+                this.rbFbNichtSoGut.setSelected(true);
+                break;
+        }
+    }
+
+    public Object getHandballStrength() {
         return this.bgHandball.getSelection();
     }
-    
-    public Object getVolleyballStrength(){
+
+    public Object getVolleyballStrength() {
         return this.bgVolleyball.getSelection();
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -359,7 +372,7 @@ public class GUIUserConfig extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.controller.save();
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tfTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelActionPerformed
@@ -371,7 +384,7 @@ public class GUIUserConfig extends javax.swing.JFrame {
     }//GEN-LAST:event_rbFbSehrGutActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -13,8 +13,12 @@ import java.util.List;
 public interface IUser {
     
     public static final int SKILL_TYPE_SOCCER = 0;
-    public static final int SKILL_TYPE_HANDBALL = 1;
-    public static final int SKILL_TYPE_VOLLEYBALL = 2;
+    public static final int SKILL_TYPE_VOLLEYBALL = 1;
+    public static final int SKILL_TYPE_HANDBALL = 2;
+    
+    public static int SKILL_VALUE_BAD = 0;
+    public static int SKILL_VALUE_MIDDLE = 1;
+    public static int SKILL_VALUE_GREAT = 2;
     
     public Integer getId();
     
