@@ -14,6 +14,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JPopupMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
