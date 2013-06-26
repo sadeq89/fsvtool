@@ -32,19 +32,19 @@ public class GUIUserConfig extends javax.swing.JFrame {
         this.tfBenutzername.setText(username);
     }
 
-    public String getVorname() {
+    public String getFirstname() {
         return this.tfVorname.getText();
     }
 
-    public void setVorname(String firstname) {
+    public void setFirstname(String firstname) {
         this.tfVorname.setText(firstname);
     }
 
-    public String getName() {
+    public String getSurname() {
         return this.tfName.getText();
     }
 
-    public void setName(String name) {
+    public void setSurname(String name) {
         this.tfName.setText(name);
     }
 
@@ -89,14 +89,33 @@ public class GUIUserConfig extends javax.swing.JFrame {
                 break;
         }
     }
-
-    public Object getHandballStrength() {
-        return this.bgHandball.getSelection();
+  public void setHandballStrength(int fussballstrength) {
+        switch (fussballstrength) {
+            case IUser.SKILL_VALUE_GREAT:
+                this.rbHbSehrGut.setSelected(true);
+                break;
+            case IUser.SKILL_VALUE_MIDDLE:
+                this.rbHbMittel.setSelected(true);
+                break;
+            case IUser.SKILL_VALUE_BAD:
+                this.rbHbNichtSoGut.setSelected(true);
+                break;
+        }
     }
-
-    public Object getVolleyballStrength() {
-        return this.bgVolleyball.getSelection();
+    public void setVolleyballStrength(int fussballstrength) {
+        switch (fussballstrength) {
+            case IUser.SKILL_VALUE_GREAT:
+                this.rbVbSehrGut.setSelected(true);
+                break;
+            case IUser.SKILL_VALUE_MIDDLE:
+                this.rbVbMittel.setSelected(true);
+                break;
+            case IUser.SKILL_VALUE_BAD:
+                this.rbVbNichtSoGut.setSelected(true);
+                break;
+        }
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
