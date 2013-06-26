@@ -19,7 +19,7 @@ public class CreateGameController extends AbstractController{
     public CreateGameController(EntityManager em) {
         super(em);
         this.gui = new GUICreateGame(this);
-        this.gui.setVisible(true);
+        
     }
     
     public void saveGame(){
@@ -33,6 +33,10 @@ public class CreateGameController extends AbstractController{
         
         this.em.getGameProvider().saveGame(game);
         this.gui.setVisible(false);
+    }
+
+    public void show() {
+       this.gui.setVisible(true);
     }
     
 }

@@ -6,22 +6,21 @@ package fsvtool.gui;
 
 import fsvtool.controller.MainController;
 import fsvtool.persistance.EntityManager;
-import fsvtool.persistance.GameProvider;
 import fsvtool.persistance.GamesTableModell;
-import java.awt.Image;
+import fsvtool.persistance.IGame;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.AbstractAction;
-import javax.swing.ImageIcon;
 import javax.swing.JPopupMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Marcel
  */
 public class GUIMainFrame extends javax.swing.JFrame {
+
     private MainController controller;
     public static final String NEUES_SPIEL = "Neues Spiel";
     public static final String TEILNEHMEN = "Teilnehmen";
@@ -31,8 +30,6 @@ public class GUIMainFrame extends javax.swing.JFrame {
     public static final String MEIN_ACCOUNT = "Mein Account";
     private EntityManager em;
     private GamesTableModell tm;
-    
-    
 
     /**
      * Creates new form GUIMainFrame
@@ -42,13 +39,12 @@ public class GUIMainFrame extends javax.swing.JFrame {
         initComponents();
         initPopupMenu();
     }
-    
+
     public void setController(MainController c) {
         this.controller = c;
     }
-    
 
-    private void initPopupMenu(){
+    private void initPopupMenu() {
         pAccountPopup = new JPopupMenu();
         pAccountPopup.add(new JMenuItem(new AbstractAction("Einstellungen") {
             public void actionPerformed(ActionEvent e) {
@@ -59,8 +55,9 @@ public class GUIMainFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 controller.action(e);
             }
-        })); 
+        }));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -162,6 +159,11 @@ public class GUIMainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bTeilnehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTeilnehmenActionPerformed
+        List<IGame> gameList = new ArrayList<IGame>();        
+        for (int index : tTable.getSelectedRows()) { 
+            gameList.add(this.controller.getTable().getValue(index));
+        }
+        evt.setSource(gameList);
         this.controller.action(evt);
     }//GEN-LAST:event_bTeilnehmenActionPerformed
 
@@ -178,11 +180,9 @@ public class GUIMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bMeinAccountActionPerformed
 
     private void bMeinAccountMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMeinAccountMousePressed
-        pAccountPopup.show(evt.getComponent(),evt.getX(), evt.getY());
+        pAccountPopup.show(evt.getComponent(), evt.getX(), evt.getY());
     }//GEN-LAST:event_bMeinAccountMousePressed
-
     private JPopupMenu pAccountPopup;
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bMeinAccount;
     private javax.swing.JButton bNewGame;
@@ -193,6 +193,4 @@ public class GUIMainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tTable;
     // End of variables declaration//GEN-END:variables
-
-
 }

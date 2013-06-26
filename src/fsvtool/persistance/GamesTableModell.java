@@ -12,39 +12,34 @@ import javax.swing.table.AbstractTableModel;
  * @author ahmet
  */
 public class GamesTableModell extends AbstractTableModel {
+
     private GameProvider gp;
-    
-    private String[] columnNames = new String [] {
+    private String[] columnNames = new String[]{
         "Auswählen", "Anzahl Spieler", "Datum/Uhrzeit", "Ort", "Teilname"
     };
-    
     protected Class<?>[] dataTypes = new Class[]{
         Boolean.class, String.class, String.class, String.class, String.class, String.class
     };
     private List<IGame> list;
 
-    
-    @Override
-    public String getColumnName(int columnIndex)
-    {
-        return columnNames[columnIndex];
-    }
-    
-    @Override
-    public Class<?> getColumnClass(int columnIndex)
-    {
-        return dataTypes[columnIndex];
-    }
-    
     public GamesTableModell(GameProvider gp) {
         this.gp = gp;
     }
-    
+
+    @Override
+    public String getColumnName(int columnIndex) {
+        return columnNames[columnIndex];
+    }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        return dataTypes[columnIndex];
+    }
+
     @Override
     public int getRowCount() {
         return this.gp.getCount();
     }
-
 
     @Override
     public int getColumnCount() {
@@ -73,8 +68,7 @@ public class GamesTableModell extends AbstractTableModel {
                 String inGame;
                 if (this.list.get(rowIndex).isInGame()) {
                     inGame = "Ja";
-                }
-                else {
+                } else {
                     inGame = "Nein";
                 }
                 return inGame;
@@ -82,7 +76,13 @@ public class GamesTableModell extends AbstractTableModel {
         return null;
     }
     
+    public IGame getValue(int index) {
+         System.out.println("value" + list.get(index));   
+        return list.get(index);
+    }
+
     private void setValues() {
         list = gp.getAllGames();
+        System.out.println(list);
     }
 }
