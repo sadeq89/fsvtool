@@ -375,17 +375,21 @@ public class GUIRegistration extends javax.swing.JFrame {
     }
     
     private boolean checkMail(){
+        
+        
         if(getMailInput().contains("@") && getMailInput().contains(".")){
-          if(getMailInput().indexOf("@")<(getMailInput().indexOf(".")-1)){ 
-              return true;
-          }
-          else{
-              return false; 
-              }
-        }            
-        else{
+            
+            int indexLastPoint = getMailInput().lastIndexOf(".");
+            int indexAt = getMailInput().indexOf("@");
+            
+            if(indexAt < indexLastPoint-1)
+                return true;
+            else
+                return false;
+        }   
+        else
             return false;
-        }
+        
     }
     
     private boolean checkPasswordLength(){
