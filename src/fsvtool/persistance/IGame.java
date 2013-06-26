@@ -17,6 +17,10 @@ public interface IGame {
     public static int TYPE_FOOTBALL = 1;
     public static int TYPE_HANDBALL = 2;
     
+    public static int TEAM_NO_TEAM = 0;
+    public static int TEAM_A = 1;
+    public static int TEAM_B = 2;
+    
     public Integer getId();
     
     public Date getDate();
@@ -46,6 +50,6 @@ public interface IGame {
     public Integer getPlayerInGameCount();
     
     //so oder so ähnlich für die teamberechnung nötig...
-    public List<IUser> getPlayer();
-    public void setTeams(int team, List<IUser> player);
+    public List<IUser> getPlayerInTeam(int team);
+    public void addPlayerToTeam(IUser player, int team);
 }

@@ -6,6 +6,7 @@ package fsvtool.persistance;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,17 +23,28 @@ public class Game implements IGame {
     private int gameType;
     private Integer playerInGameCount;
     private Time time;
+    private ArrayList<IUser> teamA;
+    private ArrayList<IUser> teamB;
+    private ArrayList<IUser> teamNoTeam;
 
     public Game() {
+        teamA = new ArrayList<>();
+        teamB = new ArrayList<>();
+        teamNoTeam = new ArrayList<>();
     }
 
     public Game(Integer id) {
+        this();
         this.id = id;
     }
 
     @Override
     public Integer getId() {
         return this.id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
@@ -108,13 +120,37 @@ public class Game implements IGame {
     }
 
     @Override
-    public List<IUser> getPlayer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<IUser> getPlayerInTeam(int team) {
+        switch (team) {
+            case IGame.TEAM_A:
+                return this.teamA;
+            case IGame.TEAM_B:
+                return this.teamB;
+            case IGame.TEAM_NO_TEAM:
+                return this.teamNoTeam;
+        }
+        throw new IllegalArgumentException("team value "+team+" does not exist. Use a Value from IGame");
     }
 
     @Override
-    public void setTeams(int team, List<IUser> player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addPlayerToTeam(IUser player, int team) {
+        switch (team) {
+            case IGame.TEAM_A:
+                // Remove first from others if presented
+                this.teamB.remove(player);
+                this.teamNoTeam.remove(player);
+                // Than add
+                this.teamA.add(player);
+            case IGame.TEAM_B:
+                this.teamA.remove(player);
+                this.teamNoTeam.remove(player);
+                this.teamB.add(player);
+            case IGame.TEAM_NO_TEAM:
+                this.teamA.remove(player);
+                this.teamB.remove(player);
+                this.teamNoTeam.add(player);
+        }
+        throw new IllegalArgumentException("team value "+team+" does not exist. Use a Value from IGame");
     }
 
 }

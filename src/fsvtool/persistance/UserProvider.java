@@ -76,6 +76,26 @@ public class UserProvider extends AbstractProvider {
         }
     }
     
+    public IUser getUserById(int id) {
+        PreparedStatement stm;
+        try {
+            stm = em.getConn().prepareStatement(
+                    "SELECT id, name, firstname, email, username, password, phone_nr"
+                    + " FROM FSV_USER WHERE id = ?");
+            stm.setInt(1, id);
+            ResultSet rs = stm.executeQuery();
+            if (rs.first()) {
+                return buildUserObject(rs);
+            }
+            else {
+                return null;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
     public void saveUser(IUser user) {
         Integer id = user.getId();
         
