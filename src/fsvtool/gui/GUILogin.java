@@ -83,6 +83,12 @@ public class GUILogin extends javax.swing.JFrame {
         jLabel3.setText("Benutzername");
         jLabel3.setBounds(140, 90, 90, 15);
         jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        usernameInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameInputKeyPressed(evt);
+            }
+        });
         usernameInput.setBounds(240, 80, 190, 30);
         jLayeredPane1.add(usernameInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -90,6 +96,12 @@ public class GUILogin extends javax.swing.JFrame {
         labelKennwort.setText("Kennwort");
         labelKennwort.setBounds(140, 120, 90, 15);
         jLayeredPane1.add(labelKennwort, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        passwordInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordInputKeyPressed(evt);
+            }
+        });
         passwordInput.setBounds(240, 110, 190, 30);
         jLayeredPane1.add(passwordInput, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -157,21 +169,33 @@ public class GUILogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        controller.action(evt);
+        controller.action(evt.getActionCommand());
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        controller.action(evt);
+        controller.action(LOGIN);
         this.errorLogin.setVisible(ErrorShowResult);
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        controller.action(evt);
+        controller.action(evt.getActionCommand());
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
           JOptionPane.showMessageDialog(null, "Bitte wenden Sie sich an \"admin@fsvtool.de\"","Kennwort vergessen?",1);
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void passwordInputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordInputKeyPressed
+        controller.action(LOGIN);
+        this.errorLogin.setVisible(ErrorShowResult);
+
+    }//GEN-LAST:event_passwordInputKeyPressed
+
+    private void usernameInputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameInputKeyPressed
+        controller.action(LOGIN);
+        this.errorLogin.setVisible(ErrorShowResult);
+
+    }//GEN-LAST:event_usernameInputKeyPressed
 
     /**
      * @param args the command line arguments

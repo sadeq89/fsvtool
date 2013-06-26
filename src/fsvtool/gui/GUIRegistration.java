@@ -408,7 +408,7 @@ public class GUIRegistration extends javax.swing.JFrame {
         //</editor-fold>
     
     private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
-        controller.action(evt);
+        controller.action(evt.getActionCommand());
     }//GEN-LAST:event_buttonRegisterActionPerformed
 
     private void repeatedMailInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_repeatedMailInputFocusLost
@@ -428,7 +428,7 @@ public class GUIRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_mailInputFocusLost
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
-        controller.action(evt);
+        controller.action(evt.getActionCommand());
     }//GEN-LAST:event_buttonCancelActionPerformed
 
     private void phoneInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phoneInputFocusLost

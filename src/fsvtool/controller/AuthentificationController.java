@@ -26,8 +26,8 @@ public class AuthentificationController extends AbstractController{
         login.setVisible(true);
     }
     
-    public void action(java.awt.event.ActionEvent evt){
-        switch(evt.getActionCommand()){
+    public void action(String evt){
+        switch(evt){
             case GUILogin.REGISTRATION:
                 reg = new GUIRegistration();
                 
@@ -41,7 +41,7 @@ public class AuthentificationController extends AbstractController{
                 login.setVisible(true);
                 reg.setVisible(false);
                 break;
-            case GUILogin.LOGIN:
+            case (GUILogin.LOGIN):
                 UserProvider up = em.getUserProvider();
                 IUser user = up.getUserByUserName(login.getUsername());
                 
