@@ -44,7 +44,7 @@ public class TeamGenerator {
         List team1 = new ArrayList<IUser>();
         List team2 = new ArrayList<IUser>();
         
-        List<IUser> player = game.getPlayer();
+        List<IUser> player = game.getPlayerInTeam(IGame.TEAM_NO_TEAM);
         Comparator cmp = chooseComparator(game);
         
         Collections.sort(player, cmp); //Liste nach jeweiligem Typ sortieren
@@ -86,12 +86,13 @@ public class TeamGenerator {
 
             if (tmpTeam == 1) { //Ausgabe
                 team1.add(tmpUser);
+                game.addPlayerToTeam(tmpUser, IGame.TEAM_A);
             } else {
                 team2.add(tmpUser);
+                game.addPlayerToTeam(tmpUser, IGame.TEAM_B);
             }
 
         }
-        game.setTeams(1, team1);
-        game.setTeams(1, team2);
+        
     }
 }
