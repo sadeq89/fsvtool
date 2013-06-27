@@ -37,7 +37,6 @@ public class MainController extends AbstractController {
                 this.createGameController.show();
                 break;
             case GUIMainFrame.TEILNEHMEN:
-                
                 this.enterGameController = new EnterGameController(this.em, (List<IGame>) evt.getSource());
                 this.enterGameController.setParticipation();
                 break;
@@ -48,7 +47,13 @@ public class MainController extends AbstractController {
                 System.exit(0);
             case GUIMainFrame.EINSTELLUNGEN:
                 this.userConfigController = new UserConfigController(this.em);
+                em.getGameProvider().saveGame(null);
                 break;
+            
+            case GUIMainFrame.TEAMS_ANZEIGEN:
+                showTeams((IGame) evt.getSource());
+                break;
+            
 
         }
     }
@@ -60,5 +65,13 @@ public class MainController extends AbstractController {
     
     public GamesTableModell getTable() {
         return this.em.getGameProvider().getTableModell();
+    }
+
+    private void showTeams(IGame game) {
+        if(game.getPlayerInGameCount()==game.getMaxPlayerCount()){
+          gui.showTeamDialog(game.getPlayerInTeam(IGame.TEAM_A),game.getPlayerInTeam(IGame.TEAM_B));  
+        } else {
+            gui.showNotEnoughPlayer();
+        }
     }
 }

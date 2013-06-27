@@ -6,6 +6,7 @@ package fsvtool.controller;
 
 import fsvtool.persistance.EntityManager;
 import fsvtool.persistance.IGame;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -22,7 +23,12 @@ class EnterGameController extends AbstractController {
     }
 
     void setParticipation() {
-        System.out.println(gameList.toString());
-        // db operations
+        Iterator<IGame> it = gameList.iterator();
+        while(it.hasNext()){
+            IGame tmpGame = it.next();
+            tmpGame.addUser(em.getLoggedinUser());
+            em.getGameProvider().saveGame(tmpGame);
+        }
+        
     }
 }
