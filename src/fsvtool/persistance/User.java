@@ -8,7 +8,7 @@ package fsvtool.persistance;
  *
  * @author ahmet
  */
-class User implements IUser {
+public class User implements IUser {
     
     private Integer id = null;
     private String name = null;
@@ -101,4 +101,10 @@ class User implements IUser {
     public void setSkill(int type, int value) {
         this.skills[type] = value;
     }
+
+    @Override
+    public String toString() {
+        return new String() + (skills[0]);
+    }
+    
 }
