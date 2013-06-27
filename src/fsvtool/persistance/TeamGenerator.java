@@ -18,41 +18,43 @@ import java.util.List;
  * @author Marcel
  */
 public class TeamGenerator {
-        private Comparator chooseComparator(IGame game){
+
+    private Comparator chooseComparator(IGame game) {
         Comparator cmp = null;
         int gameType = game.getGameType();
-        
-        switch(gameType){
-            case IUser.SKILL_TYPE_SOCCER:
+
+        switch (gameType) {
+            case IGame.TYPE_SOCCER:
                 cmp = new SoccerSkillComparator();
                 break;
-            case IUser.SKILL_TYPE_VOLLEYBALL:
+            case IGame.TYPE_VOLLEYBALL:
                 cmp = new VolleyballSkillComparator();
                 break;
-            case IUser.SKILL_TYPE_HANDBALL:
+            case IGame.TYPE_HANDBALL:
                 cmp = new HandballSkillComparator();
                 break;
         }
         return cmp;
     }
-    
+
     public void generateTeams(IGame game) {
         int skillTotalTeam1 = 0;
-        int skillTotalTeam2 = 0;;
+        int skillTotalTeam2 = 0;
         int tmpTeam = 0;
-       
+
         List team1 = new ArrayList<IUser>();
         List team2 = new ArrayList<IUser>();
-        
-        List<IUser> player = game.getPlayerInTeam(IGame.TEAM_NO_TEAM);
+
+        List<IUser> player = new ArrayList<IUser>();
+        player.addAll(game.getPlayerInTeam(IGame.TEAM_NO_TEAM));
         Comparator cmp = chooseComparator(game);
-        
+
         Collections.sort(player, cmp); //Liste nach jeweiligem Typ sortieren
         Iterator it = player.iterator();
-        
+
         while (it.hasNext()) {
             IUser tmpUser = (IUser) it.next();
-
+          
             if (!it.hasNext()) {    //Wenn keiner mehr kommt muss der letzte der kleineren, bzw. der schlechtesten Mannschaft zugewießen werden
                 if (team1.size() < team2.size()) {
                     tmpTeam = 1;
@@ -84,15 +86,19 @@ public class TeamGenerator {
                 }
             }
 
+            
+
+            
             if (tmpTeam == 1) { //Ausgabe
                 team1.add(tmpUser);
+                skillTotalTeam1 += tmpUser.getSkill(game.getGameType());
                 game.addPlayerToTeam(tmpUser, IGame.TEAM_A);
             } else {
                 team2.add(tmpUser);
+                skillTotalTeam2 += tmpUser.getSkill(game.getGameType());
                 game.addPlayerToTeam(tmpUser, IGame.TEAM_B);
             }
-
         }
-        
+
     }
 }

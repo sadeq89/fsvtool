@@ -20,8 +20,9 @@ public class MainController extends AbstractController {
 
     private final GUIMainFrame gui;
     private CreateGameController createGameController;
-    private UserConfigController userConfigController;
     private EnterGameController enterGameController;
+    private LeaveGameController leaveGameController;
+    private UserConfigController userConfigController;
 
     public MainController(EntityManager em) {
         super(em);
@@ -41,7 +42,8 @@ public class MainController extends AbstractController {
                 this.enterGameController.setParticipation();
                 break;
             case GUIMainFrame.STORNIEREN:
-                //TO DO
+                this.leaveGameController = new LeaveGameController(this.em, (List<IGame>) evt.getSource());
+                this.leaveGameController.deleteParticipation();
                 break;
             case GUIMainFrame.LOGOUT:
                 System.exit(0);
@@ -71,7 +73,7 @@ public class MainController extends AbstractController {
         if(game.getPlayerInGameCount()==game.getMaxPlayerCount()){
           gui.showTeamDialog(game.getPlayerInTeam(IGame.TEAM_A),game.getPlayerInTeam(IGame.TEAM_B));  
         } else {
-            gui.showNotEnoughPlayer();
+            gui.showNotEnoughPlayer(game.getPlayerInGameCount(),game.getMaxPlayerCount());
         }
     }
 }

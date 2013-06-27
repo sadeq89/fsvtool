@@ -9,14 +9,13 @@ import fsvtool.persistance.EntityManager;
 import fsvtool.persistance.GamesTableModell;
 import fsvtool.persistance.IGame;
 import fsvtool.persistance.IUser;
-import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.JPopupMenu;
 import javax.swing.JMenuItem;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -218,10 +217,13 @@ public class GUIMainFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void showTeamDialog(List<IUser> team1, List<IUser> team2) {
+        JOptionPane.showMessageDialog(rootPane, "Team 1: " + team1.toString() + "/nTeam 2: " + team2.toString(), "Teamzusammenstellung", 1);
         System.out.println("Team 1: " + team1.toString() + "/nTeam 2: " + team2.toString());
     }
 
-    public void showNotEnoughPlayer() {
+    public void showNotEnoughPlayer(int realPlayer, int maxPlayer) {
+        JOptionPane.showMessageDialog(rootPane, "Es haben sich noch nicht genügend Spieler für das Spiel angemeldet! \nIm Moment: " + realPlayer + " von " + maxPlayer, "Nicht genügend Spieler", 1);
         System.out.println("Es haben sich noch nicht genügend Spieler für das Spiel angemeldet!");
     }
+
 }

@@ -13,8 +13,9 @@ import java.util.List;
  * @author ahmet
  */
 public interface IGame {
-    public static int TYPE_VOLLEYBALL = 0;
-    public static int TYPE_FOOTBALL = 1;
+    
+    public static int TYPE_SOCCER = 0;
+    public static int TYPE_VOLLEYBALL = 1;
     public static int TYPE_HANDBALL = 2;
     
     public static int TEAM_NO_TEAM = 0;

@@ -141,14 +141,17 @@ public class Game implements IGame {
                 this.teamNoTeam.remove(player);
                 // Than add
                 this.teamA.add(player);
+                return;
             case IGame.TEAM_B:
                 this.teamA.remove(player);
                 this.teamNoTeam.remove(player);
                 this.teamB.add(player);
+                return;
             case IGame.TEAM_NO_TEAM:
                 this.teamA.remove(player);
                 this.teamB.remove(player);
                 this.teamNoTeam.add(player);
+                return;
         }
         //throw new IllegalArgumentException("team value "+team+" does not exist. Use a Value from IGame");
     }

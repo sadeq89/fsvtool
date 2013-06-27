@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface IUser {
     
-    public static final int SKILL_TYPE_SOCCER = 0;
-    public static final int SKILL_TYPE_VOLLEYBALL = 1;
-    public static final int SKILL_TYPE_HANDBALL = 2;
+    public static final int SKILL_TYPE_SOCCER = IGame.TYPE_SOCCER;
+    public static final int SKILL_TYPE_VOLLEYBALL = IGame.TYPE_VOLLEYBALL;
+    public static final int SKILL_TYPE_HANDBALL = IGame.TYPE_HANDBALL;
     
     public static int SKILL_VALUE_BAD = 0;
     public static int SKILL_VALUE_MIDDLE = 1;
