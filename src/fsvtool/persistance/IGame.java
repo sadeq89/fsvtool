@@ -42,15 +42,32 @@ public interface IGame {
     
     public boolean isInGame();
     
-    public void addUser(IUser u);
-    
     public int getGameType();
     
     public void setGameType(int type);
 
     public Integer getPlayerInGameCount();
     
-    //so oder so ähnlich für die teamberechnung nötig...
+    /**
+     * Returns a List of player from the selected team.
+     * 
+     * @param team
+     * @return The List pf player
+     */
     public List<IUser> getPlayerInTeam(int team);
+    
+    /**
+     * Add a player to a team in this game.
+     * The team is should be on of IGame.TEAM_* constant.
+     * @param player
+     * @param team 
+     */
     public void addPlayerToTeam(IUser player, int team);
+    
+    /**
+     * Remive the user From the Game.
+     * The team is not important.
+     * @param player 
+     */
+    public void removePlayerFromGame(IUser player);
 }

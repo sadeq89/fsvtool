@@ -21,7 +21,6 @@ public class Game implements IGame {
     private String location;
     private boolean isLoggedinUserInGame = false;
     private int gameType;
-    private Integer playerInGameCount;
     private Time time;
     private ArrayList<IUser> teamA;
     private ArrayList<IUser> teamB;
@@ -68,16 +67,7 @@ public class Game implements IGame {
 
     @Override
     public Integer getPlayerInGameCount() {
-        return this.playerInGameCount;
-    }
-
-    public void setPlayerInGameCount(Integer c) {
-        this.playerInGameCount = c;
-    }
-
-    @Override
-    public void addUser(IUser u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.teamA.size()+this.teamB.size()+this.teamNoTeam.size();
     }
 
     @Override
@@ -154,6 +144,13 @@ public class Game implements IGame {
                 return;
         }
         throw new IllegalArgumentException("team value "+team+" does not exist. Use a Value from IGame");
+    }
+
+    @Override
+    public void removePlayerFromGame(IUser player) {
+        this.teamA.remove(player);
+        this.teamB.remove(player);
+        this.teamNoTeam.remove(player);
     }
 
 }

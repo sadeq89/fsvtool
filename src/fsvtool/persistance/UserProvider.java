@@ -102,8 +102,7 @@ public class UserProvider extends AbstractProvider {
         if (id != null) {
             // Update
             String sql = "UPDATE FSV_USER "
-                    + "SET (name, firstname, email, username, password, phone_nr) "
-                    + "VALUES (?, ?, ?, ?, ?, ?) "
+                    + "SET name=?, firstname=?, email=?, username=?, password=?, phone_nr=? "
                     + "WHERE id = ?";
             try {
                 PreparedStatement stm = em.getConn().prepareStatement(sql);
@@ -113,7 +112,7 @@ public class UserProvider extends AbstractProvider {
                 stm.setString(4, user.getUsername());
                 stm.setString(5, user.getPassword());
                 stm.setString(6, user.getPhoneNr());
-                stm.setInt(8, user.getId());
+                stm.setInt(7, user.getId());
                 stm.execute();
             } catch (SQLException ex) {
                 ex.printStackTrace();
