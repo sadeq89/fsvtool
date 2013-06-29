@@ -17,7 +17,7 @@ import java.util.List;
 public class LeaveGameController extends AbstractController{
     private List<IGame> gameList;
     
-    public LeaveGameController(EntityManager em, List<IGame> gamelist) {
+    public LeaveGameController(EntityManager em, List<IGame> gameList) {
         super(em);
         this.gameList = gameList;
     }

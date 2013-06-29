@@ -126,7 +126,8 @@ public class Game implements IGame {
     public void addPlayerToTeam(IUser player, int team) {
         switch (team) {
             case IGame.TEAM_A:
-                // Remove first from others if presented
+                // Remove first 
+                this.teamA.remove(player);
                 this.teamB.remove(player);
                 this.teamNoTeam.remove(player);
                 // Than add
@@ -134,12 +135,14 @@ public class Game implements IGame {
                 return;
             case IGame.TEAM_B:
                 this.teamA.remove(player);
+                this.teamB.remove(player);
                 this.teamNoTeam.remove(player);
                 this.teamB.add(player);
                 return;
             case IGame.TEAM_NO_TEAM:
                 this.teamA.remove(player);
                 this.teamB.remove(player);
+                this.teamNoTeam.remove(player);
                 this.teamNoTeam.add(player);
                 return;
         }

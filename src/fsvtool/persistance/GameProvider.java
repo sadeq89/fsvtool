@@ -207,7 +207,7 @@ public class GameProvider extends AbstractProvider {
         }
         
         // Add it than
-        sql = "INSERT INT FSV_GAME_USER "
+        sql = "INSERT INTO FSV_GAME_USER "
                 + "(GAME_ID, USER_ID, TEAM) "
                 + "VALUES (?, ?, ?)";
         try {
