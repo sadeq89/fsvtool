@@ -165,7 +165,7 @@ public class GameProvider extends AbstractProvider {
             stm.setString(4, game.getGameLocation());
             stm.setInt(5, game.getMaxPlayerCount());
             if (id!=null) {
-                stm.setInt(7, id);
+                stm.setInt(6, id);
             }
             stm.execute();
             
