@@ -217,8 +217,8 @@ public class GUIMainFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void showTeamDialog(List<IUser> team1, List<IUser> team2) {
-        JOptionPane.showMessageDialog(rootPane, "Team 1: " + team1.toString() + "/nTeam 2: " + team2.toString(), "Teamzusammenstellung", 1);
-        System.out.println("Team 1: " + team1.toString() + "/nTeam 2: " + team2.toString());
+        JOptionPane.showMessageDialog(rootPane, "Team 1: " + team1.toString() + "Team 2: " + team2.toString(), "Teamzusammenstellung", 1);
+        System.out.println("Team 1: " + team1.toString() + "\nTeam 2: " + team2.toString());
     }
 
     public void showNotEnoughPlayer(int realPlayer, int maxPlayer) {
