@@ -15,6 +15,7 @@ import java.sql.Time;
  * @author Sadeq
  */
 public class GUICreateGame extends javax.swing.JFrame {
+
     private CreateGameController controller;
 
     /**
@@ -24,45 +25,43 @@ public class GUICreateGame extends javax.swing.JFrame {
         this.controller = c;
         initComponents();
     }
-    
+
     //getting game type and return it for the constant SKILL_TYPE_"SPORTTYPE" in USER Interface
-    public int getGameType(){
-   
-        if(this.cbSportart.getSelectedItem().equals("Fussball")){
-           return IUser.SKILL_TYPE_SOCCER;
-        }
-        else if(this.cbSportart.getSelectedItem().equals("Handball")){
+    public int getGameType() {
+
+        if (this.cbSportart.getSelectedItem().equals("Fussball")) {
+            return IUser.SKILL_TYPE_SOCCER;
+        } else if (this.cbSportart.getSelectedItem().equals("Handball")) {
             return IUser.SKILL_TYPE_HANDBALL;
-        }
-        else if(this.cbSportart.getSelectedItem().equals("Volleyball")){
+        } else if (this.cbSportart.getSelectedItem().equals("Volleyball")) {
             return IUser.SKILL_TYPE_VOLLEYBALL;
         }
-       return 0;
-    }       
+        return 0;
+    }
 
     // getting Date
-    public Date getDate(){
-         Date date = new Date(Integer.valueOf(this.tfYear.getText()), 
+    public Date getDate() {
+        Date date = new Date(Integer.valueOf(this.tfYear.getText()),
                 Integer.valueOf(this.tfMonth.getText()), Integer.valueOf(this.tfDay.getText()));
-        return  date;
+        return date;
     }
-   
+
     //getting Time
-    
-    public Time getTime(){
-        Time time = new Time(Integer.valueOf(this.tfHour.getText()), 
-                Integer.valueOf(this.tfMinute.getText()),0);
-        
+    public Time getTime() {
+        Time time = new Time(Integer.valueOf(this.tfHour.getText()),
+                Integer.valueOf(this.tfMinute.getText()), 0);
+
         return time;
     }
 
-    public String getGameLocation(){
+    public String getGameLocation() {
         return this.tfOrt.getText();
     }
-    
-    public Integer getPlayerCount(){
+
+    public Integer getPlayerCount() {
         return (Integer) this.spPlayerCount.getValue();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -232,7 +231,7 @@ public class GUICreateGame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-     this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tfMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfMonthActionPerformed
@@ -246,7 +245,7 @@ public class GUICreateGame extends javax.swing.JFrame {
     private void bSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSaveActionPerformed
 
         this.controller.saveGame();
-        
+
     }//GEN-LAST:event_bSaveActionPerformed
 
     /**
