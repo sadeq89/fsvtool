@@ -57,7 +57,9 @@ public class GamesTableModell extends AbstractTableModel {
                 return false;
             case 1:
                 // Anzahl Spieler
-                return this.list.get(rowIndex).getMaxPlayerCount();
+                return this.list.get(rowIndex).getPlayerInGameCount()
+                        + "/" 
+                        + this.list.get(rowIndex).getMaxPlayerCount();
             case 2:
                 // Datum
                 return this.list.get(rowIndex).getDate();

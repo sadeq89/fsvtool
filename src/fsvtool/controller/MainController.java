@@ -49,7 +49,6 @@ public class MainController extends AbstractController {
                 System.exit(0);
             case GUIMainFrame.EINSTELLUNGEN:
                 this.userConfigController = new UserConfigController(this.em);
-                em.getGameProvider().saveGame(null);
                 break;
             
             case GUIMainFrame.TEAMS_ANZEIGEN:

@@ -21,9 +21,14 @@ public class User implements IUser {
     private int[] skills = new int[3];
 
     public User() {
+        // Set default values
+        this.skills[IUser.SKILL_TYPE_HANDBALL] = IUser.SKILL_VALUE_BAD;
+        this.skills[IUser.SKILL_TYPE_SOCCER] = IUser.SKILL_VALUE_BAD;
+        this.skills[IUser.SKILL_TYPE_VOLLEYBALL] = IUser.SKILL_VALUE_BAD;
     }
 
     public User(int id) {
+        this();
         this.id = (Integer) id;
     }
     
@@ -32,6 +37,10 @@ public class User implements IUser {
         return this.id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     @Override
     public String getName() {
         return this.name;

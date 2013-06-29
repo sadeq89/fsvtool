@@ -7,8 +7,6 @@ package fsvtool.controller;
 import fsvtool.gui.GUIUserConfig;
 import fsvtool.persistance.EntityManager;
 import fsvtool.persistance.IUser;
-import java.awt.event.ActionEvent;
-
 
 
 
@@ -18,8 +16,6 @@ public class UserConfigController extends AbstractController{
 
     public UserConfigController(EntityManager em) {
         super(em);
-        
-        
         this.gui = new GUIUserConfig(this);
         
         IUser user = em.getLoggedinUser();  // Momentan eigeloggter User wird gespeichert
@@ -30,6 +26,9 @@ public class UserConfigController extends AbstractController{
         this.gui.setTel(user.getPhoneNr());
         this.gui.setEMail(user.getEMail());
         this.gui.setVisible(true);
+        this.gui.setFussballStrength(user.getSkill(IUser.SKILL_TYPE_SOCCER));
+        this.gui.setVolleyballStrength(user.getSkill(IUser.SKILL_TYPE_VOLLEYBALL));
+        this.gui.setHandballStrength(user.getSkill(IUser.SKILL_TYPE_HANDBALL));
     }
     
   
@@ -44,7 +43,9 @@ public class UserConfigController extends AbstractController{
         user.setFirstname(this.gui.getFirstname());
         user.setEMail(this.gui.getEMail());
         user.setPhoneNr(this.gui.getTel());
-        
+        user.setSkill(IUser.SKILL_TYPE_HANDBALL, this.gui.getHandballStrength());
+        user.setSkill(IUser.SKILL_TYPE_SOCCER, this.gui.getFussballStrength());
+        user.setSkill(IUser.SKILL_TYPE_VOLLEYBALL, this.gui.getVolleyballStrength());
         
         this.em.getUserProvider().saveUser(user);
         this.gui.setVisible(false);

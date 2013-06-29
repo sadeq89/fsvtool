@@ -89,6 +89,17 @@ public class GUIUserConfig extends javax.swing.JFrame {
                 break;
         }
     }
+    
+    public int getHandballStrength() throws VerifyError {
+        if (this.rbHbSehrGut.isSelected()) {
+            return IUser.SKILL_VALUE_GREAT;
+        } else if (this.rbHbMittel.isSelected()) {
+            return IUser.SKILL_VALUE_MIDDLE;
+        } else if (this.rbHbNichtSoGut.isSelected()) {
+            return IUser.SKILL_VALUE_BAD;
+        }
+        throw new VerifyError("Nothing was selected.");
+    }
   public void setHandballStrength(int fussballstrength) {
         switch (fussballstrength) {
             case IUser.SKILL_VALUE_GREAT:
@@ -102,6 +113,18 @@ public class GUIUserConfig extends javax.swing.JFrame {
                 break;
         }
     }
+  
+    public int getVolleyballStrength() throws VerifyError {
+        if (this.rbVbSehrGut.isSelected()) {
+            return IUser.SKILL_VALUE_GREAT;
+        } else if (this.rbVbMittel.isSelected()) {
+            return IUser.SKILL_VALUE_MIDDLE;
+        } else if (this.rbVbNichtSoGut.isSelected()) {
+            return IUser.SKILL_VALUE_BAD;
+        }
+        throw new VerifyError("Nothing was selected.");
+    }
+    
     public void setVolleyballStrength(int fussballstrength) {
         switch (fussballstrength) {
             case IUser.SKILL_VALUE_GREAT:
@@ -199,7 +222,7 @@ public class GUIUserConfig extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Meine Einstellungen");
-        jLabel4.setBounds(260, 10, 190, 20);
+        jLabel4.setBounds(250, 10, 240, 20);
         jLayeredPane2.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -239,22 +262,22 @@ public class GUIUserConfig extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("Mein Niveau");
-        jLabel9.setBounds(310, 270, 120, 22);
+        jLabel9.setBounds(250, 270, 220, 22);
         jLayeredPane2.add(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel10.setText("Fußball:");
-        jLabel10.setBounds(180, 320, 60, 16);
+        jLabel10.setBounds(180, 320, 60, 17);
         jLayeredPane2.add(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel11.setText("Handball:");
-        jLabel11.setBounds(180, 390, 60, 16);
+        jLabel11.setBounds(180, 390, 60, 17);
         jLayeredPane2.add(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel12.setText("Volleyball:");
-        jLabel12.setBounds(180, 460, 70, 16);
+        jLabel12.setBounds(180, 460, 70, 17);
         jLayeredPane2.add(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         rbFbSehrGut.setBackground(new java.awt.Color(255, 0, 0));
@@ -263,7 +286,6 @@ public class GUIUserConfig extends javax.swing.JFrame {
         rbFbSehrGut.setText("Sehr Gut");
         rbFbSehrGut.setMaximumSize(new java.awt.Dimension(50, 25));
         rbFbSehrGut.setMinimumSize(new java.awt.Dimension(50, 25));
-        rbFbSehrGut.setOpaque(false);
         rbFbSehrGut.setPreferredSize(new java.awt.Dimension(50, 25));
         rbFbSehrGut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,7 +298,6 @@ public class GUIUserConfig extends javax.swing.JFrame {
         bgFussball.add(rbFbNichtSoGut);
         rbFbNichtSoGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbFbNichtSoGut.setText("Nicht so Gut");
-        rbFbNichtSoGut.setOpaque(false);
         rbFbNichtSoGut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbFbNichtSoGutActionPerformed(evt);
@@ -288,14 +309,12 @@ public class GUIUserConfig extends javax.swing.JFrame {
         bgFussball.add(rbFbMittel);
         rbFbMittel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbFbMittel.setText("Mittel");
-        rbFbMittel.setOpaque(false);
         rbFbMittel.setBounds(420, 320, 70, 23);
         jLayeredPane2.add(rbFbMittel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgHandball.add(rbHbNichtSoGut);
         rbHbNichtSoGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbHbNichtSoGut.setText("Nicht so Gut");
-        rbHbNichtSoGut.setOpaque(false);
         rbHbNichtSoGut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbHbNichtSoGutActionPerformed(evt);
@@ -307,40 +326,35 @@ public class GUIUserConfig extends javax.swing.JFrame {
         bgHandball.add(rbHbMittel);
         rbHbMittel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbHbMittel.setText("Mittel");
-        rbHbMittel.setOpaque(false);
         rbHbMittel.setBounds(420, 390, 70, 23);
         jLayeredPane2.add(rbHbMittel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgHandball.add(rbHbSehrGut);
         rbHbSehrGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbHbSehrGut.setText("Sehr Gut");
-        rbHbSehrGut.setOpaque(false);
         rbHbSehrGut.setBounds(300, 390, 80, 23);
         jLayeredPane2.add(rbHbSehrGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgVolleyball.add(rbVbSehrGut);
         rbVbSehrGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbVbSehrGut.setText("Sehr Gut");
-        rbVbSehrGut.setOpaque(false);
         rbVbSehrGut.setBounds(300, 460, 80, 23);
         jLayeredPane2.add(rbVbSehrGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgVolleyball.add(rbVbMittel);
         rbVbMittel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbVbMittel.setText("Mittel");
-        rbVbMittel.setOpaque(false);
         rbVbMittel.setBounds(420, 460, 70, 23);
         jLayeredPane2.add(rbVbMittel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bgVolleyball.add(rbVbNichtSoGut);
         rbVbNichtSoGut.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rbVbNichtSoGut.setText("Nicht so Gut");
-        rbVbNichtSoGut.setOpaque(false);
         rbVbNichtSoGut.setBounds(520, 460, 100, 23);
         jLayeredPane2.add(rbVbNichtSoGut, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel13.setText("Email");
-        jLabel13.setBounds(180, 230, 70, 14);
+        jLabel13.setBounds(180, 230, 70, 15);
         jLayeredPane2.add(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         tfEMail.addActionListener(new java.awt.event.ActionListener() {

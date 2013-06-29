@@ -7,8 +7,6 @@ package fsvtool.persistance;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -26,10 +24,10 @@ public class UserProvider extends AbstractProvider {
             " phone_nr VARCHAR(20) NOT NULL" +
             " ); \n"+
             "CREATE TABLE IF NOT EXISTS fsv_user_skill ("+
-            " id INT AUTO_INCREMENT PRIMARY KEY,"+
             " user_id INT, "+
-            " type INT,"+
-            " FOREIGN KEY(user_id) REFERENCES fsv_user(id) "+
+            " type INT, " + 
+            " skill_value INT, " +
+            " CONSTRAINT IF NOT EXISTS FSV_GAME_USER_PKEY PRIMARY KEY(USER_ID, TYPE) "+
             " );";
 
     public UserProvider(EntityManager em) {
@@ -51,7 +49,7 @@ public class UserProvider extends AbstractProvider {
                 return null;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -71,7 +69,7 @@ public class UserProvider extends AbstractProvider {
                 return null;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -91,7 +89,7 @@ public class UserProvider extends AbstractProvider {
                 return null;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserProvider.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -114,6 +112,7 @@ public class UserProvider extends AbstractProvider {
                 stm.setString(6, user.getPhoneNr());
                 stm.setInt(7, user.getId());
                 stm.execute();
+                this.saveSkills(user);
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
@@ -132,9 +131,52 @@ public class UserProvider extends AbstractProvider {
                 stm.setString(5, user.getPassword());
                 stm.setString(6, user.getPhoneNr());
                 stm.execute();
+                
+                ResultSet keys = stm.getGeneratedKeys();
+                keys.next();
+
+                // Cast to user and set id
+                ((User) user).setId(keys.getInt(1));
+                this.saveSkills(user);
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+        }
+    }
+    
+    private void saveSkills(IUser u) {
+        // Remove the connection first
+        PreparedStatement stm;
+        String sql = "DELETE FROM fsv_user_skill "
+                + " WHERE USER_ID = ?";
+        try {
+            stm = em.getConn().prepareStatement(sql);
+            stm.setInt(1, u.getId());
+            stm.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        sql = "INSERT INTO fsv_user_skill "
+                + "(user_id, type, skill_value) "
+                + "VALUES (?, ?, ?)";
+        
+        try {
+            stm = em.getConn().prepareStatement(sql);
+            stm.setInt(1, u.getId());
+            stm.setInt(2, IUser.SKILL_TYPE_HANDBALL);
+            stm.setInt(3, u.getSkill(IUser.SKILL_TYPE_HANDBALL));
+            stm.addBatch();
+            stm.setInt(1, u.getId());
+            stm.setInt(2, IUser.SKILL_TYPE_SOCCER);
+            stm.setInt(3, u.getSkill(IUser.SKILL_TYPE_SOCCER));
+            stm.addBatch();
+            stm.setInt(1, u.getId());
+            stm.setInt(2, IUser.SKILL_TYPE_VOLLEYBALL);
+            stm.setInt(3, u.getSkill(IUser.SKILL_TYPE_VOLLEYBALL));
+            stm.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
