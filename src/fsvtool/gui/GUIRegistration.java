@@ -382,7 +382,7 @@ public class GUIRegistration extends javax.swing.JFrame {
             int indexLastPoint = getMailInput().lastIndexOf(".");
             int indexAt = getMailInput().indexOf("@");
             
-            if(indexAt < indexLastPoint-1)
+            if(indexAt < indexLastPoint-1 && indexAt < getMailInput().indexOf(".", indexAt) -1)
                 return true;
             else
                 return false;
