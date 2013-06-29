@@ -6,6 +6,7 @@ package fsvtool.gui;
 
 import fsvtool.controller.AuthentificationController;
 import javax.swing.JOptionPane;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
@@ -186,15 +187,17 @@ public class GUILogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void passwordInputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordInputKeyPressed
-        controller.action(LOGIN);
-        this.errorLogin.setVisible(ErrorShowResult);
-
+        if(evt.getKeyCode() == 10){
+            controller.action(LOGIN);
+            this.errorLogin.setVisible(ErrorShowResult);
+        }
     }//GEN-LAST:event_passwordInputKeyPressed
 
     private void usernameInputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameInputKeyPressed
-        controller.action(LOGIN);
-        this.errorLogin.setVisible(ErrorShowResult);
-
+        if(evt.getKeyCode() == 10){
+            controller.action(LOGIN);
+            this.errorLogin.setVisible(ErrorShowResult);
+        }
     }//GEN-LAST:event_usernameInputKeyPressed
 
     /**
