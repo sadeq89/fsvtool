@@ -116,7 +116,7 @@ public class GUIMainFrame extends javax.swing.JFrame {
                 bTeamsAnzeigenActionPerformed(evt);
             }
         });
-        bTeamsAnzeigen.setBounds(440, 550, 169, 34);
+        bTeamsAnzeigen.setBounds(450, 550, 169, 34);
         jLayeredPane1.add(bTeamsAnzeigen, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         bNewGame.setText(GUIMainFrame.NEUES_SPIEL);
@@ -153,7 +153,7 @@ public class GUIMainFrame extends javax.swing.JFrame {
                 bStornierenActionPerformed(evt);
             }
         });
-        bStornieren.setBounds(270, 550, 169, 34);
+        bStornieren.setBounds(275, 550, 169, 34);
         jLayeredPane1.add(bStornieren, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

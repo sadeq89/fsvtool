@@ -76,4 +76,5 @@ public class MainController extends AbstractController {
             gui.showNotEnoughPlayer(game.getPlayerInGameCount(),game.getMaxPlayerCount());
         }
     }
+
 }

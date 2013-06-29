@@ -16,7 +16,8 @@ import java.util.List;
 class EnterGameController extends AbstractController {
 
     private List<IGame> gameList;
-
+    private MainController mainController;
+    
     public EnterGameController(EntityManager em, List<IGame> gameList) {
         super(em);
         this.gameList = gameList;
@@ -26,9 +27,16 @@ class EnterGameController extends AbstractController {
         Iterator<IGame> it = gameList.iterator();
         while(it.hasNext()){
             IGame tmpGame = it.next();
-            tmpGame.addUser(em.getLoggedinUser());
+            tmpGame.addPlayerToTeam(em.getLoggedinUser(),IGame.TEAM_NO_TEAM);
+            checkTeamsCanBeGenerated(tmpGame);
             em.getGameProvider().saveGame(tmpGame);
         }
         
+    }
+
+    private void checkTeamsCanBeGenerated(IGame game) {
+        if(game.getPlayerInGameCount()==game.getMaxPlayerCount()){
+            mainController.generateTeams(game);
+        }
     }
 }

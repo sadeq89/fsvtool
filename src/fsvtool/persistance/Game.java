@@ -153,7 +153,7 @@ public class Game implements IGame {
                 this.teamNoTeam.add(player);
                 return;
         }
-        //throw new IllegalArgumentException("team value "+team+" does not exist. Use a Value from IGame");
+        throw new IllegalArgumentException("team value "+team+" does not exist. Use a Value from IGame");
     }
 
 }
