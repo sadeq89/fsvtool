@@ -6,7 +6,6 @@ package fsvtool.gui;
 
 import fsvtool.controller.AuthentificationController;
 import javax.swing.JOptionPane;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
