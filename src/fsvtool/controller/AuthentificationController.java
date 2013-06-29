@@ -15,27 +15,28 @@ import javax.swing.JOptionPane;
  *
  * @author Marcel
  */
-public class AuthentificationController extends AbstractController{
+public class AuthentificationController extends AbstractController {
+
     private GUILogin login;
     private GUIRegistration reg;
-    
+
     public AuthentificationController(EntityManager em) {
         super(em);
         login = new GUILogin();
         login.setController(this);
         login.setVisible(true);
     }
-    
-    public void action(String evt){
-        switch(evt){
+
+    public void action(String evt) {
+        switch (evt) {
             case GUILogin.REGISTRATION:
                 reg = new GUIRegistration();
-                
+
                 reg.setVisible(true);
                 reg.setController(this);
                 login.setVisible(false);
                 JOptionPane.showMessageDialog(null, "* Sie können das Kennwort später nicht mehr ändern."
-                        + "\n* Bitte füllen Sie alle Felder aus, ansonsten wird die Anmeldung nicht  gespeichert!","Hinweis!",1);
+                        + "\n* Bitte füllen Sie alle Felder aus, ansonsten wird die Anmeldung nicht  gespeichert!", "Hinweis!", 1);
                 break;
             case GUIRegistration.CANCEL:
                 login.setVisible(true);
@@ -44,41 +45,38 @@ public class AuthentificationController extends AbstractController{
             case (GUILogin.LOGIN):
                 UserProvider up = em.getUserProvider();
                 IUser user = up.getUserByUserName(login.getUsername());
-                
-                if (user != null && user.getPassword().equals(login.getPassword())) {
+
+                if (loginCheck(user, login.getPassword())) {
                     em.setLoggedinUser(user);
                     new MainController(em);
                     login.setVisible(false);
                     break;
-                }
-                else{
+                } else {
                     login.setErrorShowResult(true);
                     break;
                 }
-                
+
             case GUILogin.EXIT:
                 System.exit(0);
             case GUIRegistration.REGISTER:
-                
-                if(reg.regFinalCheck()){
+
+                if (reg.regFinalCheck()) {
                     IUser newUser = em.getUserProvider().createUser();
                     IUser exUserMail = em.getUserProvider().getUserByEMail(reg.getMailInput());
                     IUser exUserName = em.getUserProvider().getUserByUserName(reg.getUsernameInput());
-                    
-                    if ((exUserMail != null) || (exUserName != null)) {
-                        if (reg.getUsernameInput().equals(exUserName.getUsername()) || reg.getMailInput().equals(exUserMail.getEMail())) {
-                            if (reg.getUsernameInput().equals(exUserName.getUsername())) {
-                                reg.setExistingUserNameErrorVisible(true);
-                            }
-                            if (reg.getMailInput().equals(exUserMail.getEMail())) {
-                                reg.setExistingMailErrorVisible(true);
-                            }
-                            JOptionPane.showMessageDialog(null, "Anmeldungsformular ist fehlerhaft.\n      * Sie müssen alle Felder ausfüllen!"
-                                    + "\n      * Sie müssen fehlerhafte Eingaben ändern!", "Anmeldungsfehler", 0);
-                            break;
+
+                    if (registerExistingCheck(exUserMail, exUserName, reg.getMailInput(), reg.getSurnameInput())) {
+                        if (registerExUsernameCheck(exUserName, reg.getUsernameInput())) {
+                            reg.setExistingUserNameErrorVisible(true);
                         }
-                    } 
-                    else {
+
+                        if (registerExMailCheck(exUserMail, reg.getMailInput())) {
+                            reg.setExistingMailErrorVisible(true);
+                        }
+                        JOptionPane.showMessageDialog(null, "Anmeldungsformular ist fehlerhaft.\n      * Sie müssen alle Felder ausfüllen!"
+                                + "\n      * Sie müssen fehlerhafte Eingaben ändern!", "Anmeldungsfehler", 0);
+                        break;
+                    } else {
                         newUser.setEMail(reg.getMailInput());
                         newUser.setUsername(reg.getUsernameInput());
                     }
@@ -96,9 +94,46 @@ public class AuthentificationController extends AbstractController{
 
                     reg.setVisible(false);
                     break;
-                } else
+                } else {
                     JOptionPane.showMessageDialog(null, "Anmeldungsformular ist fehlerhaft.\n      * Sie müssen alle Felder ausfüllen!"
                             + "\n      * Sie müssen fehlerhafte Eingaben ausbessern!", "Anmeldungsfehler", 0);
+                }
+        }
+    }
+
+    public static boolean loginCheck(IUser saved, String typedPass) {
+        if (saved != null && saved.getPassword().equals(typedPass)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean registerExistingCheck(IUser eMail, IUser eUser, String tMail, String tUName) {
+        if (eMail != null && eUser != null) {
+            if (registerExUsernameCheck(eUser, tUName) || registerExMailCheck(eMail, tMail)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean registerExMailCheck(IUser eMail, String tMail) {
+        if (tMail.equals(eMail.getEMail())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean registerExUsernameCheck(IUser eUser, String tUName) {
+        if (tUName.equals(eUser.getUsername())) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
