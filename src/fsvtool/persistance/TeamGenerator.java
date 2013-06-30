@@ -85,9 +85,6 @@ public class TeamGenerator {
                     }
                 }
             }
-
-            
-
             
             if (tmpTeam == 1) { //Ausgabe
                 team1.add(tmpUser);
