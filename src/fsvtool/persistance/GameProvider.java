@@ -20,9 +20,8 @@ import java.util.logging.Logger;
  * @author S.Ahmet
  */
 public class GameProvider extends AbstractProvider {
-    
-    Map<Integer, Game> gamesById = new HashMap<>();
 
+    Map<Integer, Game> gamesById = new HashMap<>();
     protected String createSQL = "CREATE TABLE IF NOT EXISTS FSV_GAME\n"
             + "(\n"
             + "   ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\n"
@@ -75,7 +74,7 @@ public class GameProvider extends AbstractProvider {
         if (this.gamesById.containsKey(id)) {
             return this.gamesById.get(id);
         }
-        
+
         PreparedStatement stm;
         try {
             stm = em.getConn().prepareStatement(
@@ -95,7 +94,7 @@ public class GameProvider extends AbstractProvider {
 
                 // Add it to the Map
                 this.gamesById.put(id, game);
-                
+
                 return game;
             } else {
                 return null;
@@ -113,12 +112,8 @@ public class GameProvider extends AbstractProvider {
             stm = em.getConn().prepareStatement("SELECT g.ID as id, g.game_date as date, "
                     + " g.game_time as time, g.game_type, "
                     + " g.max_player_count as player_count, "
-                    + " g.location as location, gu.user_id as user_id "
-                    + " FROM FSV_GAME g"
-                    + " LEFT JOIN FSV_GAME_USER gu ON g.id = gu.game_id"
-                    + " WHERE (gu.user_id IS NULL OR gu.user_id = ?) ");
-            Integer loggedinUserId = em.getLoggedinUser().getId();
-            stm.setInt(1, loggedinUserId);
+                    + " g.location as location "
+                    + " FROM FSV_GAME g");
             ResultSet rs = stm.executeQuery();
 
             // Liste mit Game objecten füllen
@@ -134,8 +129,7 @@ public class GameProvider extends AbstractProvider {
                 this.fillGameWithPlayer(game);
 
                 // Check if the current user is in game
-                Integer userId = rs.getInt("user_id");
-                if (userId.equals(loggedinUserId)) {
+                if (game.isInGame((User) this.em.getLoggedinUser())) {
                     game.setIsInGame(true);
                 } else {
                     game.setIsInGame(false);

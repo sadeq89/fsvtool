@@ -164,4 +164,11 @@ public class Game implements IGame {
         return this.getId();
     }
     
+    public boolean isInGame(User user){
+        if (this.teamA.contains(user)|| this.teamB.contains(user)||this.teamNoTeam.contains(user)){
+            return true;
+        } else{
+            return false;
+        }
+    }
 }
