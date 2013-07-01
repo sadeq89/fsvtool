@@ -156,4 +156,12 @@ public class Game implements IGame {
         this.teamNoTeam.remove(player);
     }
 
+    @Override
+    public int hashCode() {
+        if (this.getId()>0) {
+            return this.getId();
+        }
+        return this.getId();
+    }
+    
 }

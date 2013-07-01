@@ -201,7 +201,12 @@ public class GUIMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bMeinAccountMousePressed
 
     private void bStornierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStornierenActionPerformed
-        // TODO add your handling code here:
+        List<IGame> gameList = new ArrayList<IGame>();        
+        for (int index : tTable.getSelectedRows()) { 
+            gameList.add(tm.getValue(index));
+        }
+        evt.setSource(gameList);
+        this.controller.action(evt);
     }//GEN-LAST:event_bStornierenActionPerformed
     private JPopupMenu pAccountPopup;
     // Variables declaration - do not modify//GEN-BEGIN:variables

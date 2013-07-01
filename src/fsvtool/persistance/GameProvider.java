@@ -18,25 +18,24 @@ import java.util.logging.Logger;
  * @author S.Ahmet
  */
 public class GameProvider extends AbstractProvider {
-    
-    protected String createSQL = "CREATE TABLE IF NOT EXISTS FSV_GAME\n" +
-        "(\n" +
-        "   ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\n" +
-        "   GAME_TYPE INT NOT NULL,\n" +
-        "   GAME_DATE DATE NOT NULL,\n" + 
-        "   GAME_TIME TIME NOT NULL,\n" + 
-        "   LOCATION VARCHAR(255) NOT NULL,\n" +
-        "   MAX_PLAYER_COUNT INT NOT NULL\n" +
-        ");\n" +
-        "CREATE UNIQUE INDEX IF NOT EXISTS PRIMARY_KEY_FSV_GAME ON FSV_GAME(ID);" + 
-        "CREATE TABLE IF NOT EXISTS FSV_GAME_USER\n" +
-        "(\n" +
-        "   GAME_ID integer NOT NULL,\n" +
-        "   USER_ID integer NOT NULL,\n" +
-        "   TEAM integer NOT NULL DEFAULT 0,\n" +
-        "   CONSTRAINT IF NOT EXISTS FSV_GAME_USER_PKEY PRIMARY KEY(GAME_ID, USER_ID)\n" +
-        ");\n";
-    
+
+    protected String createSQL = "CREATE TABLE IF NOT EXISTS FSV_GAME\n"
+            + "(\n"
+            + "   ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,\n"
+            + "   GAME_TYPE INT NOT NULL,\n"
+            + "   GAME_DATE DATE NOT NULL,\n"
+            + "   GAME_TIME TIME NOT NULL,\n"
+            + "   LOCATION VARCHAR(255) NOT NULL,\n"
+            + "   MAX_PLAYER_COUNT INT NOT NULL\n"
+            + ");\n"
+            + "CREATE UNIQUE INDEX IF NOT EXISTS PRIMARY_KEY_FSV_GAME ON FSV_GAME(ID);"
+            + "CREATE TABLE IF NOT EXISTS FSV_GAME_USER\n"
+            + "(\n"
+            + "   GAME_ID integer NOT NULL,\n"
+            + "   USER_ID integer NOT NULL,\n"
+            + "   TEAM integer NOT NULL DEFAULT 0,\n"
+            + "   CONSTRAINT IF NOT EXISTS FSV_GAME_USER_PKEY PRIMARY KEY(GAME_ID, USER_ID)\n"
+            + ");\n";
     private GamesTableModell gameTableModell;
 
     public GameProvider(EntityManager em) {
@@ -47,14 +46,14 @@ public class GameProvider extends AbstractProvider {
     public String getCreateSQL() {
         return this.createSQL;
     }
-    
+
     public GamesTableModell getTableModell() {
         if (this.gameTableModell == null) {
             this.gameTableModell = new GamesTableModell(this);
         }
         return this.gameTableModell;
     }
-    
+
     public int getCount() {
         String sql = "SELECT count(*) as count FROM FSV_GAME;";
         try {
@@ -67,7 +66,7 @@ public class GameProvider extends AbstractProvider {
             return 0;
         }
     }
-    
+
     public IGame getGameById(Integer id) {
         PreparedStatement stm;
         try {
@@ -85,10 +84,9 @@ public class GameProvider extends AbstractProvider {
                 game.setGameLocation(rs.getString("location"));
                 game.setMaxPlayerCount(rs.getInt("max_player_count"));
                 this.fillGameWithPlayer(game);
-                
+
                 return game;
-            }
-            else {
+            } else {
                 return null;
             }
         } catch (SQLException ex) {
@@ -96,13 +94,13 @@ public class GameProvider extends AbstractProvider {
             return null;
         }
     }
-    
+
     public List<IGame> getAllGames() {
         ArrayList<IGame> list = new ArrayList<>();
         PreparedStatement stm;
         try {
             stm = em.getConn().prepareStatement("SELECT g.ID as id, g.game_date as date, "
-                    + " g.game_time as time, "
+                    + " g.game_time as time, g.game_type, "
                     + " g.max_player_count as player_count, "
                     + " g.location as location, gu.user_id as user_id "
                     + " FROM FSV_GAME g"
@@ -111,18 +109,19 @@ public class GameProvider extends AbstractProvider {
             Integer loggedinUserId = em.getLoggedinUser().getId();
             stm.setInt(1, loggedinUserId);
             ResultSet rs = stm.executeQuery();
-            
+
             // Liste mit Game objecten füllen
             while (rs.next()) {
                 Game game = new Game(rs.getInt("id"));
+                game.setGameType(rs.getInt("game_type"));
                 game.setDate(rs.getDate("date"));
                 game.setTime(rs.getTime("time"));
                 game.setMaxPlayerCount(rs.getInt("player_count"));
                 game.setGameLocation(rs.getString("location"));
-                
+
                 // Add player to the game
                 this.fillGameWithPlayer(game);
-                
+
                 // Check if the current user is in game
                 Integer userId = rs.getInt("user_id");
                 if (userId.equals(loggedinUserId)) {
@@ -138,25 +137,22 @@ public class GameProvider extends AbstractProvider {
             return null;
         }
     }
-    
-    
-    
+
     public void saveGame(IGame game) {
         Integer id = game.getId();
         String sql;
-        
-        if (id!=null) {
+
+        if (id != null) {
             sql = "UPDATE FSV_GAME "
                     + "SET GAME_TYPE=?, game_date=?, game_time=?, "
                     + "location=?, MAX_PLAYER_COUNT=? "
                     + "WHERE ID=?";
-        }
-        else {
+        } else {
             sql = "INSERT INTO FSV_GAME "
                     + "(GAME_TYPE, game_date, game_time, location, MAX_PLAYER_COUNT) "
                     + "VALUES (?, ?, ?, ?, ?) ";
         }
-        
+
         try {
             PreparedStatement stm = em.getConn().prepareStatement(sql);
             stm.setInt(1, game.getGameType());
@@ -164,19 +160,28 @@ public class GameProvider extends AbstractProvider {
             stm.setTime(3, game.getTime());
             stm.setString(4, game.getGameLocation());
             stm.setInt(5, game.getMaxPlayerCount());
-            if (id!=null) {
+            if (id != null) {
                 stm.setInt(6, id);
             }
             stm.execute();
-            
-            if (id==null) {
+
+            if (id == null) {
                 ResultSet keys = stm.getGeneratedKeys();
                 keys.next();
 
                 // Cast to game and set id
                 ((Game) game).setId(keys.getInt(1));
             }
-            
+            sql = "DELETE FROM FSV_GAME_USER "
+                    + " WHERE GAME_ID = ? ";
+            try {
+                stm = em.getConn().prepareStatement(sql);
+                stm.setInt(1, game.getId());
+                stm.execute();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
             for (IUser user : game.getPlayerInTeam(IGame.TEAM_A)) {
                 this.addPlayerToTeam(user, IGame.TEAM_A, game);
             }
@@ -186,32 +191,22 @@ public class GameProvider extends AbstractProvider {
             for (IUser user : game.getPlayerInTeam(IGame.TEAM_NO_TEAM)) {
                 this.addPlayerToTeam(user, IGame.TEAM_NO_TEAM, game);
             }
-            
+
             this.gameTableModell.fireTableDataChanged();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
-    
+
     private void addPlayerToTeam(IUser player, int team, IGame game) {
-        // Remove the connection first
-        String sql = "DELETE FROM FSV_GAME_USER "
-                + " WHERE GAME_ID = ? AND USER_ID = ?";
-        try {
-            PreparedStatement stm = em.getConn().prepareStatement(sql);
-            stm.setInt(1, game.getId());
-            stm.setInt(2, player.getId());
-            stm.execute();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        
+        PreparedStatement stm;
+
         // Add it than
-        sql = "INSERT INTO FSV_GAME_USER "
+        String sql = "INSERT INTO FSV_GAME_USER "
                 + "(GAME_ID, USER_ID, TEAM) "
                 + "VALUES (?, ?, ?)";
         try {
-            PreparedStatement stm = em.getConn().prepareStatement(sql);
+            stm = em.getConn().prepareStatement(sql);
             stm.setInt(1, game.getId());
             stm.setInt(2, player.getId());
             stm.setInt(3, team);
@@ -221,7 +216,7 @@ public class GameProvider extends AbstractProvider {
             ex.printStackTrace();
         }
     }
-    
+
     private void fillGameWithPlayer(Game game) {
         int teamId;
         IUser user;
@@ -232,19 +227,19 @@ public class GameProvider extends AbstractProvider {
             PreparedStatement stm = em.getConn().prepareStatement(sql);
             stm.setInt(1, game.getId());
             ResultSet rs = stm.executeQuery();
-            
+
             while (rs.next()) {
                 teamId = rs.getInt("TEAM");
                 user = this.em.getUserProvider().getUserById(rs.getInt("User_ID"));
                 game.addPlayerToTeam(user, teamId);
             }
-            
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
-    
-    public IGame createGame(){
+
+    public IGame createGame() {
         return new Game();
     }
 }

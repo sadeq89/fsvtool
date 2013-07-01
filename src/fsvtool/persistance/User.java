@@ -115,5 +115,14 @@ public class User implements IUser {
     public String toString() {
         return new String() + (skills[0]);
     }
+
+    @Override
+    public int hashCode() {
+        if (this.getId()>0) {
+            return this.getId();
+        }
+        return super.hashCode();
+    }
+    
     
 }
