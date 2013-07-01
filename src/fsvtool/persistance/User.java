@@ -17,7 +17,6 @@ public class User implements IUser {
     private String username = null;
     private String password = null;
     private String phoneNr = null;
-    private String plz = null;
     private int[] skills = new int[3];
 
     public User() {
@@ -113,7 +112,7 @@ public class User implements IUser {
 
     @Override
     public String toString() {
-        return new String() + (skills[0]);
+        return this.username;
     }
 
     @Override
