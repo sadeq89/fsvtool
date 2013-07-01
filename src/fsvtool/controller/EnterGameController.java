@@ -18,9 +18,10 @@ class EnterGameController extends AbstractController {
     private List<IGame> gameList;
     private MainController mainController;
     
-    public EnterGameController(EntityManager em, List<IGame> gameList) {
+    public EnterGameController(EntityManager em, List<IGame> gameList, MainController m) {
         super(em);
         this.gameList = gameList;
+        this.mainController = m;
     }
 
     void setParticipation() {

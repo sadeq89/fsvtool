@@ -38,7 +38,7 @@ public class MainController extends AbstractController {
                 this.createGameController.show();
                 break;
             case GUIMainFrame.TEILNEHMEN:
-                this.enterGameController = new EnterGameController(this.em, (List<IGame>) evt.getSource());
+                this.enterGameController = new EnterGameController(this.em, (List<IGame>) evt.getSource(), this);
                 this.enterGameController.setParticipation();
                 break;
             case GUIMainFrame.STORNIEREN:

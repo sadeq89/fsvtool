@@ -14,9 +14,10 @@ import java.util.List;
  *
  * @author Marcel
  */
-public class LeaveGameController extends AbstractController{
+public class LeaveGameController extends AbstractController {
+
     private List<IGame> gameList;
-    
+
     public LeaveGameController(EntityManager em, List<IGame> gameList) {
         super(em);
         this.gameList = gameList;
@@ -24,25 +25,27 @@ public class LeaveGameController extends AbstractController{
 
     void deleteParticipation() {
         Iterator<IGame> it = gameList.iterator();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             IGame tmpGame = it.next();
             checkGameWasClosed(tmpGame);
-            
+
             tmpGame.removePlayerFromGame(em.getLoggedinUser());
             em.getGameProvider().saveGame(tmpGame);
         }
-        
+
     }
 
     private void checkGameWasClosed(IGame game) {
-        if(game.getPlayerInGameCount()==game.getMaxPlayerCount()){
-            for(IUser user: game.getPlayerInTeam(IGame.TEAM_A)){
-                game.addPlayerToTeam(user,IGame.TEAM_NO_TEAM);
+        if (game.getPlayerInGameCount() == game.getMaxPlayerCount()) {
+            List<IUser> l = game.getPlayerInTeam(IGame.TEAM_A);
+            for (int i = 0; i < l.size(); i++) {
+                game.addPlayerToTeam(l.get(i), IGame.TEAM_NO_TEAM);
             }
-            for(IUser user: game.getPlayerInTeam(IGame.TEAM_B)){
-                game.addPlayerToTeam(user,IGame.TEAM_NO_TEAM);
+            l = game.getPlayerInTeam(IGame.TEAM_B);
+            for (int i = 0; i < l.size(); i++) {
+                game.addPlayerToTeam(l.get(i), IGame.TEAM_NO_TEAM);
             }
-            
+
         }
     }
 }
