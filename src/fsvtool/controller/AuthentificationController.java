@@ -9,6 +9,11 @@ import fsvtool.gui.GUIRegistration;
 import fsvtool.persistance.EntityManager;
 import fsvtool.persistance.IUser;
 import fsvtool.persistance.UserProvider;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,12 +24,26 @@ public class AuthentificationController extends AbstractController {
 
     private GUILogin login;
     private GUIRegistration reg;
+    private MessageDigest md;
 
     public AuthentificationController(EntityManager em) {
         super(em);
         login = new GUILogin();
         login.setController(this);
         login.setVisible(true);
+        try {
+            this.md = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    private String hashPassword(String pw) {
+        this.md.reset();
+        this.md.update(pw.getBytes());
+        byte[] digest = this.md.digest();
+        BigInteger bigInt = new BigInteger(1,digest);
+        return bigInt.toString(16);
     }
 
     public void action(String evt) {
@@ -46,7 +65,7 @@ public class AuthentificationController extends AbstractController {
                 UserProvider up = em.getUserProvider();
                 IUser user = up.getUserByUserName(login.getUsername());
 
-                if (loginCheck(user, login.getPassword())) {
+                if (loginCheck(user, hashPassword(login.getPassword()))) {
                     em.setLoggedinUser(user);
                     new MainController(em);
                     login.setVisible(false);
@@ -88,8 +107,7 @@ public class AuthentificationController extends AbstractController {
                         newUser.setUsername(reg.getUsernameInput());
                     }
 
-
-                    newUser.setPassword(reg.getPasswordInput());
+                    newUser.setPassword(hashPassword(reg.getPasswordInput()));
                     newUser.setFirstname(reg.getFirstNameInput());
                     newUser.setName(reg.getSurnameInput());
 
