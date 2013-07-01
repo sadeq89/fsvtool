@@ -9,6 +9,7 @@ import fsvtool.persistance.IUser;
 import java.awt.Window;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Calendar;
 
 /**
  *
@@ -41,15 +42,35 @@ public class GUICreateGame extends javax.swing.JFrame {
 
     // getting Date
     public Date getDate() {
-        Date date = new Date(Integer.valueOf(this.tfYear.getText()),
-                Integer.valueOf(this.tfMonth.getText()), Integer.valueOf(this.tfDay.getText()));
+        Calendar cal = Calendar.getInstance();
+    
+        // set Date portion to January 1, 1970
+        cal.set(cal.YEAR, Integer.valueOf(this.tfYear.getText()));
+        cal.set(cal.MONTH, Integer.valueOf(this.tfMonth.getText()));
+        cal.set(cal.DATE, Integer.valueOf(this.tfDay.getText()));
+        cal.set(cal.HOUR_OF_DAY, 0);
+        cal.set(cal.MINUTE, 0);
+        cal.set(cal.SECOND, 0);
+        cal.set(cal.MILLISECOND, 0);
+    
+        Date date = new Date(cal.getTimeInMillis());
         return date;
     }
 
     //getting Time
     public Time getTime() {
-        Time time = new Time(Integer.valueOf(this.tfHour.getText()),
-                Integer.valueOf(this.tfMinute.getText()), 0);
+        Calendar cal = Calendar.getInstance();
+    
+        // set Date portion to January 1, 1970
+        cal.set(cal.YEAR, 1970);
+        cal.set(cal.MONTH, cal.JANUARY);
+        cal.set(cal.DATE, 1);
+        cal.set(cal.HOUR_OF_DAY, Integer.valueOf(this.tfHour.getText()));
+        cal.set(cal.MINUTE, Integer.valueOf(this.tfMinute.getText()));
+        cal.set(cal.SECOND, 0);
+        cal.set(cal.MILLISECOND, 0);
+        
+        Time time = new Time(cal.getTimeInMillis());
 
         return time;
     }
