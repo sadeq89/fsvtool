@@ -69,12 +69,19 @@ public class AuthentificationController extends AbstractController {
                         if (registerExUsernameCheck(exUserName, reg.getUsernameInput())) {
                             reg.setExistingUserNameErrorVisible(true);
                         }
+                        else {
+                            reg.setExistingUserNameErrorVisible(false);
+                        }
 
                         if (registerExMailCheck(exUserMail, reg.getMailInput())) {
                             reg.setExistingMailErrorVisible(true);
                         }
-                        JOptionPane.showMessageDialog(null, "Anmeldungsformular ist fehlerhaft.\n      * Sie müssen alle Felder ausfüllen!"
-                                + "\n      * Sie müssen fehlerhafte Eingaben ändern!", "Anmeldungsfehler", 0);
+                        else {
+                            reg.setExistingMailErrorVisible(false);
+                        }
+                        JOptionPane.showMessageDialog(null, "Anmeldungsformular ist fehlerhaft.\n"
+                                + "* Sie müssen alle Felder ausfüllen!\n"
+                                + "* Sie müssen fehlerhafte Eingaben ändern!", "Anmeldungsfehler", 0);
                         break;
                     } else {
                         newUser.setEMail(reg.getMailInput());
@@ -110,19 +117,15 @@ public class AuthentificationController extends AbstractController {
     }
 
     public static boolean registerExistingCheck(IUser eMail, IUser eUser, String tMail, String tUName) {
-        if (eMail != null && eUser != null) {
-            if (registerExUsernameCheck(eUser, tUName) || registerExMailCheck(eMail, tMail)) {
-                return true;
-            } else {
-                return false;
-            }
+        if (registerExUsernameCheck(eUser, tUName) || registerExMailCheck(eMail, tMail)) {
+            return true;
         } else {
             return false;
         }
     }
 
     public static boolean registerExMailCheck(IUser eMail, String tMail) {
-        if (tMail.equals(eMail.getEMail())) {
+        if (eMail != null && tMail.equals(eMail.getEMail())) {
             return true;
         } else {
             return false;
@@ -130,7 +133,7 @@ public class AuthentificationController extends AbstractController {
     }
 
     public static boolean registerExUsernameCheck(IUser eUser, String tUName) {
-        if (tUName.equals(eUser.getUsername())) {
+        if (eUser != null && tUName.equals(eUser.getUsername())) {
             return true;
         } else {
             return false;

@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,6 +20,8 @@ import java.util.logging.Logger;
  * @author S.Ahmet
  */
 public class GameProvider extends AbstractProvider {
+    
+    Map<Integer, Game> gamesById = new HashMap<>();
 
     protected String createSQL = "CREATE TABLE IF NOT EXISTS FSV_GAME\n"
             + "(\n"
@@ -68,6 +72,10 @@ public class GameProvider extends AbstractProvider {
     }
 
     public IGame getGameById(Integer id) {
+        if (this.gamesById.containsKey(id)) {
+            return this.gamesById.get(id);
+        }
+        
         PreparedStatement stm;
         try {
             stm = em.getConn().prepareStatement(
@@ -85,6 +93,9 @@ public class GameProvider extends AbstractProvider {
                 game.setMaxPlayerCount(rs.getInt("max_player_count"));
                 this.fillGameWithPlayer(game);
 
+                // Add it to the Map
+                this.gamesById.put(id, game);
+                
                 return game;
             } else {
                 return null;

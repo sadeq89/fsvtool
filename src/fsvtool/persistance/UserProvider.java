@@ -7,12 +7,18 @@ package fsvtool.persistance;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author ahmet
  */
 public class UserProvider extends AbstractProvider {
+    
+    Map<Integer, User> usersById = new HashMap<>();
+    Map<String, User> usersByEMail = new HashMap<>();
+    Map<String, User> usersByUserName = new HashMap<>();
     
     protected String createSQL = "CREATE TABLE IF NOT EXISTS FSV_USER ("+
             " id INT AUTO_INCREMENT PRIMARY KEY,"+
@@ -35,6 +41,10 @@ public class UserProvider extends AbstractProvider {
     }
     
     public IUser getUserByUserName(String name) {
+        if (this.usersByUserName.containsKey(name)) {
+            return this.usersByUserName.get(name);
+        }
+        
         PreparedStatement stm;
         try {
             stm = em.getConn().prepareStatement(
@@ -55,6 +65,10 @@ public class UserProvider extends AbstractProvider {
     }
     
     public IUser getUserByEMail(String eMail) {
+        if (this.usersByEMail.containsKey(eMail)) {
+            return this.usersByEMail.get(eMail);
+        }
+        
         PreparedStatement stm;
         try {
             stm = em.getConn().prepareStatement(
@@ -75,6 +89,11 @@ public class UserProvider extends AbstractProvider {
     }
     
     public IUser getUserById(int id) {
+        if (this.usersById.containsKey(id)) {
+            return this.usersById.get(id);
+        }
+        
+        
         PreparedStatement stm;
         try {
             stm = em.getConn().prepareStatement(
@@ -189,6 +208,12 @@ public class UserProvider extends AbstractProvider {
         return new User();
     }
     
+    private void saveToMap(User user) {
+        this.usersById.put(user.getId(), user);
+        this.usersByEMail.put(user.getEMail(), user);
+        this.usersByUserName.put(user.getUsername(), user);
+    }
+    
     private User buildUserObject(ResultSet rs) throws SQLException {
         User user = new User(rs.getInt("id"));
         user.setName(rs.getString("name"));
@@ -197,6 +222,7 @@ public class UserProvider extends AbstractProvider {
         user.setEMail(rs.getString("email"));
         user.setPassword(rs.getString("password"));
         user.setPhoneNr(rs.getString("phone_nr"));
+        saveToMap(user);
         return user;
     }
 }

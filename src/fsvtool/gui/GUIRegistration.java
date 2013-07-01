@@ -14,8 +14,6 @@ public class GUIRegistration extends javax.swing.JFrame {
     private AuthentificationController controller;
     public static final String CANCEL = "Abbrechen";
     public static final String REGISTER = "Anmelden";
-    private boolean existingUserMail;
-    private boolean existingUserName;
     /**
      * Creates new form GUIRegistration
      */
@@ -323,13 +321,11 @@ public class GUIRegistration extends javax.swing.JFrame {
     }
     
     public void setExistingMailErrorVisible(boolean check){
-        this.existingUserMail = true;        
-        this.errorExistingMail.setVisible(true);
+        this.errorExistingMail.setVisible(check);
     }    
     
     public void setExistingUserNameErrorVisible(boolean check){
-        this.existingUserName = true;
-        this.errorUsername.setVisible(true);
+        this.errorUsername.setVisible(check);
     }
     
     public void setController(AuthentificationController ac){
@@ -425,6 +421,8 @@ public class GUIRegistration extends javax.swing.JFrame {
 
     private void mailInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_mailInputFocusLost
         this.errorNoEmail.setVisible(!checkMail());
+        this.errorEmail2.setVisible(!checkRepeatedMail());
+        
     }//GEN-LAST:event_mailInputFocusLost
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
