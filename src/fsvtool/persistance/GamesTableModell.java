@@ -18,7 +18,7 @@ public class GamesTableModell extends AbstractTableModel {
 
     private GameProvider gp;
     private String[] columnNames = new String[]{
-        "Sportart", "Anzahl Spieler", "Datum/Uhrzeit", "Ort", "Teilname"
+        "Sportart", "Anzahl Spieler", "Datum/Uhrzeit", "Ort", "Teilnahme"
     };
     protected Class<?>[] dataTypes = new Class[]{
         String.class, String.class, String.class, String.class, String.class, String.class
