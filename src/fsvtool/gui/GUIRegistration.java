@@ -389,7 +389,7 @@ public class GUIRegistration extends javax.swing.JFrame {
     }
     
     private boolean checkPasswordLength(){
-        if(getPasswordInput().length() >=4)
+        if(getPasswordInput().length() >=4 && getPasswordInput().length() <=8)
             return true;
         else
             return false;
@@ -420,9 +420,7 @@ public class GUIRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_repeatedPasswordInputFocusLost
 
     private void mailInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_mailInputFocusLost
-        this.errorNoEmail.setVisible(!checkMail());
-        this.errorEmail2.setVisible(!checkRepeatedMail());
-        
+        this.errorNoEmail.setVisible(!checkMail());        
     }//GEN-LAST:event_mailInputFocusLost
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
