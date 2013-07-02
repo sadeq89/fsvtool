@@ -8,7 +8,10 @@ import fsvtool.gui.GUIMainFrame;
 import fsvtool.persistance.EntityManager;
 import fsvtool.persistance.GamesTableModell;
 import fsvtool.persistance.IGame;
+import fsvtool.persistance.IUser;
 import fsvtool.persistance.TeamGenerator;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -70,14 +73,33 @@ public class MainController extends AbstractController {
 
     private void showTeams(IGame game) {
         if(game.getPlayerInGameCount()==game.getMaxPlayerCount()){
-          gui.showTeamDialog(game.getPlayerInTeam(IGame.TEAM_A),game.getPlayerInTeam(IGame.TEAM_B));  
+            createTeamOutput(game);  
         } else {
             gui.showNotEnoughPlayer(game.getPlayerInGameCount(),game.getMaxPlayerCount());
         }
     }
 
-    void gameClosed(IGame game) {
+    public void gameClosed(IGame game) {
         gui.showGameClosedDialog(game.getMaxPlayerCount());
+    }
+
+    private void createTeamOutput(IGame game) {
+        List<String> strTeamA = new ArrayList<>();
+        List<String> strTeamB = new ArrayList<>();
+        
+        List<IUser> teamA = game.getPlayerInTeam(IGame.TEAM_A);
+        List<IUser> teamB = game.getPlayerInTeam(IGame.TEAM_B);
+        Iterator it1 = teamA.iterator();
+        Iterator it2 = teamB.iterator();
+        while(it1.hasNext()){
+           IUser tmpUser = (IUser)it1.next();
+           strTeamA.add(tmpUser.toString() + "Stärke " + tmpUser.getSkill(game.getGameType()));
+        }
+        while(it2.hasNext()){
+           IUser tmpUser = (IUser)it2.next();
+           strTeamB.add(tmpUser.toString() + "Stärke " + tmpUser.getSkill(game.getGameType()));
+        }
+        gui.showTeamDialog(strTeamA,strTeamB);
     }
 
 }
