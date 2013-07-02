@@ -231,4 +231,8 @@ public class GUIMainFrame extends javax.swing.JFrame {
         System.out.println("Es haben sich noch nicht genügend Spieler für das Spiel angemeldet!");
     }
 
+    public void showGameClosedDialog(int maxPlayerCount) {
+        JOptionPane.showMessageDialog(rootPane, "Für dieses Spiel kann sich nicht mehr eingetragen werden! ( "+maxPlayerCount+" / "+maxPlayerCount+" )","Spiel voll", 0);
+    }
+
 }

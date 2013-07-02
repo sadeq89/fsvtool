@@ -28,9 +28,15 @@ class EnterGameController extends AbstractController {
         Iterator<IGame> it = gameList.iterator();
         while(it.hasNext()){
             IGame tmpGame = it.next();
-            tmpGame.addPlayerToTeam(em.getLoggedinUser(),IGame.TEAM_NO_TEAM);
-            checkTeamsCanBeGenerated(tmpGame);
-            em.getGameProvider().saveGame(tmpGame);
+            if(gameStillOpen(tmpGame)){
+               tmpGame.addPlayerToTeam(em.getLoggedinUser(),IGame.TEAM_NO_TEAM);
+               checkTeamsCanBeGenerated(tmpGame);
+               em.getGameProvider().saveGame(tmpGame);
+            } else{
+                mainController.gameClosed(tmpGame);
+            }
+            
+            
         }
         
     }
@@ -39,5 +45,13 @@ class EnterGameController extends AbstractController {
         if(game.getPlayerInGameCount()==game.getMaxPlayerCount()){
             mainController.generateTeams(game);
         }
+    }
+
+    private boolean gameStillOpen(IGame game) {
+       if (game.getPlayerInGameCount()<game.getMaxPlayerCount()){
+           return true;
+       } else{
+           return false;
+       }
     }
 }

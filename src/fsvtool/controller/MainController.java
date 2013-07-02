@@ -76,4 +76,8 @@ public class MainController extends AbstractController {
         }
     }
 
+    void gameClosed(IGame game) {
+        gui.showGameClosedDialog(game.getMaxPlayerCount());
+    }
+
 }
