@@ -37,19 +37,17 @@ public class LeaveGameController extends AbstractController {
 
     private void checkGameWasClosed(IGame game) {
         if (game.getPlayerInGameCount() == game.getMaxPlayerCount()) {
-            List<IUser> teamA = game.getPlayerInTeam(IGame.TEAM_A);
-            List<IUser> teamB = game.getPlayerInTeam(IGame.TEAM_B);
-            Iterator itA = teamA.iterator();
-            Iterator itB = teamB.iterator();
-            while (itA.hasNext()) {
-                game.addPlayerToTeam((IUser) itA.next(), IGame.TEAM_NO_TEAM);
+            List<IUser> l = game.getPlayerInTeam(IGame.TEAM_A);
+            for (int i = 0; i < l.size(); i++) {
+                game.addPlayerToTeam(l.get(i), IGame.TEAM_NO_TEAM);
             }
-            while (itB.hasNext()) {
-                game.addPlayerToTeam((IUser) itB.next(), IGame.TEAM_NO_TEAM);
+            l = game.getPlayerInTeam(IGame.TEAM_B);
+            for (int i = 0; i < l.size(); i++) {
+                game.addPlayerToTeam(l.get(i), IGame.TEAM_NO_TEAM);
             }
+
+
         }
 
-
     }
-
 }
