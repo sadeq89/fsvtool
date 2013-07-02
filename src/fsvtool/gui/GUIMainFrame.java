@@ -78,8 +78,9 @@ public class GUIMainFrame extends javax.swing.JFrame {
         bTeamsAnzeigen = new javax.swing.JButton();
         bNewGame = new javax.swing.JButton();
         bMeinAccount = new javax.swing.JButton();
-        iBackground = new javax.swing.JLabel();
         bStornieren = new javax.swing.JButton();
+        lblWelcome = new javax.swing.JLabel();
+        iBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FSV tool");
@@ -142,11 +143,6 @@ public class GUIMainFrame extends javax.swing.JFrame {
         bMeinAccount.setBounds(840, 10, 120, 40);
         jLayeredPane1.add(bMeinAccount, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        iBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
-        iBackground.setText("jLabel1");
-        iBackground.setBounds(0, 0, 990, 590);
-        jLayeredPane1.add(iBackground, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         bStornieren.setText(this.STORNIEREN);
         bStornieren.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +151,16 @@ public class GUIMainFrame extends javax.swing.JFrame {
         });
         bStornieren.setBounds(275, 550, 169, 34);
         jLayeredPane1.add(bStornieren, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        lblWelcome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblWelcome.setText("Herzlich Willkommen beim Freizeitsportverwaltungtool!");
+        lblWelcome.setBounds(100, 10, 440, 40);
+        jLayeredPane1.add(lblWelcome, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        iBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fsvtool/background.png"))); // NOI18N
+        iBackground.setText("jLabel1");
+        iBackground.setBounds(0, 0, 990, 590);
+        jLayeredPane1.add(iBackground, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,6 +224,7 @@ public class GUIMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel iBackground;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JLabel lblWelcome;
     private javax.swing.JTable tTable;
     // End of variables declaration//GEN-END:variables
 

@@ -18,7 +18,7 @@ public class GamesTableModell extends AbstractTableModel {
 
     private GameProvider gp;
     private String[] columnNames = new String[]{
-        "Sportart", "Anzahl Spieler", "Datum/Uhrzeit", "Ort", "Teilnahme"
+        "Sportart", "Anzahl Spieler", "Datum / Uhrzeit", "Ort", "Teilnahme"
     };
     protected Class<?>[] dataTypes = new Class[]{
         String.class, String.class, String.class, String.class, String.class, String.class
@@ -29,7 +29,7 @@ public class GamesTableModell extends AbstractTableModel {
 
     public GamesTableModell(GameProvider gp) {
         this.gp = gp;
-        this.dateFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy");
+        this.dateFormat = new SimpleDateFormat("    dd.MM.yyyy       HH:mm ");
         this.calendar = Calendar.getInstance();
     }
 
