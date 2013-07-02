@@ -211,7 +211,7 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLayeredPane1.add(tfMinute, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel7.setText("H / M");
-        jLabel7.setBounds(400, 230, 50, 16);
+        jLabel7.setBounds(400, 230, 50, 14);
         jLayeredPane1.add(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -224,7 +224,7 @@ public class GUICreateGame extends javax.swing.JFrame {
         jLayeredPane1.add(tfOrt, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         spPlayerCount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        spPlayerCount.setModel(new javax.swing.SpinnerNumberModel(8, 8, 22, 2));
+        spPlayerCount.setModel(new javax.swing.SpinnerNumberModel(4, 4, 22, 2));
         spPlayerCount.setBounds(310, 270, 50, 30);
         jLayeredPane1.add(spPlayerCount, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

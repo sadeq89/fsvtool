@@ -281,7 +281,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="8" maximum="22" minimum="8" numberType="java.lang.Integer" stepSize="2" type="number"/>
+              <SpinnerModel initial="4" maximum="22" minimum="4" numberType="java.lang.Integer" stepSize="2" type="number"/>
             </Property>
           </Properties>
           <AuxValues>
