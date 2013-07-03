@@ -86,22 +86,30 @@ public class MainController extends AbstractController {
     }
 
     private void createTeamOutput(IGame game) {
-        List<String> strTeamA = new ArrayList<>();
-        List<String> strTeamB = new ArrayList<>();
+        //List<String> strTeamA = new ArrayList<>();
+        //List<String> strTeamB = new ArrayList<>();
         
+        StringBuffer strTeamA = new StringBuffer();
+        StringBuffer strTeamB = new StringBuffer();
         List<IUser> teamA = game.getPlayerInTeam(IGame.TEAM_A);
         List<IUser> teamB = game.getPlayerInTeam(IGame.TEAM_B);
         Iterator it1 = teamA.iterator();
         Iterator it2 = teamB.iterator();
         while(it1.hasNext()){
            IUser tmpUser = (IUser)it1.next();
-           strTeamA.add(tmpUser.toString() + "Stärke " + tmpUser.getSkill(game.getGameType()));
+           strTeamA.append("\n    ")
+                   .append(tmpUser.toString())
+                   .append(": Stärke ")
+                   .append(tmpUser.getSkill(game.getGameType()));
         }
         while(it2.hasNext()){
            IUser tmpUser = (IUser)it2.next();
-           strTeamB.add(tmpUser.toString() + "Stärke " + tmpUser.getSkill(game.getGameType()));
+           strTeamB.append("\n    ")
+                   .append(tmpUser.toString())
+                   .append(": Stärke ")
+                   .append(tmpUser.getSkill(game.getGameType()));
         }
-        gui.showTeamDialog(strTeamA,strTeamB);
+        gui.showTeamDialog(strTeamA.toString(),strTeamB.toString());
     }
     public void resetTeams(IGame game){
         if (game.getPlayerInGameCount() == game.getMaxPlayerCount()) {

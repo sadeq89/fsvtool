@@ -229,8 +229,8 @@ public class GUIMainFrame extends javax.swing.JFrame {
     private javax.swing.JTable tTable;
     // End of variables declaration//GEN-END:variables
 
-    public void showTeamDialog(List<String> strTeamA, List<String> strTeamB) {          
-        JOptionPane.showMessageDialog(rootPane, "Team 1: " + strTeamA + "\nTeam 2: " + strTeamB, "Teamzusammenstellung", 1);
+    public void showTeamDialog(String strTeamA, String strTeamB) {          
+        JOptionPane.showMessageDialog(rootPane, "Team 1: " + strTeamA + "\n\nTeam 2: " + strTeamB, "Teamzusammenstellung", 1);
     }
 
     public void showNotEnoughPlayer(int realPlayer, int maxPlayer) {
