@@ -105,8 +105,8 @@ public class MainController extends AbstractController {
     }
     public void resetTeams(IGame game){
         if (game.getPlayerInGameCount() == game.getMaxPlayerCount()) {
-            List<IUser> teamA = new ArrayList<IUser>();
-            List<IUser> teamB = new ArrayList<IUser>();
+            List<IUser> teamA = new ArrayList<>();
+            List<IUser> teamB = new ArrayList<>();
             teamA.addAll(game.getPlayerInTeam(IGame.TEAM_A));
             teamB.addAll(game.getPlayerInTeam(IGame.TEAM_B));
             for (int i = 0; i < teamA.size(); i++) {
