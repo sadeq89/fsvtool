@@ -45,7 +45,7 @@ public class MainController extends AbstractController {
                 this.enterGameController.setParticipation();
                 break;
             case GUIMainFrame.STORNIEREN:
-                this.leaveGameController = new LeaveGameController(this.em, (List<IGame>) evt.getSource());
+                this.leaveGameController = new LeaveGameController(this.em, (List<IGame>) evt.getSource(), this);
                 this.leaveGameController.deleteParticipation();
                 break;
             case GUIMainFrame.LOGOUT:
@@ -73,6 +73,8 @@ public class MainController extends AbstractController {
 
     private void showTeams(IGame game) {
         if(game.getPlayerInGameCount()==game.getMaxPlayerCount()){
+            resetTeams(game);
+            generateTeams(game);
             createTeamOutput(game);  
         } else {
             gui.showNotEnoughPlayer(game.getPlayerInGameCount(),game.getMaxPlayerCount());
@@ -101,5 +103,20 @@ public class MainController extends AbstractController {
         }
         gui.showTeamDialog(strTeamA,strTeamB);
     }
+    public void resetTeams(IGame game){
+        if (game.getPlayerInGameCount() == game.getMaxPlayerCount()) {
+            List<IUser> teamA = new ArrayList<IUser>();
+            List<IUser> teamB = new ArrayList<IUser>();
+            teamA.addAll(game.getPlayerInTeam(IGame.TEAM_A));
+            teamB.addAll(game.getPlayerInTeam(IGame.TEAM_B));
+            for (int i = 0; i < teamA.size(); i++) {
+                game.addPlayerToTeam(teamA.get(i), IGame.TEAM_NO_TEAM);
+            }
+            for (int i = 0; i < teamB.size(); i++) {
+                game.addPlayerToTeam(teamB.get(i), IGame.TEAM_NO_TEAM);
+            }
 
+
+        }
+    }
 }

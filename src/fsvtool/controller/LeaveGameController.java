@@ -7,6 +7,7 @@ package fsvtool.controller;
 import fsvtool.persistance.EntityManager;
 import fsvtool.persistance.IGame;
 import fsvtool.persistance.IUser;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -17,10 +18,12 @@ import java.util.List;
 public class LeaveGameController extends AbstractController {
 
     private List<IGame> gameList;
+    private MainController mainController;
 
-    public LeaveGameController(EntityManager em, List<IGame> gameList) {
+    public LeaveGameController(EntityManager em, List<IGame> gameList, MainController mC) {
         super(em);
         this.gameList = gameList;
+        this.mainController = mC;
     }
 
     void deleteParticipation() {
@@ -37,16 +40,7 @@ public class LeaveGameController extends AbstractController {
 
     private void checkGameWasClosed(IGame game) {
         if (game.getPlayerInGameCount() == game.getMaxPlayerCount()) {
-            List<IUser> l = game.getPlayerInTeam(IGame.TEAM_A);
-            for (int i = 0; i < l.size(); i++) {
-                game.addPlayerToTeam(l.get(i), IGame.TEAM_NO_TEAM);
-            }
-            l = game.getPlayerInTeam(IGame.TEAM_B);
-            for (int i = 0; i < l.size(); i++) {
-                game.addPlayerToTeam(l.get(i), IGame.TEAM_NO_TEAM);
-            }
-
-
+            mainController.resetTeams(game);
         }
 
     }
