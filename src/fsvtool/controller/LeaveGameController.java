@@ -6,8 +6,6 @@ package fsvtool.controller;
 
 import fsvtool.persistance.EntityManager;
 import fsvtool.persistance.IGame;
-import fsvtool.persistance.IUser;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
